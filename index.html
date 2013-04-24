@@ -1,0 +1,35 @@
+<html>
+	<head>
+		<meta charset='utf-8'>
+		<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+	</head>
+	<body>
+		<h1>Djif</h1>
+		<p>Remix the hell out of your gifs</p>
+		<form>
+			<script>
+				function render() {
+					var gif = document.createElement('img');
+					var sound = document.createElement('source');
+					gif.src = $('#gifSource').val();
+					sound.src = $('#soundSource').val();
+					$('#screen').empty();
+					$('#screen').append(gif);
+					$('#speaker').empty();
+					$('#speaker').append(sound);
+
+				};
+
+			</script>
+			Un gif : <input id="gifSource" type="text"><br>
+			Un son : <input id="soundSource" type="text"><br>
+			<button type="Button" onclick="render();">Remix !</button>
+			<button type="Button" onclick="alert('not implemented');">Share</button>
+		</form>
+
+		<div id="screen"></div>
+		<audio id="speaker" loop autoplay></audio>
+		<iframe width="0" height="0" src="http://www.youtube.com/embed/WaIJKM0sjdo" frameborder="0" allowfullscreen></iframe>
+	</body>
+</html>
+
