@@ -43,6 +43,7 @@ form {
 	padding: 20px;
 /*	text-align: left;*/
 	background-color: rgb( 233, 233, 233 );
+	background-image : url('/images/az_subtle.png');
 	box-shadow: 1px 1px 10px #555;
 }
 
