@@ -1,6 +1,7 @@
 <html>
 	<head>
 		<meta charset='utf-8'>
+		<link rel="stylesheet" type="text/css" href="style.css">
 		<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
 	</head>
 	<body>
@@ -9,27 +10,26 @@
 		<form>
 			<script>
 				function render() {
-					var gif = document.createElement('img');
-					var sound = document.createElement('source');
-					gif.src = $('#gifSource').val();
-					sound.src = $('#soundSource').val();
-					$('#screen').empty();
-					$('#screen').append(gif);
-					$('#speaker').empty();
-					$('#speaker').append(sound);
-
+					$.ajax({
+						type: "POST",
+						url: "/new",
+						data: { gif_url: $('#gifSource').val(),
+										audio_url: $('#soundSource').val() }
+					}).done(function( output ) {
+						$('#speaker').html( output );
+					});
 				};
 
 			</script>
 			Un gif : <input id="gifSource" type="text"><br>
 			Un son : <input id="soundSource" type="text"><br>
-			<button type="Button" onclick="render();">Remix !</button>
-			<button type="Button" onclick="alert('not implemented');">Share</button>
+			<center>
+				<button type="Button" onclick="render();">Remix !</button>
+			</center>
 		</form>
 
 		<div id="screen"></div>
-		<audio id="speaker" loop autoplay></audio>
-		<iframe width="0" height="0" src="http://www.youtube.com/embed/WaIJKM0sjdo" frameborder="0" allowfullscreen></iframe>
+		<div id="speaker"></div>
 	</body>
 </html>
 
