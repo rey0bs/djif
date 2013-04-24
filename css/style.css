@@ -1,17 +1,20 @@
 @font-face {
     font-family: 'PusabRegular';
-    src: url('typo/PUSAB___-webfont.eot');
-    src: url('typo/PUSAB___-webfont.eot?#iefix') format('embedded-opentype'),
-         url('typo/PUSAB___-webfont.woff') format('woff'),
-         url('typo/PUSAB___-webfont.ttf') format('truetype'),
-         url('typo/PUSAB___-webfont.svg#PusabRegular') format('svg');
+    src: url('../typo/PUSAB___-webfont.eot');
+    src: url('../typo/PUSAB___-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../typo/PUSAB___-webfont.woff') format('woff'),
+         url('../typo/PUSAB___-webfont.ttf') format('truetype'),
+         url('../typo/PUSAB___-webfont.svg#PusabRegular') format('svg');
     font-weight: normal;
     font-style: normal;
 
 }
 
+html {
+	background: none;
+}
 body {
-	background : url('images/bg.png');
+	background : url('../images/bg.png');
 	text-align: center;
 }
 
@@ -36,7 +39,7 @@ form {
 
 #page {
 	max-width: 600px;
-	margin: 0 auto;
+	margin: 20px auto 0 auto;
 	padding: 20px;
 /*	text-align: left;*/
 	background-color: rgb( 233, 233, 233 );
