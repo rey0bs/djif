@@ -30,14 +30,15 @@ form {
 	height : 500px;
 	color : white;
 	padding : 10px;
+	margin : 0 auto;
 	left : 50%;
 }
 
 #page {
-	width: 990px;
+	max-width: 600px;
 	margin: 0 auto;
 	padding: 20px;
-	text-align: left;
+/*	text-align: left;*/
 	background-color: rgb( 233, 233, 233 );
 	box-shadow: 1px 1px 10px #555;
 }
