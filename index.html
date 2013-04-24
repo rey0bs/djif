@@ -5,31 +5,33 @@
 		<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
 	</head>
 	<body>
-		<h1>Djif</h1>
-		<p>Remix the hell out of your gifs</p>
-		<form>
-			<script>
-				function render() {
-					$.ajax({
-						type: "POST",
-						url: "/new",
-						data: { gif_url: $('#gifSource').val(),
-										audio_url: $('#soundSource').val() }
-					}).done(function( output ) {
-						$('#speaker').html( output );
-					});
-				};
-
-			</script>
-			Un gif : <input id="gifSource" type="text"><br>
-			Un son : <input id="soundSource" type="text"><br>
-			<center>
-				<button type="Button" onclick="render();">Remix !</button>
-			</center>
-		</form>
-
-		<div id="screen"></div>
-		<div id="speaker"></div>
+		<div id="page">
+			<h1>Djif</h1>
+			<p class="lead">Remix the hell out of your gifs</p>
+			<form>
+				<script>
+					function render() {
+						$.ajax({
+							type: "POST",
+							url: "/new",
+							data: { gif_url: $('#gifSource').val(),
+											audio_url: $('#soundSource').val() }
+						}).done(function( output ) {
+							$('#speaker').html( output );
+						});
+					};
+	
+				</script>
+				Un gif : <input id="gifSource" type="text"><br>
+				Un son : <input id="soundSource" type="text"><br>
+				<center>
+					<button type="Button" onclick="render();">Remix !</button>
+				</center>
+			</form>
+	
+			<div id="screen"></div>
+			<div id="speaker"></div>
+		</div>
 	</body>
 </html>
 
