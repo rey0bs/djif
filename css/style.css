@@ -111,6 +111,7 @@ form#new_djif {
 	border-radius: 10px;
 	background:  -moz-linear-gradient(19% 75% 90deg,#ff9900, #d70);
 	height: 48px;
+	box-shadow: 0 1px 5px #888888;
 }
 
 .input_group.sound_group {
