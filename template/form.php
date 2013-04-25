@@ -15,7 +15,7 @@
 								audio_url: $('#soundSource').val(),
 								ajax : true	}
 			}).done(function( output ) {
-				$('#screen').html( output );
+				$('#action').append( output );
 			});
 			return false;
 		});
