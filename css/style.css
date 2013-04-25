@@ -23,6 +23,7 @@ h1 {
 	font-size: 56px;
 	margin-bottom: 5px;
 	color: #FF9900;
+	text-shadow: 2px 2px 0 #FFFFFF, 4px -1px 0 #424242;
 }
 
 #action {
@@ -52,4 +53,5 @@ p.lead {
 	font-size: 25px;
 	margin-top: 0;
 	color: #3299BB;
+	text-shadow: 2px 2px 0 #FFFFFF;
 }
