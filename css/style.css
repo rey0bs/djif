@@ -92,7 +92,11 @@ p.lead {
 	color: #3299BB;
 	text-shadow: 2px 2px 0 #FFFFFF;
 }
-
+p.lead strong {
+	color: #424242;
+	font-weight: normal;
+	font-size: 105%;
+}
 /***************************
 * FORMULAIRES
 ***************************/

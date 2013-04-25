@@ -10,6 +10,6 @@
 	<body>
 		<div id="page">
 			<h1>DJif</h1>
-			<p class="lead">Remix the %$@£&! out of your gifs !</p>
+			<p class="lead">Remix the <strong>%$@£&!</strong> out of your <strong>gifs</strong> !</p>
 			<div id="action">
 
