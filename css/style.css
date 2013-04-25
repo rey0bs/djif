@@ -10,9 +10,13 @@
 
 }
 
+/***************************
+* BALISES NUES
+***************************/
 html {
 	background: none;
 }
+
 body {
 	background : url('../images/bg.png');
 	text-align: center;
@@ -21,33 +25,65 @@ body {
 h1 {
 	font-family: 'PusabRegular';
 	font-size: 75px;
-	margin-bottom: 5px;
+	margin-bottom: 20px;
 	color: #FF9900;
 	text-shadow: 2px 2px 0 #FFFFFF, 4px -1px 0 #424242;
 }
 
+form {
+	margin: 0 auto;
+	text-align: left;
+}
+form:after {
+	content:'';
+	display:block;
+	clear: both;
+}
+
+label {
+	display: block;
+	/*font-family: 'PusabRegular';*/
+	font-size: 15px;
+	color: #fff;
+	margin-bottom: 5px;
+	
+}
+
+input {
+	background: #FFFFFF;
+	border: none;
+	border-radius: 5px;
+	padding: 5px;
+	width: 245px;
+	color: #424242;
+    	font-style: italic;
+	transition: border 0.2s linear 0s, box-shadow 0.2s linear 0s;
+}
+input:focus {
+	border-color: #fff;
+	box-shadow: 0 1px 1px #fff inset, 0 0 8px #fff;
+	outline: 0 none;
+}
+
+/***************************
+* CONTAINERS
+***************************/
 #action {
-	background : #424242;
-	border-radius : 20px;
-	border : 5px solid white;
-	width : 300px;
-	height : 500px;
-	color : white;
-	padding : 10px;
-	margin : 0 auto;
-	left : 50%;
 }
 
 #page {
 	max-width: 700px;
 	margin: 20px auto 0 auto;
 	padding: 20px;
-/*	text-align: left;*/
 	background-color: rgb( 233, 233, 233 );
 	background-image : url('/images/bg_page.png');
 	box-shadow: 1px 1px 10px #555;
+	border-radius: 10px;
 }
 
+/***************************
+* TYPO
+***************************/
 p.lead {
 	font-family: 'PusabRegular';
 	font-size: 25px;
@@ -56,3 +92,56 @@ p.lead {
 	color: #3299BB;
 	text-shadow: 2px 2px 0 #FFFFFF;
 }
+
+/***************************
+* FORMULAIRES
+***************************/
+
+form#new_djif {
+	position: relative;
+	width: 320px;
+}
+
+.input_group {
+	margin: 20px auto;
+	width: auto;
+	padding: 10px;
+	background: #FF9900;
+	padding: 10px;
+	border-radius: 10px;
+	background:  -moz-linear-gradient(19% 75% 90deg,#ff9900, #d70);
+	height: 48px;
+}
+
+.input_group.sound_group {
+	background:  -moz-linear-gradient(19% 75% 90deg,#3299BB, #107799);
+}
+
+.input_group .iconic {
+	font-size: 55px;
+	color: #fff;
+	width: 55px;
+	float: left;
+}
+
+form#new_djif .plus_alt {
+	font-size: 50px;
+	text-align: right;
+	color: #FFBA00;
+	position: absolute;
+	top: 52px;
+	left: -20px;
+}
+
+input#remix {
+	float: right;
+	background: #FFBA00;
+	padding: 10px;
+	background:  -moz-linear-gradient(19% 75% 90deg,#FFBA00, #EEA900);
+	color: #fff;
+	font-family: 'PusabRegular';
+	font-size: 30px;
+	width: auto;
+	font-style: normal;
+}
+
