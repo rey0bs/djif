@@ -8,6 +8,6 @@
 	<body>
 		<div id="page">
 			<h1>DJif</h1>
-			<p class="lead">Remix the hell out of your gifs</p>
+			<p class="lead">Remix the %$@£&! out of your gifs !</p>
 			<div id="action">
 
