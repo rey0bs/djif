@@ -1,4 +1,8 @@
 <?php
+	if (! $_POST['ajax']) {
+		include('template/header.php');
+		include('template/form.php');
+	}
 	include('config/config.php');
 	$action = $_GET['action'];
 	if($action == '') {
@@ -9,4 +13,7 @@
 		$page = 'action/view.php';
 	}
 	include($page);
+	if (! $_POST['ajax']) {
+		include('template/footer.php');
+	}
 ?>
