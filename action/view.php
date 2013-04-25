@@ -1,4 +1,3 @@
 <?php
-	$hash = $_GET['hash'];
-	echo('We retrieve then display djif #' . $hash);
+	echo('We retrieve then display djif #' . $action);
 ?>

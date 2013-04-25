@@ -5,7 +5,7 @@
 	}
 	$page = 'action/' . $action . '.php';
 	if(! file_exists($page)) {
-		$page = 'action/view.php?hash=' . $action;
+		$page = 'action/view.php';
 	}
 	include($page);
 ?>
