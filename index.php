@@ -3,5 +3,9 @@
 	if($action == '') {
 		$action = 'home';
 	}
-	include('action/' . $action . '.php');
+	$page = 'action/' . $action . '.php';
+	if(! file_exists($page)) {
+		$page = 'action/view.php?hash=' . $action;
+	}
+	include($page);
 ?>

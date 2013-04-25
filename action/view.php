@@ -1,1 +1,4 @@
-<?php echo('not implemented yet'); ?>
+<?php
+	$hash = $_GET['hash'];
+	echo('We retrieve then display djif #' . $hash);
+?>
