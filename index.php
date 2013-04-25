@@ -1,4 +1,5 @@
 <?php
+	include('config/config.php');
 	$action = $_GET['action'];
 	if($action == '') {
 		$action = 'home';
