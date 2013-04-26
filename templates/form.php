@@ -19,6 +19,8 @@
 </form>
 <script>
 	$('form').submit(function() {
+		$('#screen').remove();
+		$('#speaker').remove();
 		$.ajax({
 			type: "POST",
 			url: "/new",

@@ -7,7 +7,6 @@
 	
 	$audioDjif = new Djif( $audio_url );
 	$audio = $audioDjif->getReader();
-
 ?>
 <div id="screen">
 <?php
