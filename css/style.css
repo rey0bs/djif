@@ -141,7 +141,8 @@ form#new_djif .plus_alt {
 }
 
 input#remix {
-	float: right;
+	display : block;
+	margin: 0 auto;
 	background: #FFBA00;
 	padding: 10px;
 	background:  -moz-linear-gradient(top,#FFBA00, #EEA900);
@@ -149,7 +150,7 @@ input#remix {
 	color: #fff;
 	font-family: 'PusabRegular';
 	font-size: 30px;
-	width: auto;
+	width: 50px;
 	font-style: normal;
 }
 
