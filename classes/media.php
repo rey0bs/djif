@@ -7,6 +7,23 @@ class Media {
 		$this->url = $url;
 	}
 	
+	public static function isMine( $url ) {
+		return false;
+	}
+	public function getHash() {
+	}
+	
+	public function getPlaceholders() {
+		return array(
+				'keys' => array(
+						'[[hash]]'
+				),
+				'values' => array(
+						$this->getHash()
+				)
+		);
+	}
+	
 	public function getTemplateDir() {
 		return 'templates/media/';
 	}
@@ -18,20 +35,6 @@ class Media {
 		} else {
 			return false;
 		}
-	}
-	
-	public function getHash() {
-	}
-	
-	public function getPlaceholders() {
-		return array(
-			'keys' => array( 
-				'[[hash]]'
-			),
-			'values' => array( 
-				$this->getHash() 
-			)
-		);
 	}
 
 	public function render( ) {
