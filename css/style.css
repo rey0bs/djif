@@ -113,13 +113,15 @@ form#new_djif {
 	background: #FF9900;
 	padding: 10px;
 	border-radius: 10px;
-	background:  -moz-linear-gradient(19% 75% 90deg,#ff9900, #d70);
+	background:  -moz-linear-gradient(top,#ff9900, #d70);
+	background:  -webkit-linear-gradient(top,#ff9900, #d70);
 	height: 48px;
 	box-shadow: 0 1px 5px #888888;
 }
 
 .input_group.sound_group {
-	background:  -moz-linear-gradient(19% 75% 90deg,#3299BB, #107799);
+	background:  -moz-linear-gradient(top,#3299BB, #107799);
+	background:  -webkit-linear-gradient(top,#3299BB, #107799);
 }
 
 .input_group .iconic {
@@ -142,7 +144,8 @@ input#remix {
 	float: right;
 	background: #FFBA00;
 	padding: 10px;
-	background:  -moz-linear-gradient(19% 75% 90deg,#FFBA00, #EEA900);
+	background:  -moz-linear-gradient(top,#FFBA00, #EEA900);
+	background:  -webkit-linear-gradient(top,#FFBA00, #EEA900);
 	color: #fff;
 	font-family: 'PusabRegular';
 	font-size: 30px;

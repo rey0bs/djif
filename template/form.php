@@ -14,7 +14,7 @@
 		<input id="soundSource" type="text" name="audio_url" onclick="select()" />
 	</div>
 
-	<input id="remix" type="submit" value="Remix !"/>
+	<input id="remix" type="submit" value="="/>
 
 </form>
 <script>
