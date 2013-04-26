@@ -7,9 +7,6 @@ class Youtube {
 	}
 
 	public function render() {
-?>
-	<iframe width="1" height="1" src="http://www.youtube.com/embed/<?php echo($this->hash); ?>?autoplay=1" frameborder="0" allowfullscreen></iframe>
-<?php
 	}
 }
 ?>
