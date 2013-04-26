@@ -1,15 +1,20 @@
 <?php
-	require_once( 'classes/youtube.php' );
 	$gif_url = $_POST['gif_url'];
 	$audio_url = $_POST['audio_url'];
-	$reader = new Youtube($audio_url);
+	
+	$imgDjif = new Djif( $gif_url );
+	$img = $imgDjif->getReader();
+	
+	$audioDjif = new Djif( $audio_url );
+	$audio = $audioDjif->getReader();
 ?>
 <div id="screen">
-	<img src="<?php echo($gif_url); ?>"/>
+<?php
+	echo $img->render();
+?>
 </div>
 <div id="speaker">
 <?php
-	echo($reader->render());
+	echo $audio->render();
 ?>
 </div>
-
