@@ -153,3 +153,13 @@ input#remix {
 	font-style: normal;
 }
 
+div#screen img {
+	margin : 20px;
+	width : auto;
+	border : 2px solid black;
+
+}
+
+div#speaker {
+	visibility : hidden;
+}
