@@ -97,6 +97,12 @@ p.lead strong {
 	font-weight: normal;
 	font-size: 105%;
 }
+
+.small {
+    font-size: 10px;
+    font-style: italic;
+    padding-left: 10px;
+}
 /***************************
 * FORMULAIRES
 ***************************/
@@ -165,6 +171,7 @@ input#remix {
 	font-size: 30px;
 	width: 50px;
 	font-style: normal;
+	box-shadow: 0 1px 5px #888888;
 }
 
 
