@@ -4,7 +4,7 @@
 		<span class="iconic camera"></span>
 		<label for="gif_url">Gif</label>
 		<input id="gifSource" type="text" name="gif_url" onclick="select()" />
-		<span class="iconic plus_alt"></span>
+		<div id="plus_bg"><span class="iconic plus_alt"></span></div>
 	</div>
 
 	

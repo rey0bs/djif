@@ -132,17 +132,25 @@ form#new_djif {
 	float: left;
 }
 
+#plus_bg {
+	width : 25px;
+	height : 25px;
+	background : white;
+	z-index: 3;
+	position : absolute;
+	bottom : -20px;
+	left : 50%;
+	margin-left : -15px;
+}
+
 form#new_djif .plus_alt {
 	font-size: 50px;
 	width: 50px;
 	height: 50px;
-	margin-left: -25px;
+	margin-left: -12px;
+	margin-top : -10px;
 	text-align: center;
 	color: #FFBA00;
-	position: absolute;
-	bottom: -36px;
-	z-index: 3;
-	left: 50%;
 }
 
 
