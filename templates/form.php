@@ -4,7 +4,7 @@
 		<span class="iconic camera"></span>
 		<label for="gif_url">Gif</label>
 		<input id="gifSource" type="text" name="gif_url" onclick="select()" />
-		<div id="plus_bg"><span class="iconic plus_alt"></span></div>
+		<div id="plus">+</div>
 	</div>
 
 	
@@ -16,7 +16,7 @@
 	</div>
 
 	<input id="remix" type="submit" value="="/>
-
+	
 </form>
 <script>
 	$('form').submit(function() {
