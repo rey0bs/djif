@@ -7,7 +7,7 @@ class Djif {
 		$this->url = $url;
 	}
 	
-	public function getReader() {
+	public function getMedia() {
 
 		// load classes
 		foreach (glob("classes/media/*.php") as $path) {
@@ -24,7 +24,7 @@ class Djif {
 			}
 		}
 		
-		return false();
+		return false;
 	}
 }
 ?>

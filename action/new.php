@@ -3,10 +3,10 @@
 	$audio_url = $_POST['audio_url'];
 	
 	$imgDjif = new Djif( $gif_url );
-	$img = $imgDjif->getReader();
+	$img = $imgDjif->getMedia();
 	
 	$audioDjif = new Djif( $audio_url );
-	$audio = $audioDjif->getReader();
+	$audio = $audioDjif->getMedia();
 ?>
 <div id="screen">
 <?php
