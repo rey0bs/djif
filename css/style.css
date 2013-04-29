@@ -107,6 +107,7 @@ form#new_djif {
 }
 
 .input_group {
+	position: relative;
 	margin: 20px auto;
 	width: auto;
 	padding: 10px;
@@ -115,11 +116,11 @@ form#new_djif {
 	border-radius: 10px;
 	background:  -moz-linear-gradient(top,#ff9900, #d70);
 	background:  -webkit-linear-gradient(top,#ff9900, #d70);
-	height: 48px;
 	box-shadow: 0 1px 5px #888888;
 }
 
 .input_group.sound_group {
+	margin-bottom: 10px;
 	background:  -moz-linear-gradient(top,#3299BB, #107799);
 	background:  -webkit-linear-gradient(top,#3299BB, #107799);
 }
@@ -133,18 +134,23 @@ form#new_djif {
 
 form#new_djif .plus_alt {
 	font-size: 50px;
-	text-align: right;
+	width: 50px;
+	height: 50px;
+	margin-left: -25px;
+	text-align: center;
 	color: #FFBA00;
 	position: absolute;
-	top: 52px;
-	left: -20px;
+	bottom: -36px;
+	z-index: 3;
+	left: 50%;
 }
+
 
 input#remix {
 	display : block;
 	margin: 0 auto;
 	background: #FFBA00;
-	padding: 10px;
+	padding: 5px;
 	background:  -moz-linear-gradient(top,#FFBA00, #EEA900);
 	background:  -webkit-linear-gradient(top,#FFBA00, #EEA900);
 	color: #fff;

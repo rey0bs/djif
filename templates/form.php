@@ -4,9 +4,10 @@
 		<span class="iconic camera"></span>
 		<label for="gif_url">Gif</label>
 		<input id="gifSource" type="text" name="gif_url" onclick="select()" />
+		<span class="iconic plus_alt"></span>
 	</div>
 
-	<span class="iconic plus_alt"></span>
+	
 
 	<div class="input_group sound_group">
 		<span class="iconic play_alt"></span>
