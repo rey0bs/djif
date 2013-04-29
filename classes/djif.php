@@ -8,11 +8,10 @@ class Djif {
 
 	function __construct($param1, $param2=NULL ) {
 		if (! $param2 && strlen($param1) == 5) { // from hash
-			$db = new Db();
-			$row = $db->get( $param1 );
-			$this->gif = $row["gif"];
-			$this->audio = $row["audio"];
-			$result->free();
+			$this->db = new Db();
+			$row = $this->db->get( $param1 );
+			$this->gif = $this->getMedia( $row["gif"]);
+			$this->audio = $this->getMedia( $row["audio"]);
 		} else { // from two urls
 			$this->gif = $this->getMedia( $param1 );
 			$this->audio = $this->getMedia( $param2 );
