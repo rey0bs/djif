@@ -9,7 +9,8 @@
 	$audio_url = $row["audio"];
 
 	$result->free();
-
-	include('action/view.php');
+	
+	$djif = new Djif( $gif_url, $audio_url );
+	echo $djif->render();
 ?>
 

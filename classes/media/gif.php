@@ -10,7 +10,7 @@ class Gif extends Media {
 
 	public function getPlaceHolders() {
 		return array(
-			'keys' => array('[[ url ]]'),
+			'keys' => array('[[url]]'),
 			'values' => array($this->url)
 		);
 	}

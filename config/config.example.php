@@ -1,4 +1,5 @@
 <?php
+define('DB_NAME','mydb');
 define('DB_USER','user');
 define('DB_PASS','pass');
 define('DB_HOST','somewhe.re');
