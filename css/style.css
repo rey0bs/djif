@@ -22,12 +22,14 @@ body {
 	text-align: center;
 }
 
-h1 {
+h1#logo a {
+	display: block;
 	font-family: 'PusabRegular';
 	font-size: 75px;
-	margin-bottom: 20px;
+	margin: 40px 0 20px;
 	color: #FF9900;
 	text-shadow: 2px 2px 0 #FFFFFF, 4px -1px 0 #424242;
+	text-decoration: none;
 }
 
 form {

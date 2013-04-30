@@ -9,7 +9,7 @@
 	</head>
 	<body>
 		<div id="page">
-			<h1>DJif</h1>
+			<h1 id="logo"><a href="/">DJif</a></h1>
 			<p class="lead">Remix the <strong>%$@£&!</strong> out of your <strong>gifs</strong> !</p>
 			<div id="action">
 
