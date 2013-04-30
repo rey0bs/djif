@@ -19,8 +19,8 @@ $(function(){
 			type: "POST",
 			url: "/new",
 			data: { gif_url: $('#gifSource').val(),
-							audio_url: $('#soundSource').val(),
-							ajax : true	}
+					audio_url: $('#soundSource').val(),
+					ajax : true	}
 		}).done(function( output ) {
 			$('#action').append( output );
 			$('form#new_djif').fadeOut(200, function() {
@@ -32,5 +32,9 @@ $(function(){
 		});
 		return false;
 	});
+	
+	/*$('form#new_djif input').change(function(){
+		alert('toto'+$(this).attr('value'));
+	});*/
 	
 });

@@ -16,33 +16,23 @@ class Djif {
 			$result = $this->db->query("SELECT gif, audio FROM urls WHERE hash = '$hash'");
 			$row = $result->fetch_assoc();
 			$result->free();
-			$this->gif = $this->getMedia( $row["gif"]);
-			$this->audio = $this->getMedia( $row["audio"]);
+			
+			$gif = new Media( $row["gif"] );
+			$this->gif = $gif->getMedia();
+				
+			$audio = new Media( $row["audio"] );
+			$this->audio = $audio->getMedia();
+			
 		} else { // from two urls
-			$this->gif = $this->getMedia( $param1 );
-			$this->audio = $this->getMedia( $param2 );
+			
+			$gif = new Media( $param1 );
+			$this->gif = $gif->getMedia();
+			
+			$audio = new Media( $param2 );
+			$this->audio = $audio->getMedia();
 		}
 	}
-	
-	public static function getMedia( $url ) {
 
-		// load classes
-		foreach (glob("classes/media/*.php") as $path) {
-			
-			require_once $path;
-			$filename = explode("/", $path);
-			$filename = $filename[count($filename)-1];
-			
-			$t = explode(".", $filename);
-			$class = ucfirst($t[count($t)-2]);
-			
-			if ($class::isMine($url)) {
-				return new $class($url);
-			}
-		}
-		
-		return false;
-	}
 
 	public function getPlaceholders() {
 		return array(
