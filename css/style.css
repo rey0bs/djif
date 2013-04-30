@@ -46,7 +46,7 @@ label {
 	font-size: 15px;
 	color: #fff;
 	margin-bottom: 5px;
-	
+	text-align: left;
 }
 
 input {
@@ -54,9 +54,9 @@ input {
 	border: none;
 	border-radius: 5px;
 	padding: 5px;
-	width: 245px;
+	width: auto;
 	color: #424242;
-    	font-style: italic;
+    font-style: italic;
 	transition: border 0.2s linear 0s, box-shadow 0.2s linear 0s;
 }
 input:focus {
@@ -123,6 +123,7 @@ form#new_djif {
 	background:  -moz-linear-gradient(top,#ff9900, #d70);
 	background:  -webkit-linear-gradient(top,#ff9900, #d70);
 	box-shadow: 0 1px 5px #888888;
+	text-align: left;
 }
 
 .input_group.sound_group {
@@ -176,12 +177,35 @@ input#remix {
 
 
 div#screen img {
-	margin : 20px;
 	width : auto;
+	margin: 20px auto 10px;
 	border : 2px solid black;
 
 }
 
 div#speaker {
 	visibility : hidden;
+	height: 0;
+}
+
+#tinyurl {
+	width: 450px;
+	border: 3px solid #FFBA00;
+	box-shadow: 0 1px 20px #424242;
+}
+#tinyurl input {
+	width: 365px;
+}
+
+.audio_links a, .audio_links a span {
+	font-size: 13px;
+	color: #3299BB;
+    cursor: pointer;
+    vertical-align: middle;
+}
+.audio_links .iconic {
+	font-size: 20px;
+}
+a#hide_audio {
+	display: none;
 }

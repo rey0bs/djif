@@ -7,8 +7,6 @@
 		<div id="plus">+</div>
 	</div>
 
-	
-
 	<div class="input_group sound_group">
 		<span class="iconic play_alt"></span>
 		<label for="audio_url">Sound<span class="small">Youtube, MP3, Dailymotion...</span></label>
@@ -18,20 +16,3 @@
 	<input id="remix" type="submit" value="="/>
 	
 </form>
-<script>
-	$('form').submit(function() {
-		$('#screen').remove();
-		$('#speaker').remove();
-		$.ajax({
-			type: "POST",
-			url: "/new",
-			data: { gif_url: $('#gifSource').val(),
-							audio_url: $('#soundSource').val(),
-							ajax : true	}
-		}).done(function( output ) {
-			$('#action').append( output );
-		});
-		return false;
-	});
-</script>
-
