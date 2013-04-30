@@ -8,8 +8,14 @@ class Djif {
 
 	function __construct($param1, $param2=NULL ) {
 		if (! $param2 && strlen($param1) == 5) { // from hash
-			$this->db = new Db();
-			$row = $this->db->get( $param1 );
+			$this->db =  new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME, DB_PORT);
+			if ($this->db->connect_errno) {
+				die ("Could not connect db " . DB_NAME . "\n" . $link->connect_error);
+			}
+			$hash = $this->db->real_escape_string(substr($param1,0,5));
+			$result = $this->db->query("SELECT gif, audio FROM urls WHERE hash = '$hash'");
+			$row = $result->fetch_assoc();
+			$result->free();
 			$this->gif = $this->getMedia( $row["gif"]);
 			$this->audio = $this->getMedia( $row["audio"]);
 		} else { // from two urls
