@@ -56,7 +56,6 @@ input {
 	border: none;
 	border-radius: 5px;
 	padding: 5px;
-	width: auto;
 	color: #424242;
     font-style: italic;
 	transition: border 0.2s linear 0s, box-shadow 0.2s linear 0s;
@@ -120,7 +119,6 @@ form#new_djif {
 	width: auto;
 	padding: 10px;
 	background: #FF9900;
-	padding: 10px;
 	border-radius: 10px;
 	background:  -moz-linear-gradient(top,#ff9900, #d70);
 	background:  -webkit-linear-gradient(top,#ff9900, #d70);
@@ -132,6 +130,24 @@ form#new_djif {
 	margin: 27px auto 10px;
 	background:  -moz-linear-gradient(top,#3299BB, #107799);
 	background:  -webkit-linear-gradient(top,#3299BB, #107799);
+}
+
+.input_group input {
+	width: 245px;
+}
+
+.input_group .preview {
+	float: right;
+	width: 50px;
+}
+.input_group .preview > * {
+	max-width: 50px;
+	max-height: 50px;
+}
+.input_group:after {
+	content:'';
+	display:block;
+	clear: both;
 }
 
 .input_group .iconic {

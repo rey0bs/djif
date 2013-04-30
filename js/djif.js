@@ -33,8 +33,26 @@ $(function(){
 		return false;
 	});
 	
-	/*$('form#new_djif input').change(function(){
-		alert('toto'+$(this).attr('value'));
-	});*/
+	$('form#new_djif input').change(function(){
+		var input = $(this);
+		if (input.val()) {
+			$.ajax({
+				type: "POST",
+				url: "/media",
+				data: { url: input.val(),
+						width: 50,
+						height: 50,
+						ajax : true	}
+			}).done(function( output ) {
+				if (input.parent().find('.preview').length) {
+					input.parent().find('.preview').html(output);
+				} else {
+					input.animate({width: "-=60px"}, 200, 'linear', function(){
+						input.parent().append( '<div class="preview">'+output+'</div>' );
+					});
+				}
+			});
+		}
+	});
 	
 });
