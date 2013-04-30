@@ -211,3 +211,11 @@ div#speaker {
 a#hide_audio {
 	display: none;
 }
+
+.share_icons {
+	padding-left: 20px;
+}
+.share_icons .stButton {
+	margin: 0;
+	font-size: 10px;
+}
