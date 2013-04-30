@@ -185,10 +185,10 @@ div#screen img {
 
 }
 
-div#speaker {
+/*div#speaker {
 	visibility : hidden;
 	height: 0;
-}
+}*/
 
 #tinyurl {
 	width: 450px;
