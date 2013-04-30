@@ -35,14 +35,21 @@ class Djif {
 
 
 	public function getPlaceholders() {
+		if ($ajax) {
+			$visible = ' style="display : none"';
+		} else {
+			$visible = '';
+		}
 		return array(
 				'keys' => array(
 						'[[gif]]',
-						'[[audio]]'
+						'[[audio]]',
+						'[[visible]]'
 				),
 				'values' => array(
 						$this->gif->render(),
 						$this->audio->render(),
+						$visible
 				)
 		);
 	}
