@@ -22,9 +22,13 @@ $(function(){
 							audio_url: $('#soundSource').val(),
 							ajax : true	}
 		}).done(function( output ) {
-			$('form#new_djif').slideToggle(400);
 			$('#action').append( output );
+			$('form#new_djif').fadeOut(200, function() {
+			$('#tinyurl').fadeIn(200);
+			$('#screen').fadeIn(200);
+			$('#speaker').fadeIn(200);
 			$("#tinyurl input").select();
+			});
 		});
 		return false;
 	});
