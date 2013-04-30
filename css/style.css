@@ -192,8 +192,6 @@ div#screen img {
 
 #tinyurl {
 	width: 450px;
-	border: 3px solid #FFBA00;
-	box-shadow: 0 1px 20px #424242;
 }
 #tinyurl input {
 	width: 365px;
