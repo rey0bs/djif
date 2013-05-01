@@ -7,11 +7,11 @@ class Djif {
 	var $db;
 
 	function __construct($param1, $param2=NULL ) {
+		$this->db =  new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME, DB_PORT);
+		if ($this->db->connect_errno) {
+			die ("Could not connect db " . DB_NAME . "\n" . $link->connect_error);
+		}
 		if (! $param2 && strlen($param1) == 5) { // from hash
-			$this->db =  new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME, DB_PORT);
-			if ($this->db->connect_errno) {
-				die ("Could not connect db " . DB_NAME . "\n" . $link->connect_error);
-			}
 			$hash = $this->db->real_escape_string(substr($param1,0,5));
 			$result = $this->db->query("SELECT gif, audio FROM urls WHERE hash = '$hash'");
 			$row = $result->fetch_assoc();
@@ -75,6 +75,14 @@ class Djif {
 		for ($i=0; $i < 5; $i++) {
 			$hash .= $charset[array_rand($charset)];
 		}
+		$insert = "INSERT INTO urls(hash, gif, audio, ip) VALUES ('$hash', '";
+		$insert .= $this->gif->getUrl() . "', '";
+		$insert .= $this->audio->getUrl() . "', '";
+		$insert .= ip2long ($_SERVER['REMOTE_ADDR']) . "')";
+		if(! $this->db) {
+			die('Lost connection to database !');
+		}
+		$result = $this->db->query($insert);
 		$url = 'http://' . $_SERVER['SERVER_NAME'] . '/' . $hash;
 		return str_replace( array('[[url]]'), array($url), file_get_contents ('templates/link.php') );
 	}

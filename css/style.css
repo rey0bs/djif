@@ -233,3 +233,16 @@ a#hide_audio {
 	margin: 0;
 	font-size: 10px;
 }
+
+#tooltip {
+	display : none;
+	position : absolute;
+	margin : 0;
+	padding : 5px;
+	top : -40px;
+	width : 200px;
+	left : -100px;
+	color : #fff;
+	background-color : rgba(0,0,0,0.8);
+	border-radius : 10px;
+}
