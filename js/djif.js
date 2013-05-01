@@ -13,24 +13,31 @@ function hideAudio() {
 $(function(){
 	
 	$('form#new_djif').submit(function() {
-		$('#screen').remove();
-		$('#speaker').remove();
-		$.ajax({
-			type: "POST",
-			url: "/new",
-			data: { gif_url: $('#gifSource').val(),
-					audio_url: $('#soundSource').val(),
-					ajax : true	}
-		}).done(function( output ) {
-			$('#action').append( output );
-			$('form#new_djif').fadeOut(200, function() {
-			$('#tinyurl').fadeIn(200);
-			$('#screen').fadeIn(200);
-			$('#speaker').fadeIn(200);
-			$("#tinyurl input").select();
+		var gif = $('#gifSource').val();
+		var sound = $('#soundSource').val();
+		if (gif == '' || sound == '') {
+			$('#tooltip').fadeIn(100);
+			return false;
+		} else {
+			$('#screen').remove();
+			$('#speaker').remove();
+			$.ajax({
+				type: "POST",
+				url: "/new",
+				data: { gif_url: $('#gifSource').val(),
+						audio_url: $('#soundSource').val(),
+						ajax : true	}
+			}).done(function( output ) {
+				$('#action').append( output );
+				$('form#new_djif').fadeOut(200, function() {
+				$('#tinyurl').fadeIn(200);
+				$('#screen').fadeIn(200);
+				$('#speaker').fadeIn(200);
+				$("#tinyurl input").select();
+				});
 			});
-		});
-		return false;
+			return false;
+		}
 	});
 	
 	$('form#new_djif input').change(function(){
@@ -55,4 +62,8 @@ $(function(){
 		}
 	});
 	
+});
+
+$('#remix').mouseleave(function() {
+	$('#tooltip').fadeOut(200);
 });

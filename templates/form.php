@@ -13,6 +13,6 @@
 		<input id="soundSource" type="text" name="audio_url" onclick="select()" />
 	</div>
 
-	<input id="remix" type="submit" value="="/>
+	<input id="remix" type="submit" value="="/><p id="tooltip">Choose a gif and a sound to mix together</p>
 	
 </form>

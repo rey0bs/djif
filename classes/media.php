@@ -13,6 +13,10 @@ class Media {
 	public function getHash() {
 	}
 	
+	public function getUrl() {
+		return $this->url;
+	}
+
 	public function getPlaceholders() {
 		return array(
 				'keys' => array(
