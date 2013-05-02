@@ -5,7 +5,7 @@
 	
 	if (! $_POST['ajax']) {
 		include('templates/includes/header.php');
-		include('templates/form.html');
+		
 	}
 	$action = $_GET['action'];
 	if($action == '') {
@@ -17,6 +17,7 @@
 	}
 	include($page);
 	if (! $_POST['ajax']) {
+		include('templates/form.html');
 		include('templates/includes/footer.php');
 	}
 ?>
