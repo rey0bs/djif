@@ -19,12 +19,7 @@ class Media {
 
 	public function getPlaceholders() {
 		return array(
-				'keys' => array(
-						'[[hash]]'
-				),
-				'values' => array(
-						$this->getHash()
-				)
+			'[[hash]]' => $this->getHash()
 		);
 	}
 	
@@ -43,7 +38,11 @@ class Media {
 
 	public function render( ) {
 		$placeholders = $this->getPlaceholders();
-		return str_replace($placeholders['keys'] , $placeholders['values'] , $this->getTemplate() );
+		$output = $this->getTemplate();
+		foreach ($placeholders as $key => $value) {
+			$output = str_replace($key , htmlspecialchars($value) , $output );
+		}
+		return $output;
 	}
 	
 	public function getMedia() {

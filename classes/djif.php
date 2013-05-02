@@ -36,14 +36,8 @@ class Djif {
 
 	public function getPlaceholders() {
 		return array(
-				'keys' => array(
-						'[[gif]]',
-						'[[audio]]'
-				),
-				'values' => array(
-						$this->gif->render(),
-						$this->audio->render()
-				)
+			'[[gif]]' => $this->gif->render(),
+			'[[audio]]' => $this->audio->render()
 		);
 	}
 	
@@ -58,8 +52,13 @@ class Djif {
 	}
 
 	public function render() {
+		
 		$placeholders = $this->getPlaceholders();
-		return str_replace( $placeholders['keys'] , $placeholders['values'] , $this->getTemplate() );
+		$output = $this->getTemplate();
+		foreach ($placeholders as $key => $value) {
+			$output = str_replace($key , $value , $output );
+		}
+		return $output;
 	}
 
 	public function store() {

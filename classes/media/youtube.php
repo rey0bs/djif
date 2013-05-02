@@ -14,14 +14,8 @@ class Youtube extends Media {
 	
 	public function getPlaceholders() {
 		return array(
-				'keys' => array(
-						'[[hash]]',
-						'[[start]]'
-				),
-				'values' => array(
-						$this->getHash(),
-						$this->getStart()
-				)
+			'[[hash]]' => $this->getHash(),
+			'[[start]]' => $this->getStart()
 		);
 	}
 	

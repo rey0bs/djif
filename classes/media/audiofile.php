@@ -19,8 +19,8 @@ class Audiofile extends Media {
 
 	public function getPlaceHolders() {
 		return array(
-			'keys' => array('[[url]]', '[[format]]'),
-			'values' => array($this->url, $this->getFormat())
+			'[[url]]' => $this->url,
+			'[[format]]' => $this->getFormat()
 		);
 	}
 }
