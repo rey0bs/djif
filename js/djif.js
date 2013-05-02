@@ -29,6 +29,9 @@ $(function(){
 						ajax : true	}
 			}).done(function( output ) {
 				$('#action').append( output );
+				$('#tinyurl').hide(0);
+				$('#screen').hide(0);
+				$('#speaker').hide(0);
 				$('form#new_djif').fadeOut(200, function() {
 				$('#tinyurl').fadeIn(200);
 				$('#screen').fadeIn(200);
