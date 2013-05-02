@@ -68,9 +68,9 @@ class Djif {
 			$hash .= $charset[array_rand($charset)];
 		}
 		$insert = "INSERT INTO urls(hash, gif, audio, ip) VALUES ('$hash', '";
-		$insert .= $this->gif->getUrl() . "', '";
-		$insert .= $this->audio->getUrl() . "', '";
-		$insert .= ip2long ($_SERVER['REMOTE_ADDR']) . "')";
+		$insert .= $this->db->real_escape_string($this->gif->getUrl()) . "', '";
+		$insert .= $this->db->real_escape_string(audio->getUrl()) . "', '";
+		$insert .= ip2long ($this->db->real_escape_string($_SERVER['REMOTE_ADDR'])) . "')";
 		if(! $this->db) {
 			die('Lost connection to database !');
 		}
