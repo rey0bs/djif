@@ -5,7 +5,7 @@ require_once( 'classes/media.php' );
 class Audiofile extends Media {
 
 	public static function isMine($url) {
-		return preg_match("#\.(mp3|ogg)$#", $url);
+		return preg_match("#^https?://.*\.(mp3|ogg)$#", $url);
 	}
 
 	public function getFormat() {
