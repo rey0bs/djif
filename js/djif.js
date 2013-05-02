@@ -32,6 +32,7 @@ $(function(){
 				$('#tinyurl').hide(0);
 				$('#screen').hide(0);
 				$('#speaker').hide(0);
+				$('.preview').remove();
 				$('form#new_djif').fadeOut(200, function() {
 				$('#tinyurl').fadeIn(200);
 				$('#screen').fadeIn(200);
