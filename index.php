@@ -4,8 +4,8 @@
 	require_once('classes/djif.php');
 	
 	if (! $_POST['ajax']) {
-		include('templates/header.php');
-		include('templates/form.php');
+		include('templates/includes/header.php');
+		include('templates/form.html');
 	}
 	$action = $_GET['action'];
 	if($action == '') {
@@ -17,6 +17,6 @@
 	}
 	include($page);
 	if (! $_POST['ajax']) {
-		include('templates/footer.php');
+		include('templates/includes/footer.php');
 	}
 ?>

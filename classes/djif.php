@@ -49,7 +49,7 @@ class Djif {
 	
 	
 	public function getTemplate() {
-		$fileName = 'templates/view.php';
+		$fileName = 'templates/djif.html';
 		if( file_exists( $fileName ) ) {
 			return file_get_contents( $fileName );
 		} else {
@@ -77,7 +77,7 @@ class Djif {
 		}
 		$result = $this->db->query($insert);
 		$url = 'http://' . $_SERVER['SERVER_NAME'] . '/' . $hash;
-		return str_replace( array('[[url]]'), array($url), file_get_contents ('templates/link.php') );
+		return str_replace( array('[[url]]'), array($url), file_get_contents ('templates/link.html') );
 	}
 
 }
