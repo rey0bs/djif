@@ -69,7 +69,7 @@ class Djif {
 		}
 		$insert = "INSERT INTO urls(hash, gif, audio, ip) VALUES ('$hash', '";
 		$insert .= $this->db->real_escape_string($this->gif->getUrl()) . "', '";
-		$insert .= $this->db->real_escape_string(audio->getUrl()) . "', '";
+		$insert .= $this->db->real_escape_string($this->audio->getUrl()) . "', '";
 		$insert .= ip2long ($this->db->real_escape_string($_SERVER['REMOTE_ADDR'])) . "')";
 		if(! $this->db) {
 			die('Lost connection to database !');
