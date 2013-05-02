@@ -201,10 +201,18 @@ div#screen img {
 
 }
 
-/*div#speaker {
-	visibility : hidden;
-	height: 0;
-}*/
+#speaker > * {
+    bottom: 0;
+    position: absolute;
+    left: 0;
+}
+#speaker {
+    height: 40px;
+    margin: 0 auto;
+    overflow: hidden;
+    position: relative;
+    width: 300px;
+}
 
 #tinyurl {
 	width: 450px;
