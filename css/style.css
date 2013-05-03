@@ -196,25 +196,33 @@ input#remix {
 	box-shadow: 0 1px 5px #888888;
 }
 
+#djif {
+	width: 500px;
+	margin: 0 auto;
+}
 
-div#screen img {
-	width : auto;
-	margin: 20px auto 10px;
-	border : 2px solid black;
+#screen {
+	width : 100%;
+	margin: 0 auto 10px;
+	/*border : 2px solid black;*/
+}
 
+#screen img {
+	width : 100%;
 }
 
 #speaker > * {
     bottom: 0;
     position: absolute;
     left: 0;
+    width: 100%;
 }
 #speaker {
     height: 40px;
     margin: 0 auto;
     overflow: hidden;
     position: relative;
-    width: 300px;
+    width: 100%;
 }
 
 #tinyurl {
