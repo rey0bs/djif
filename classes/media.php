@@ -36,8 +36,8 @@ class Media {
 		}
 	}
 
-	public function render( ) {
-		$placeholders = $this->getPlaceholders();
+	public function render( $placeholders=array() ) {
+		$placeholders = array_merge( (array)$this->getPlaceholders(), (array)$placeholders );
 		$output = $this->getTemplate();
 		foreach ($placeholders as $key => $value) {
 			$output = str_replace($key , htmlspecialchars($value) , $output );

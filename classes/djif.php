@@ -35,9 +35,14 @@ class Djif {
 
 
 	public function getPlaceholders() {
+		
+		if ( count($this->gif->size) ) {
+			$width = $this->gif->size[0];
+		}
 		return array(
 			'[[gif]]' => $this->gif->render(),
-			'[[audio]]' => $this->audio->render()
+			'[[audio]]' => $this->audio->render( array( '[[width]]' => ($width?$width:'500') ) ),
+			'[[size]]' => ($width?' style="width: '.$width.';"':'')
 		);
 	}
 	
