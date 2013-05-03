@@ -12,7 +12,7 @@ class Djif {
 		if ($this->db->connect_errno) {
 			die ("Could not connect db " . DB_NAME . "\n" . $link->connect_error);
 		}
-		if (! $param2 && strlen($param1) == 5) { // from hash
+		if (! $param2 ) { // from hash
 			$hash = $this->db->real_escape_string(substr($param1,0,5));
 			$result = $this->db->query("SELECT gif, audio FROM urls WHERE hash = '$hash'");
 			$row = $result->fetch_assoc();
