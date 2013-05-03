@@ -17,7 +17,6 @@
 	}
 	include($page);
 	if (! $_POST['ajax']) {
-		include('templates/form.html');
 		include('templates/includes/footer.php');
 	}
 ?>
