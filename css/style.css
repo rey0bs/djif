@@ -20,17 +20,21 @@ html {
 body {
 	background : url('../images/bg.png');
 	text-align: center;
+	color: #424242;
 }
 
 a {
 	text-decoration: none;
 }
 
-h1#logo a {
+h1#logo {
 	display: block;
+	margin: 40px 0 20px;
+}
+
+h1#logo a {
 	font-family: 'PusabRegular';
 	font-size: 75px;
-	margin: 40px 0 20px;
 	color: #FF9900;
 	text-shadow: 2px 2px 0 #FFFFFF, 4px -1px 0 #424242;
 }
@@ -80,7 +84,7 @@ input:focus {
 	margin: 20px auto 0 auto;
 	padding: 20px;
 	background-color: rgb( 233, 233, 233 );
-	background-image : url('/images/bg_page.png');
+	background-image : url('../images/bg_page.png');
 	box-shadow: 1px 1px 10px #555;
 	border-radius: 10px;
 }
@@ -107,8 +111,18 @@ p.lead strong {
     font-style: italic;
     padding-left: 10px;
 }
+
+p.error:before {
+	content:'';
+	background: url('../images/quote.png') no-repeat;
+	padding: 25px 35px 25px 25px;
+}
+
 p.error {
 	font-style: italic;
+	font-size: 19px;
+	padding: 20px;
+	
 }
 
 a.button {
