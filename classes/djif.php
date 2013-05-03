@@ -5,6 +5,7 @@ class Djif {
 	var $gif;
 	var $audio;
 	var $db;
+	var $valid = false;
 
 	function __construct($param1, $param2=NULL ) {
 		$this->db =  new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME, DB_PORT);
@@ -15,16 +16,21 @@ class Djif {
 			$hash = $this->db->real_escape_string(substr($param1,0,5));
 			$result = $this->db->query("SELECT gif, audio FROM urls WHERE hash = '$hash'");
 			$row = $result->fetch_assoc();
-			$result->free();
-			
-			$gif = new Media( $row["gif"] );
-			$this->gif = $gif->getMedia();
+			if( empty($row) ) {
+				return null;
+			} else {
+				$result->free();
+				$this->valid = true;
 				
-			$audio = new Media( $row["audio"] );
-			$this->audio = $audio->getMedia();
-			
+				$gif = new Media( $row["gif"] );
+				$this->gif = $gif->getMedia();
+					
+				$audio = new Media( $row["audio"] );
+				$this->audio = $audio->getMedia();
+			}
 		} else { // from two urls
 			
+			$this->valid = true;
 			$gif = new Media( $param1 );
 			$this->gif = $gif->getMedia();
 			
@@ -33,6 +39,10 @@ class Djif {
 		}
 	}
 
+
+	public function isValid() {
+		return $this->valid;
+	}
 
 	public function getPlaceholders() {
 		return array(
