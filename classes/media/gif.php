@@ -8,6 +8,9 @@ class Gif extends Media {
 	function __construct($url) {
 		parent::__construct($url);
 		$this->size = getimagesize($url);
+		if($this->size > 0) {
+			$this->valid = true;
+		}
 	}
 	
 	public static function isMine($url) {

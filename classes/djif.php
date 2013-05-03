@@ -12,7 +12,8 @@ class Djif {
 		if ($this->db->connect_errno) {
 			die ("Could not connect db " . DB_NAME . "\n" . $link->connect_error);
 		}
-		if (! $param2 ) { // from hash
+		if (! $param2 ) {
+		// from hash
 			$hash = $this->db->real_escape_string(substr($param1,0,5));
 			$result = $this->db->query("SELECT gif, audio FROM urls WHERE hash = '$hash'");
 			$row = $result->fetch_assoc();
@@ -20,22 +21,18 @@ class Djif {
 				return null;
 			} else {
 				$result->free();
-				$this->valid = true;
-				
 				$gif = new Media( $row["gif"] );
-				$this->gif = $gif->getMedia();
-					
 				$audio = new Media( $row["audio"] );
-				$this->audio = $audio->getMedia();
 			}
-		} else { // from two urls
-			
-			$this->valid = true;
+		} else {
+		// from two urls
 			$gif = new Media( $param1 );
-			$this->gif = $gif->getMedia();
-			
 			$audio = new Media( $param2 );
-			$this->audio = $audio->getMedia();
+		}
+		$this->gif = $gif->getMedia();
+		$this->audio = $audio->getMedia();
+		if ($this->gif && $this->audio) {
+			$this->valid = $this->gif->isValid() && $this->sound->isValid();
 		}
 	}
 

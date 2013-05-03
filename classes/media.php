@@ -2,6 +2,7 @@
 class Media {
 	
 	var $url;
+	var $valid = false;
 
 	function __construct($url) {
 		$this->url = $url;
@@ -15,6 +16,10 @@ class Media {
 	
 	public function getUrl() {
 		return $this->url;
+	}
+
+	public function isValid() {
+		return $this->valid;
 	}
 
 	public function getPlaceholders() {
@@ -47,21 +52,24 @@ class Media {
 	
 	public function getMedia() {
 	
-		// load classes
-		foreach (glob("classes/media/*.php") as $path) {
-				
-			require_once $path;
-			$filename = explode("/", $path);
-			$filename = $filename[count($filename)-1];
-				
-			$t = explode(".", $filename);
-			$class = ucfirst($t[count($t)-2]);
-				
-			if ($class::isMine($this->url)) {
-				return new $class($this->url);
+		$headers = @get_headers($this->url);
+		if(preg_match("#.*200.*#", $headers[0])) {
+			// load classes
+			foreach (glob("classes/media/*.php") as $path) {
+
+				require_once $path;
+				$filename = explode("/", $path);
+				$filename = $filename[count($filename)-1];
+
+				$t = explode(".", $filename);
+				$class = ucfirst($t[count($t)-2]);
+
+				if ($class::isMine($this->url)) {
+					return new $class($this->url);
+				}
 			}
 		}
-	
+
 		return false;
 	}
 }
