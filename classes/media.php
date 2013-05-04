@@ -50,10 +50,40 @@ class Media {
 		return $output;
 	}
 	
+	public function resolve($url) {
+		$headers = @get_headers($url);
+		if(preg_match("#^HTTP/[0-9]\.[0-9] *([0-9]+).*$#i", $headers[0], $code)) {
+			switch ($code[1]) {
+				case 200: // OK
+					return $url;
+				case 404: // NOT FOUND
+					return false;
+				case 302: // Moved
+				case 303:
+					foreach($headers as $line) {
+						if(preg_match("#^Location *: *(http.*)$#i", $line, $location)) {
+							$new_url = $location[1];
+							break;
+						}
+					}
+					if ($new_url) {
+						return $this->resolve($new_url);
+					} else {
+						return false;
+					}
+				default:
+					error_log("New HTTP return code to handle : $code[1] encountered at '$url'");
+					return false;
+			}
+		} else {
+			return false;
+		}
+	}
+
 	public function getMedia() {
 	
-		$headers = @get_headers($this->url);
-		if(preg_match("#.*200.*#", $headers[0])) {
+		$url = $this->resolve($this->url);
+		if ($url) {
 			// load classes
 			foreach (glob("classes/media/*.php") as $path) {
 
@@ -64,12 +94,11 @@ class Media {
 				$t = explode(".", $filename);
 				$class = ucfirst($t[count($t)-2]);
 
-				if ($class::isMine($this->url)) {
-					return new $class($this->url);
+				if ($class::isMine($url)) {
+					return new $class($url);
 				}
 			}
 		}
-
 		return false;
 	}
 }

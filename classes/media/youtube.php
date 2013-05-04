@@ -4,6 +4,11 @@ require_once( 'classes/media.php' );
 
 class Youtube extends Media {
 
+	function __construct($url) {
+		parent::__construct($url);
+		$this->valid = true;
+	}
+
 	public static function isMine( $url ) {
 		return preg_match("#^https?://(.*\.)?youtu\.?be(\.|/)#i", $url);
 	}

@@ -32,7 +32,7 @@ class Djif {
 		$this->gif = $gif->getMedia();
 		$this->audio = $audio->getMedia();
 		if ($this->gif && $this->audio) {
-			$this->valid = $this->gif->isValid() && $this->sound->isValid();
+			$this->valid = $this->gif->isValid() && $this->audio->isValid();
 		}
 	}
 
