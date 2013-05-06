@@ -226,7 +226,7 @@ form .input_group.sound_group .preview {
 	left : 50%;
 	margin-left : -20px;
 	box-shadow: 0 1px 5px #888888;
-	text-shadow: -1px -1px 0 rgba(0, 0, 0, 0.5);
+	/*text-shadow: -1px -1px 0 rgba(0, 0, 0, 0.5);*/
 }
 
 /*input#remix {
@@ -248,8 +248,8 @@ input#remix {
 	margin: -15px auto 0;
 	background: #FFBA00;
 	padding: 0 20px;
-	background:  -moz-linear-gradient(top,#FFBA00, #EEA900);
-	background:  -webkit-linear-gradient(top,#FFBA00, #EEA900);
+	background:  -moz-linear-gradient(top,#FFC600, #D18C00);
+	background:  -webkit-linear-gradient(top,#FFC600, #D18C00);
 	color: #fff;
 	font-family: 'Arial';
 	font-size: 30px;
