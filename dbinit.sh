@@ -71,7 +71,7 @@ CREATE TABLE \`urls\` (
 GRANT INSERT, SELECT, UPDATE ON \`urls\`.* TO \`${DB_USER}\`@\`${DJIF_HOST}\` IDENTIFIED BY '${DB_PASS}';
 
 LOCK TABLES \`urls\` WRITE;
-INSERT INTO \`urls\` VALUES ('http://media.tumblr.com/5fdc0c14b8a571f4e5923a6f9c32de82/tumblr_mky1tiLMhz1rjdfzto1_400.gif','https://www.youtube.com/watch?v=WaIJKM0sjdo',2130706433,'first','2013-04-29 12:19:47',0);
+INSERT INTO \`urls\` VALUES ('http://media.tumblr.com/5fdc0c14b8a571f4e5923a6f9c32de82/tumblr_mky1tiLMhz1rjdfzto1_400.gif','https://www.youtube.com/watch?v=WaIJKM0sjdo?t=12s',2130706433,'first','2013-04-29 12:19:47',0);
 UNLOCK TABLES;
 
 EOF
