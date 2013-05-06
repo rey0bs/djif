@@ -26,9 +26,13 @@ function setPreview(input, html) {
 	if (input.parent().find('.preview').length) {
 		input.parent().find('.preview').html(html);
 	} else {
-		input.animate({width: "-=60px"}, 0, 'linear', function(){
+		if (input.parent().hasClass('sound_group')) {
 			input.parent().append( '<div class="preview">'+html+'</div>' );
-		});
+		} else {
+			input.animate({width: "-=60px"}, 0, 'linear', function(){
+				input.parent().append( '<div class="preview">'+html+'</div>' );
+			});
+		}
 	}
 }
 

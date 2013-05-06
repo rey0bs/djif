@@ -178,15 +178,22 @@ form#new_djif {
 	width: 245px;
 }
 
-.input_group .preview {
+.input_group.gif_group .preview {
 	float: right;
 	width: 50px;
 	text-align: center;
 }
-.input_group .preview > * {
+.input_group.gif_group .preview > * {
 	max-width: 50px;
 	max-height: 50px;
 }
+
+form .input_group.sound_group .preview {
+    float: none;
+    margin-top: 5px;
+    width: 245px;
+}
+
 .input_group:after {
 	content:'';
 	display:block;
@@ -251,13 +258,16 @@ input#remix {
 	width : 100%;
 }
 
-#speaker > * {
+#speaker > *, .input_group.sound_group .preview > * {
     bottom: 0;
     position: absolute;
     left: 0;
     width: 100%;
 }
-#speaker {
+.input_group.sound_group .preview > audio {
+	bottom: 5px;
+}
+#speaker, .input_group.sound_group .preview {
     height: 36px;
     margin: 0 auto;
     overflow: hidden;
