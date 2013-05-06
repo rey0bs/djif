@@ -43,14 +43,15 @@ then
 	fail "Variable DB_PASS is not defined."
 fi
 
-sed -i \
-	-e "s|'DB_HOST','\(.*\)');$|'DB_HOST','${DB_HOST}');|" \
-	-e "s|'DB_PORT','\(.*\)');$|'DB_PORT','${DB_PORT}');|" \
-	-e "s|'DB_NAME','\(.*\)');$|'DB_NAME','${DB_NAME}');|" \
-	-e "s|'DB_USER','\(.*\)');$|'DB_USER','${DB_USER}');|" \
-	-e "s|'DB_PASS','\(.*\)');$|'DB_PASS','${DB_PASS}');|" \
-"${CONFIG}"
-
+cat > "${CONFIG}" <<EOF
+<?php
+define('DB_HOST','${DB_HOST}');
+define('DB_PORT','${DB_PORT}');
+define('DB_NAME','${DB_NAME}');
+define('DB_USER','${DB_USER}');
+define('DB_PASS','${DB_PASS}');
+?>
+EOF
 
 echo "Mysql root password is required to create the database and user required to run Djif"
 mysql -u root -h ${DB_HOST} -P ${DB_PORT} -p <<EOF
