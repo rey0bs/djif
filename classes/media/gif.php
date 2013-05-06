@@ -14,7 +14,7 @@ class Gif extends Media {
 	}
 	
 	public static function isMine($url) {
-		return preg_match("#^https?://.*\.gif$#", $url);
+		return preg_match("#^https?://.*\.gif(\?[^=]+=[^%]*(&[^=]+=[^%]*)*)?$#", $url);
 	}
 
 	public function getPlaceHolders() {
