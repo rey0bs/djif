@@ -10,7 +10,7 @@ class Audiofile extends Media {
 	}
 
 	public static function isMine($url) {
-		return preg_match("#^https?://.*\.(mp3|ogg)$#", $url);
+		return preg_match("#^https?://.*\.(mp3|ogg|wav)(\?[^=]+=[^%]*(&[^=]+=[^%]*)*)?$#", $url);
 	}
 
 	public function getFormat() {
