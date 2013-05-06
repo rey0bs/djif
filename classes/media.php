@@ -65,7 +65,7 @@ class Media {
 				return new $class($this->url);
 			}
 		}
-		return false;
+		return $this;
 	}
 }
 ?>
