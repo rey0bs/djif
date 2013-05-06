@@ -264,6 +264,9 @@ input#remix {
     left: 0;
     width: 100%;
 }
+#speaker > *, .input_group.sound_group .preview > img {
+	width: auto;
+}
 .input_group.sound_group .preview > audio {
 	bottom: 5px;
 }
