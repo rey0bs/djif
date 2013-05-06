@@ -4,5 +4,5 @@
 	$media = new Media( $url );
 	$media = $media->getMedia();
 	
-	echo $media->render();
+	echo $media->render(array('[[width]]' => '', '[[height]]' => ''));
 ?>

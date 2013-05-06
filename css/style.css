@@ -181,6 +181,7 @@ form#new_djif {
 .input_group .preview {
 	float: right;
 	width: 50px;
+	text-align: center;
 }
 .input_group .preview > * {
 	max-width: 50px;

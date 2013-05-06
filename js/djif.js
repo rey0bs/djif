@@ -10,6 +10,28 @@ function hideAudio() {
 	$('a#show_audio').show();
 }
 
+var triggered = 0;
+function initTrigger() {
+	triggered = 0;
+}
+function setTrigger() {
+	triggered++;
+}
+function getTrigger() {
+	return triggered;
+}
+
+function setPreview(input, html) {
+
+	if (input.parent().find('.preview').length) {
+		input.parent().find('.preview').html(html);
+	} else {
+		input.animate({width: "-=60px"}, 0, 'linear', function(){
+			input.parent().append( '<div class="preview">'+html+'</div>' );
+		});
+	}
+}
+
 $(function(){
 	
 	$('form#new_djif').submit(function() {
@@ -44,27 +66,48 @@ $(function(){
 		}
 	});
 	
-	$('form#new_djif input').change(function(){
-		var input = $(this);
-		if (input.val()) {
-			$.ajax({
-				type: "POST",
-				url: "/media",
-				data: { url: input.val(),
-						width: 50,
-						height: 50,
-						ajax : true	}
-			}).done(function( output ) {
-				if (input.parent().find('.preview').length) {
-					input.parent().find('.preview').html(output);
-				} else {
-					input.animate({width: "-=60px"}, 200, 'linear', function(){
-						input.parent().append( '<div class="preview">'+output+'</div>' );
-					});
-				}
-			});
-		}
+	$('form#new_djif input').each(function(i,elt) {
+
+		var element = $(elt);
+		element.data('val',  $('form input').val() ); // save value
+		element.change(function() { // works when input will be blured and the value was changed
+	        if( element.val() != element.data('val') ){ // check if value changed
+	        	element.data('val',  element.val() ); // save new value
+	        	preview(element);
+	        }
+	    });
+		element.keyup(function() { // works immediately when user press button inside of the input
+	        if( element.val() != element.data('val') ){ // check if value changed
+	        	element.data('val',  element.val() ); // save new value
+	        	preview(element);
+	        }
+	    });
 	});
+	
+	function preview(input) {
+		if (input.val()) {
+			if (!getTrigger()) {
+				setTrigger();
+				if (input.parent().hasClass('sound_group')) {
+					var loader = '<img src="/images/loader_blue.gif" />';
+				} else {
+					var loader = '<img src="/images/loader_orange.gif" />';
+				}
+				setPreview( input, loader);
+				$.ajax({
+					type: "POST",
+					url: "/media",
+					data: { url: input.val(),
+							width: 50,
+							height: 50,
+							ajax : true	}
+				}).done(function( output ) {
+					setPreview( input, output);
+				});
+			}
+			initTrigger();
+		}
+	}
 	
 });
 
