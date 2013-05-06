@@ -110,6 +110,8 @@ $(function(){
 				});
 			}
 			initTrigger();
+		} else {
+			input.parent().find('.preview').remove();
 		}
 	}
 	
