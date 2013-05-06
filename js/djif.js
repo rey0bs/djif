@@ -69,7 +69,7 @@ $(function(){
 	$('form#new_djif input').each(function(i,elt) {
 
 		var element = $(elt);
-		element.data('val',  $('form input').val() ); // save value
+		element.data('val',  element.val() ); // save value
 		element.change(function() { // works when input will be blured and the value was changed
 	        if( element.val() != element.data('val') ){ // check if value changed
 	        	element.data('val',  element.val() ); // save new value
