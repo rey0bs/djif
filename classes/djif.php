@@ -21,6 +21,7 @@ class Djif {
 				return null;
 			} else {
 				$result->free();
+				$this->db->query("UPDATE urls SET visits = visits + 1 WHERE hash = '$hash'");
 				$gif = new Media( $row["gif"] );
 				$audio = new Media( $row["audio"] );
 			}
