@@ -111,6 +111,7 @@ $(function(){
 			}
 			initTrigger();
 		} else {
+			input.removeAttr('style');
 			input.parent().find('.preview').remove();
 		}
 	}
