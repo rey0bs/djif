@@ -94,14 +94,17 @@ $(function(){
 				setTrigger();
 				if (input.parent().hasClass('sound_group')) {
 					var loader = '<img src="/images/loader_blue.gif" />';
+					var component = 'audio';
 				} else {
 					var loader = '<img src="/images/loader_orange.gif" />';
+					var component = 'gif';
 				}
 				setPreview( input, loader);
 				$.ajax({
 					type: "POST",
 					url: "/media",
 					data: { url: input.val(),
+							component: component,
 							width: 50,
 							height: 50,
 							ajax : true	}

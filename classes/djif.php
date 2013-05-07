@@ -30,8 +30,8 @@ class Djif {
 			$gif = new Media( $param1 );
 			$audio = new Media( $param2 );
 		}
-		$this->gif = $gif->getMedia();
-		$this->audio = $audio->getMedia();
+		$this->gif = $gif->getMedia('gif');
+		$this->audio = $audio->getMedia('audio');
 		if ($this->gif && $this->audio) {
 			$this->valid = $this->gif->isValid() && $this->audio->isValid();
 		}

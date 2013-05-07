@@ -50,9 +50,9 @@ class Media {
 		return $output;
 	}
 	
-	public function getMedia() {
+	public function getMedia( $type ) {
 		// load classes
-		foreach (glob("classes/media/*.php") as $path) {
+		foreach (glob("classes/$type/*.php") as $path) {
 
 			require_once $path;
 			$filename = explode("/", $path);
