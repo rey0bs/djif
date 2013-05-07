@@ -8,6 +8,6 @@
 	if($media->isValid()) {
 		echo $media->render(array('[[width]]' => '', '[[height]]' => ''));
 	} else {
-		include('templates/errors/invalidresource.html');
+		include('templates/errors/invalidresource.php');
 	}
 ?>
