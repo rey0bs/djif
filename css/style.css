@@ -243,7 +243,7 @@ form .input_group.sound_group .preview {
 	font-style: normal;
 	box-shadow: 0 1px 5px #888888;
 }*/
-input#remix {
+/*input#remix {
 	display : block;
 	margin: -15px auto 0;
 	background: #FFBA00;
@@ -264,7 +264,7 @@ input#remix {
 	border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
     border-style: solid;
     border-width: 1px;
-}
+}*/
 /*
 input#remix {
 	background:  -moz-linear-gradient(top,#FFAA00, #d70);
@@ -282,6 +282,29 @@ input#remix {
     font-family: 'PusabRegular';
     font-size: 21px;
 }*/
+.submit_button {
+	text-align: center;
+}
+.submit_button input {
+	background:  -moz-linear-gradient(top,#FFAA00, #d70);
+	background:  -webkit-linear-gradient(top,#FFAA00, #d70);
+    border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
+    border-style: solid;
+    border-width: 1px;
+    box-shadow: 0 1px 5px #888888;
+    color: #FFFFFF;
+    display: inline-block;
+    margin: 10px auto;
+    padding: 15px;
+    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.5);
+    font-family: 'PusabRegular';
+    font-size: 21px;
+}
+.submit_button input:hover {
+	background:  -moz-linear-gradient(top,#FFBB00, #e80);
+	background:  -webkit-linear-gradient(top,#FFBB00, #e80);
+}
 
 #djif {
 	width: 500px;
