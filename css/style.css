@@ -250,8 +250,8 @@ form .input_group.sound_group .preview {
     /*font-style: normal;*/
 }
 .submit_button input:hover {
-	background:  -moz-linear-gradient(top,#FFAA00, #d70);
-	background:  -webkit-linear-gradient(top,#FFAA00, #d70);
+	background:  -moz-linear-gradient(top,#FFCC00, #f90);
+	background:  -webkit-linear-gradient(top,#FFCC00, #f90);
 }
 
 #djif {
