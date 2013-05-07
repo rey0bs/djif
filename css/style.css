@@ -229,65 +229,12 @@ form .input_group.sound_group .preview {
 	/*text-shadow: -1px -1px 0 rgba(0, 0, 0, 0.5);*/
 }
 
-/*input#remix {
-	display : block;
-	margin: 0 auto;
-	background: #FFBA00;
-	padding: 5px;
-	background:  -moz-linear-gradient(top,#FFBA00, #EEA900);
-	background:  -webkit-linear-gradient(top,#FFBA00, #EEA900);
-	color: #fff;
-	font-family: 'PusabRegular';
-	font-size: 30px;
-	width: 50px;
-	font-style: normal;
-	box-shadow: 0 1px 5px #888888;
-}*/
-/*input#remix {
-	display : block;
-	margin: -15px auto 0;
-	background: #FFBA00;
-	padding: 0 20px;
-	background:  -moz-linear-gradient(top,#FFC600, #D18C00);
-	background:  -webkit-linear-gradient(top,#FFC600, #D18C00);
-	color: #fff;
-	font-family: 'Arial';
-	font-size: 30px;
-	font-style: normal;
-	font-weight: bold;
-	box-shadow: 0 1px 5px #888888;
-	border-radius: 5px;
-	position: relative;
-	z-index: 3;
-	
-	text-shadow: -1px -1px 0 rgba(0, 0, 0, 0.5);
-	border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
-    border-style: solid;
-    border-width: 1px;
-}*/
-/*
-input#remix {
-	background:  -moz-linear-gradient(top,#FFAA00, #d70);
-	background:  -webkit-linear-gradient(top,#FFAA00, #d70);
-    border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
-    border-radius: 10px;
-    border-style: solid;
-    border-width: 1px;
-    box-shadow: 0 1px 5px #888888;
-    color: #FFFFFF;
-    display: inline-block;
-    margin: 10px auto;
-    padding: 15px;
-    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.5);
-    font-family: 'PusabRegular';
-    font-size: 21px;
-}*/
 .submit_button {
 	text-align: center;
 }
 .submit_button input {
-	background:  -moz-linear-gradient(top,#FFAA00, #d70);
-	background:  -webkit-linear-gradient(top,#FFAA00, #d70);
+	background:  -moz-linear-gradient(top,#FFBB00, #e80);
+	background:  -webkit-linear-gradient(top,#FFBB00, #e80);
     border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
     border-radius: 10px;
     border-style: solid;
@@ -300,10 +247,11 @@ input#remix {
     text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.5);
     font-family: 'PusabRegular';
     font-size: 21px;
+    /*font-style: normal;*/
 }
 .submit_button input:hover {
-	background:  -moz-linear-gradient(top,#FFBB00, #e80);
-	background:  -webkit-linear-gradient(top,#FFBB00, #e80);
+	background:  -moz-linear-gradient(top,#FFAA00, #d70);
+	background:  -webkit-linear-gradient(top,#FFAA00, #d70);
 }
 
 #djif {
