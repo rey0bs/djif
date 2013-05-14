@@ -1,4 +1,7 @@
 <?php
+	require_once('config/config.php');
+	require_once('classes/media.php');
+	require_once('classes/djif.php');
 	$gif_url = htmlentities($_POST['gif_url']);
 	$audio_url = htmlentities($_POST['audio_url']);
 	
@@ -7,7 +10,7 @@
 		echo $djif->store();
 		echo $djif->render();
 	} else {
-		if($_POST['ajax']) {
+		if($ajax) {
 			throw new Exception('Ta yeule');
 		} else {
 			$i = rand (0, count(glob('templates/errors/msg*.html')) - 1);

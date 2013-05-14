@@ -1,4 +1,5 @@
 <?php
+	require_once('classes/media.php');
 	$url = $_POST['url'];
 	$type = $_POST['component'];
 

@@ -102,7 +102,7 @@ $(function(){
 				setPreview( input, loader);
 				$.ajax({
 					type: "POST",
-					url: "/media",
+					url: "/ajax/media",
 					data: { url: input.val(),
 							component: component,
 							width: 50,
