@@ -49,7 +49,7 @@ $(function(){
 			$('#speaker').remove();
 			$.ajax({
 				type: "POST",
-				url: "/new",
+				url: "/ajax/new",
 				data: { gif_url: $('#gifSource').val(),
 						audio_url: $('#soundSource').val(),
 						ajax : true	}
