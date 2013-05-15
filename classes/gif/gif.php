@@ -4,7 +4,7 @@ require_once( 'classes/media.php' );
 
 class Gif extends Media {
 	var $size;
-	
+
 	function __construct($url) {
 		parent::__construct($url);
 		$this->size = getimagesize($url);
@@ -12,7 +12,7 @@ class Gif extends Media {
 			$this->valid = true;
 		}
 	}
-	
+
 	public static function isMine($url) {
 		return preg_match("#^https?://.*\.gif(\?[^=]+=[^%]*(&[^=]+=[^%]*)*)?$#", $url);
 	}
@@ -24,6 +24,7 @@ class Gif extends Media {
 			'[[height]]' => $this->size[1]
 		);
 	}
+
 }
 ?>
 

@@ -4,6 +4,7 @@ class Djif {
 	
 	var $gif;
 	var $audio;
+	var $preview;
 	var $db;
 	var $valid = false;
 
@@ -15,7 +16,7 @@ class Djif {
 		if (! $param2 ) {
 		// from hash
 			$hash = $this->db->real_escape_string(substr($param1,0,5));
-			$result = $this->db->query("SELECT gif, audio FROM urls WHERE hash = '$hash'");
+			$result = $this->db->query("SELECT gif, audio, preview FROM urls WHERE hash = '$hash'");
 			$row = $result->fetch_assoc();
 			if( empty($row) ) {
 				return null;
@@ -24,6 +25,7 @@ class Djif {
 				$this->db->query("UPDATE urls SET visits = visits + 1 WHERE hash = '$hash'");
 				$gif = new Media( $row["gif"] );
 				$audio = new Media( $row["audio"] );
+				$this->preview = $row["preview"];
 			}
 		} else {
 		// from two urls
@@ -34,6 +36,15 @@ class Djif {
 		$this->audio = $audio->getMedia('audio');
 		if ($this->gif && $this->audio) {
 			$this->valid = $this->gif->isValid() && $this->audio->isValid();
+			if ($this->valid) {
+				if(! $this->preview) {
+					$img = imagecreatefromgif($this->gif->getUrl());
+					ob_start();
+					imagejpeg($img);
+					$this->preview = base64_encode(ob_get_contents());
+					ob_end_clean();
+				}
+			}
 		}
 	}
 
@@ -48,6 +59,7 @@ class Djif {
 			$width = $this->gif->size[0];
 		}
 		return array(
+			'[[imgdata]]' => $this->preview,
 			'[[gif]]' => $this->gif->render(),
 			'[[audio]]' => $this->audio->render( array( '[[width]]' => ($width?$width:'500') ) ),
 			'[[size]]' => ($width?' style="width: '.$width.';"':'')
