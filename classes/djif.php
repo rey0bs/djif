@@ -5,6 +5,7 @@ class Djif {
 	var $gif;
 	var $audio;
 	var $preview;
+	var $hash;
 	var $db;
 	var $valid = false;
 
@@ -26,17 +27,24 @@ class Djif {
 				$gif = new Media( $row["gif"] );
 				$audio = new Media( $row["audio"] );
 				$this->preview = $row["preview"];
+				$this->hash = $hash;
 			}
 		} else {
 		// from two urls
 			$gif = new Media( $param1 );
 			$audio = new Media( $param2 );
+			$charset = array_merge(range(0,9), range('a','z'), range('A', 'Z'));
+			$hash = '';
+			for ($i=0; $i < 5; $i++) {
+				$hash .= $charset[array_rand($charset)];
+			}
+			$this->hash = $hash;
 		}
 		$this->gif = $gif->getMedia('gif');
 		$this->audio = $audio->getMedia('audio');
 		if ($this->gif && $this->audio) {
 			$this->valid = $this->gif->isValid() && $this->audio->isValid();
-			if ($this->valid) {
+			if ($this->valid) { // if we're gonna spend some time computing a preview, at least we don't do it before we're sure the djif is valid
 				if(! $this->preview) {
 					$img = imagecreatefromgif($this->gif->getUrl());
 					ob_start();
@@ -59,9 +67,10 @@ class Djif {
 			$width = $this->gif->size[0];
 		}
 		return array(
+			'[[hash]]' => $this->hash,
 			'[[imgdata]]' => $this->preview,
 			'[[gif]]' => $this->gif->render(),
-			'[[audio]]' => $this->audio->render( array( '[[width]]' => ($width?$width:'500') ) ),
+			'[[audio]]' => $this->audio->render( array( '[[width]]' => ($width?$width:'500'), '[[hash]]' => $this->hash ) ),
 			'[[size]]' => ($width?' style="width: '.$width.';"':'')
 		);
 	}
@@ -87,12 +96,7 @@ class Djif {
 	}
 
 	public function store() {
-		$charset = array_merge(range(0,9), range('a','z'), range('A', 'Z'));
-		$hash = '';
-		for ($i=0; $i < 5; $i++) {
-			$hash .= $charset[array_rand($charset)];
-		}
-		$insert = "INSERT INTO urls(hash, gif, audio, ip) VALUES ('$hash', '";
+		$insert = "INSERT INTO urls(hash, gif, audio, ip) VALUES ('$this->hash', '";
 		$insert .= $this->db->real_escape_string($this->gif->getUrl()) . "', '";
 		$insert .= $this->db->real_escape_string($this->audio->getUrl()) . "', '";
 		$insert .= ip2long ($this->db->real_escape_string($_SERVER['REMOTE_ADDR'])) . "')";
@@ -100,7 +104,7 @@ class Djif {
 			die('Lost connection to database !');
 		}
 		$result = $this->db->query($insert);
-		$url = 'http://' . $_SERVER['SERVER_NAME'] . '/' . $hash;
+		$url = 'http://' . $_SERVER['SERVER_NAME'] . '/' . $this->hash;
 		return str_replace( array('[[url]]'), array($url), file_get_contents ('templates/link.html') );
 	}
 

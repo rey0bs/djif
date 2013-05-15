@@ -3,6 +3,7 @@ class Media {
 	
 	var $url;
 	var $valid = false;
+	var $template_format = 'html';
 
 	function __construct($url) {
 		$this->url = $url;
@@ -33,7 +34,7 @@ class Media {
 	}
 	
 	public function getTemplate() {
-		$fileName = $this->getTemplateDir() . strtolower( get_class($this) ) . '.html';
+		$fileName = $this->getTemplateDir() . strtolower( get_class($this) ) . '.' . $this->template_format;
 		if( file_exists($fileName) ) {
 			return file_get_contents( $fileName );
 		} else {

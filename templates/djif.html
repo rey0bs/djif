@@ -1,13 +1,28 @@
-<!-- div class="audio_links">
-	<a id="show_audio" class="audio_link" onclick="javascript:showAudio();return false;"><span class="iconic volume"></span> Show audio</a>
-	<a id="hide_audio" class="audio_link" onclick="javascript:hideAudio();return false;"><span class="iconic volume"></span> Hide audio</a>
-</div-->
-<div class="djif"[[size]]>
-	<div id="speaker">
-		[[audio]]
+<div class="djif"[[size]] onclick="_[[hash]]_switch()">
+	<div class="speaker">
+		<div id="_[[hash]]_speaker"></div>
 	</div>
-	<div id="screen">
-		<img src="data:image/jpg;base64,[[imgdata]]"/>
+	<div class="screen" id="_[[hash]]_screen">
+		<img class="preview" src="data:image/jpg;base64,[[imgdata]]"/>
 		[[gif]]
 	</div>
+	<script>
+		var _[[hash]]_button = false;
+
+		[[audio]]
+
+		function _[[hash]]_switch() {
+			if(_[[hash]]_button) {
+				_[[hash]]_speaker_stop();
+				document.querySelector('#_[[hash]]_screen .gif').style.display = 'none';
+				document.querySelector('#_[[hash]]_screen .preview').style.display = '';
+			} else {
+				_[[hash]]_speaker_play();
+				document.querySelector('#_[[hash]]_screen .preview').style.display = 'none';
+				document.querySelector('#_[[hash]]_screen .gif').style.display = '';
+			}
+			_[[hash]]_button = ! _[[hash]]_button;
+		}
+
+	</script>
 </div>

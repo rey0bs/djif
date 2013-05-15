@@ -241,17 +241,17 @@ form .input_group.sound_group .preview {
 	margin: 0 auto;
 }
 
-#screen {
+.screen {
 	width : 100%;
 	margin: 0 auto 10px;
 	/*border : 2px solid black;*/
 }
 
-#screen img {
+.screen img {
 	width : 100%;
 }
 
-#speaker > *, .input_group.sound_group .preview > * {
+.speaker > *, .input_group.sound_group .preview > * {
     bottom: 0;
     position: absolute;
     left: 0;
@@ -263,7 +263,7 @@ form .input_group.sound_group .preview {
 .input_group.sound_group .preview > audio {
 	bottom: 5px;
 }
-#speaker, .input_group.sound_group .preview {
+.speaker, .input_group.sound_group .preview {
     height: 36px;
     margin: 0 auto;
     overflow: hidden;
