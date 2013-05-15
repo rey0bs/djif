@@ -7,9 +7,17 @@ DB_HOST="localhost"
 # Mysql default is 3306
 DB_PORT="3306"
 DB_NAME=""
-# You must choose a user and password to access your DB
 DB_USER=""
 DB_PASS=""
+echo "Choose a name for the mysql database storing the data"
+read DB_NAME
+echo "Choose a name for the mysql user owning them"
+read DB_USER
+stty -echo
+echo "Choose a password to authenticate this user (and remember it well)"
+read DB_PASS
+stty echo
+
 
 CONFIG="config/config.php"
 
