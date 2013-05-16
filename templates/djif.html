@@ -1,4 +1,6 @@
-<div class="djif"[[size]] onclick="_[[hash]]_switch()">
+<div class="djif"[[size]] onclick="_[[hash]]_switch()" id="_[[hash]]_djif">
+	<div class="mask mask-1"></div>
+    <div class="mask mask-2"></div>
 	<div class="speaker">
 		<div id="_[[hash]]_speaker"></div>
 	</div>
@@ -13,11 +15,13 @@
 
 		function _[[hash]]_switch() {
 			if(_[[hash]]_button) {
+				$('#_[[hash]]_djif .mask').removeClass('animated');
 				_[[hash]]_speaker_stop();
 				document.querySelector('#_[[hash]]_screen .gif').style.display = 'none';
 				document.querySelector('#_[[hash]]_screen .preview').style.display = '';
 			} else {
 				_[[hash]]_speaker_play();
+				$('#_[[hash]]_djif .mask').addClass('animated');
 				document.querySelector('#_[[hash]]_screen .preview').style.display = 'none';
 				document.querySelector('#_[[hash]]_screen .gif').style.display = '';
 			}
