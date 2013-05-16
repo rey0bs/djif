@@ -7,6 +7,9 @@
 			_[[hash]]_player = new YT.Player('_[[hash]]_speaker', {
 				width: '[[width]]',
 				height: '349',
+				playerVars: {
+		            wmode: "opaque"
+		        },
 				events: {
 					'onReady': function () {
 						_[[hash]]_player.cueVideoById('[[ythash]]');

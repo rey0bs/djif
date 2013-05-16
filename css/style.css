@@ -238,12 +238,15 @@ form .input_group.sound_group .preview {
 
 .djif {
 	width: 500px;
-	margin: 0 auto;
+	margin: 0 auto 10px;
+	position: relative;
+	overflow: hidden;
+	cursor: pointer;
 }
 
 .screen {
 	width : 100%;
-	margin: 0 auto 10px;
+	margin: 0 auto;
 	/*border : 2px solid black;*/
 }
 
@@ -269,6 +272,7 @@ form .input_group.sound_group .preview {
     overflow: hidden;
     position: relative;
     width: 100%;
+    background: #1B1B1B;
 }
 
 #tinyurl {
@@ -316,4 +320,62 @@ a#hide_audio {
 	width : 300px;
 	color : #fff;
 	text-align : center;
+}
+
+/****************************************************
+* ANIMATIONS
+****************************************************/
+.mask {
+    width: 150%;
+    height: 150%;
+    position: absolute;
+    overflow: hidden;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    transform-origin: 50% 50% 0;
+    -ms-transform-origin: 50% 50% 0;
+    -webkit-transform-origin: 50% 50% 0;
+    opacity: 1;
+    transition: all 0.3s ease-in-out 0s;
+    -webkit-transition: all 0.3s ease-in-out 0s;
+}
+
+.mask-1 {
+	background: rgba(57,34,0,0.4);
+    left: auto;
+    right: 0px;
+}
+.mask-2 {
+	background: rgba(15,46,56,0.4);
+    top: auto;
+    bottom: 0px;    
+}
+
+.mask-2:after {
+    bottom: 33%;
+    color: #FFFFFF;
+    content: "G";
+    font-size: 40px;
+    height: 50px;
+    margin-bottom: -25px;
+    margin-right: -50px;
+    opacity: 1;
+    position: absolute;
+    right: 66%;
+    width: 100px;
+    z-index: 1050;
+    font-family: 'IconicStroke';
+}
+
+.mask-1.animated {
+    transform: rotate(90deg) translateY(120%);
+	-ms-transform: rotate(90deg) translate(0,120%); /* IE 9 */
+	-webkit-transform: rotate(90deg) translate(0,120%); /* Safari and Chrome */
+}
+
+.mask-2.animated { 
+    transform: rotate(90deg) translateY(-120%);
+	-ms-transform: rotate(90deg) translate(0,-120%); /* IE 9 */
+	-webkit-transform: rotate(90deg) translate(0,-120%); /* Safari and Chrome */
 }
