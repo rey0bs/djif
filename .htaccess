@@ -1,5 +1,7 @@
 RewriteEngine on
 RewriteRule ^index\.php.* - [L]
+RewriteRule ^index_ajax\.php.* - [L]
 RewriteRule ^(css|images|typo|js)/.* - [L]
-RewriteRule ^(.+)$ index.php?action=$1 [L]
+RewriteRule ^(ajax|embed)/(.+)$ index_ajax.php?action=$2 [L]
+RewriteRule ^(.*)$ index.php?action=$1 [L]
 
