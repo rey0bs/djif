@@ -7,7 +7,6 @@ class Youtube extends Media {
 	function __construct($url) {
 		parent::__construct($url);
 		$this->valid = true;
-		$this->template_format = 'js';
 	}
 
 	public static function isMine( $url ) {

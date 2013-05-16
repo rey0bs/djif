@@ -3,7 +3,6 @@ class Media {
 	
 	var $url;
 	var $valid = false;
-	var $template_format = 'html';
 
 	function __construct($url) {
 		$this->url = $url;
@@ -33,8 +32,8 @@ class Media {
 		return 'templates/media/';
 	}
 	
-	public function getTemplate() {
-		$fileName = $this->getTemplateDir() . strtolower( get_class($this) ) . '.' . $this->template_format;
+	public function getTemplate($mode) {
+		$fileName = $this->getTemplateDir() . strtolower( get_class($this) ) . '-' . $mode . '.tpl';
 		if( file_exists($fileName) ) {
 			return file_get_contents( $fileName );
 		} else {
@@ -42,9 +41,9 @@ class Media {
 		}
 	}
 
-	public function render( $placeholders=array() ) {
+	public function render( $mode, $placeholders=array() ) {
 		$placeholders = array_merge( (array)$this->getPlaceholders(), (array)$placeholders );
-		$output = $this->getTemplate();
+		$output = $this->getTemplate($mode);
 		foreach ($placeholders as $key => $value) {
 			$output = str_replace($key , htmlspecialchars($value) , $output );
 		}

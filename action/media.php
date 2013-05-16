@@ -7,7 +7,7 @@
 	$media = $media->getMedia($type);
 	
 	if($media->isValid()) {
-		echo $media->render(array('[[width]]' => '', '[[height]]' => ''));
+		echo $media->render('preview', array('[[width]]' => '', '[[height]]' => ''));
 	} else {
 		include('templates/errors/invalidresource.php');
 	}

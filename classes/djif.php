@@ -69,8 +69,8 @@ class Djif {
 		return array(
 			'[[hash]]' => $this->hash,
 			'[[imgdata]]' => $this->preview,
-			'[[gif]]' => $this->gif->render(),
-			'[[audio]]' => $this->audio->render( array( '[[width]]' => ($width?$width:'500'), '[[hash]]' => $this->hash ) ),
+			'[[gif]]' => $this->gif->render('display'),
+			'[[audio]]' => $this->audio->render('display', array( '[[width]]' => ($width?$width:'500'), '[[hash]]' => $this->hash ) ),
 			'[[size]]' => ($width?' style="width: '.$width.';"':'')
 		);
 	}
