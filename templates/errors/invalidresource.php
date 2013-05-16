@@ -1,7 +1,7 @@
 <?php
 	$id = rand(5, 1000);
 ?>
-<img id="<?php echo $id; ?>" src="images/dead.png" alt="no resource found at that location" />
+<img id="<?php echo $id; ?>" src="/images/dead.png" alt="no resource found at that location" />
 <script>
 $('.preview > img#<?php echo $id; ?>').animate(
 	    {  borderSpacing: -90 }, 
