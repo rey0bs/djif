@@ -10,12 +10,7 @@
 		echo $djif->store();
 		echo $djif->render();
 	} else {
-		if($ajax) {
-			throw new Exception('Ta yeule');
-		} else {
-			$i = rand (0, count(glob('templates/errors/msg*.html')) - 1);
-			include("templates/errors/msg$i.html");
-		}
+		$error = true;
 	}
 
 ?>

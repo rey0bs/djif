@@ -9,5 +9,6 @@
 		$page = 'action/get.php';
 		$lead = 'templates/leads/explain.html';
 	}
+	$error = false;
 
 ?>
