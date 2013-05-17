@@ -44,8 +44,6 @@ $(function(){
 			$('#tooltip').fadeIn(100);
 			return false;
 		} else {
-			$('#screen').remove();
-			$('#speaker').remove();
 			$.ajax({
 				type: "POST",
 				url: "/ajax/new",
