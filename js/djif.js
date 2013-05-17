@@ -60,6 +60,7 @@ $(function(){
 				$('#speaker').hide(0);
 				$('.preview').remove();
 				$('form#new_djif').fadeOut(200, function() {
+				$('form#new_djif').remove();
 				$('#tinyurl').fadeIn(200);
 				$('#screen').fadeIn(200);
 				$('#speaker').fadeIn(200);
