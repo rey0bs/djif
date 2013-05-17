@@ -1,14 +1,3 @@
-/*function showAudio() {
-	$('div#speaker').css('height', '0').css('visibility', 'visible').animate({height: '200px'});
-	$('a#show_audio').hide();
-	$('a#hide_audio').show();
-}
-
-function hideAudio() {
-	$('div#speaker').animate({height: '0'}).css('visibility', 'hidden');
-	$('a#hide_audio').hide();
-	$('a#show_audio').show();
-}*/
 
 var triggered = 0;
 function initTrigger() {
@@ -26,17 +15,24 @@ function setPreview(input, html) {
 	if (input.parent().find('.preview').length) {
 		input.parent().find('.preview').html(html);
 	} else {
-		/*if (input.parent().hasClass('sound_group')) {
-			input.parent().append( '<div class="preview">'+html+'</div>' );
-		} else {
-			input.animate({width: "-=60px"}, 0, 'linear', function(){
-				input.parent().append( '<div class="preview">'+html+'</div>' );
-			});
-		}*/
 		input.animate({width: "-=60px"}, 0, 'linear', function(){
 			input.parent().append( '<div class="preview">'+html+'</div>' );
 		});
 	}
+}
+
+function disableDjif(hash) {
+	$('#_'+hash+'_djif .mask').removeClass('animated');
+	document.querySelector('#_'+hash+'_screen .gif').style.display = 'none';
+	document.querySelector('#_'+hash+'_screen .stopped').style.display = '';
+	$('#_'+hash+'_djif').attr('data-actif', 'false');
+}
+
+function enableDjif(hash) {
+	$('#_'+hash+'_djif .mask').addClass('animated');
+	document.querySelector('#_'+hash+'_screen .stopped').style.display = 'none';
+	document.querySelector('#_'+hash+'_screen .gif').style.display = '';
+	$('#_'+hash+'_djif').attr('data-actif', 'true');
 }
 
 $(function(){

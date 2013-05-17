@@ -13,13 +13,32 @@
 				events: {
 					'onReady': function () {
 						_[[hash]]_player.cueVideoById('[[ythash]]');
+					},
+					'onStateChange': function (event) {
+						switch (event.data) {
+							case 0:
+							case 2:
+							case 5:
+								disableDjif('[[hash]]');
+							break;
+							case 1:
+								enableDjif('[[hash]]');
+							break;
+						}
 					}
 				}
 			});
-		} 
 
+		} 
+		
+		
 		function _[[hash]]_speaker_play() {
-			_[[hash]]_player.playVideo();
+			if( $('#_[[hash]]_djif').attr('data-hasplayed') == 'true') {
+				_[[hash]]_player.playVideo();
+			} else {
+				$('#_[[hash]]_djif').attr('data-hasplayed', 'true');
+			}
+			_[[hash]]_player.seekTo('[[start]]');
 		}
 
 		function _[[hash]]_speaker_stop() {

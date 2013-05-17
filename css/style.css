@@ -190,12 +190,6 @@ form#new_djif {
 	max-height: 50px;
 }
 
-form .input_group.sound_group .preview {
-    /*float: none;
-    margin-top: 5px;*/
-    /*width: 245px;*/
-}
-
 .input_group:after {
 	content:'';
 	display:block;
