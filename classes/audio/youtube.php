@@ -28,15 +28,16 @@ class Youtube extends Media {
 	public function getStart() {
 		$time = $this->getTime();
 		if ($time) {
-			return '&start='.$time;
+			return $time;
 		} else {
-			return '';
+			return '0';
 		}
 		
 	}
 	public function getTime() {
-	
-		$time = preg_replace( '/.*(&|\?|#)t=([0-9m]*)s?.*/', '$2', $this->url );
+		
+		$url = str_replace('&amp;', '&', $this->url);
+		$time = preg_replace( '/.*(&|\?|#)t=([0-9m]*)s?.*/', '$2', $url );
 	
 		$time = explode('m', $time);
 		if (count($time)>1) {
