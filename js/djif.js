@@ -1,4 +1,4 @@
-function showAudio() {
+/*function showAudio() {
 	$('div#speaker').css('height', '0').css('visibility', 'visible').animate({height: '200px'});
 	$('a#show_audio').hide();
 	$('a#hide_audio').show();
@@ -8,7 +8,7 @@ function hideAudio() {
 	$('div#speaker').animate({height: '0'}).css('visibility', 'hidden');
 	$('a#hide_audio').hide();
 	$('a#show_audio').show();
-}
+}*/
 
 var triggered = 0;
 function initTrigger() {
@@ -26,13 +26,16 @@ function setPreview(input, html) {
 	if (input.parent().find('.preview').length) {
 		input.parent().find('.preview').html(html);
 	} else {
-		if (input.parent().hasClass('sound_group')) {
+		/*if (input.parent().hasClass('sound_group')) {
 			input.parent().append( '<div class="preview">'+html+'</div>' );
 		} else {
 			input.animate({width: "-=60px"}, 0, 'linear', function(){
 				input.parent().append( '<div class="preview">'+html+'</div>' );
 			});
-		}
+		}*/
+		input.animate({width: "-=60px"}, 0, 'linear', function(){
+			input.parent().append( '<div class="preview">'+html+'</div>' );
+		});
 	}
 }
 
