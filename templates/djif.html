@@ -9,19 +9,24 @@
 		[[gif]]
 	</div>
 	<script>
-	$('#_[[hash]]_djif').attr('data-actif', 'first');
+	document.getElementById('_[[hash]]_djif').setAttribute('data-actif', 'false');
 	
 		[[audio]]
 
 		function _[[hash]]_switch() {
 			
-			if($('#_[[hash]]_djif').attr('data-actif') == 'true') {
-				disableDjif('[[hash]]');
-				_[[hash]]_speaker_stop();
-				
-			} else {
-				_[[hash]]_speaker_play();
-				enableDjif('[[hash]]');
+			switch(document.getElementById('_[[hash]]_djif').getAttribute('data-actif')) {
+				case 'true':
+					disableDjif('[[hash]]');
+					_[[hash]]_speaker_stop();
+					break;
+				case 'false':
+					_[[hash]]_speaker_play();
+					enableDjif('[[hash]]');
+					break;
+				case 'ignore':
+					document.getElementById('_[[hash]]_djif').setAttribute('data-actif', 'true');
+					break;
 			}
 		}
 
