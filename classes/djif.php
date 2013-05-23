@@ -22,7 +22,6 @@ class Djif {
 			if( empty($row) ) {
 				return null;
 			} else {
-				$result->free();
 				$this->db->query("UPDATE urls SET visits = visits + 1 WHERE hash = '$hash'");
 				$gif = new Media( $row["gif"] );
 				$audio = new Media( $row["audio"] );
@@ -49,7 +48,7 @@ class Djif {
 					$img = imagecreatefromgif($this->gif->getUrl());
 					ob_start();
 					imagejpeg($img);
-					$this->preview = base64_encode(ob_get_contents());
+					$this->preview = ob_get_contents();
 					ob_end_clean();
 				}
 			}
@@ -68,7 +67,6 @@ class Djif {
 		}
 		return array(
 			'[[hash]]' => $this->hash,
-			'[[imgdata]]' => $this->preview,
 			'[[gif]]' => $this->gif->render('display'),
 			'[[audio]]' => $this->audio->render('display', array( '[[width]]' => ($width?$width:'500'), '[[hash]]' => $this->hash ) ),
 			'[[size]]' => ($width?' style="width: '.$width.';"':'')
@@ -96,10 +94,11 @@ class Djif {
 	}
 
 	public function store() {
-		$insert = "INSERT INTO urls(hash, gif, audio, ip) VALUES ('$this->hash', '";
+		$insert = "INSERT INTO urls(hash, gif, audio, ip, preview) VALUES ('$this->hash', '";
 		$insert .= $this->db->real_escape_string($this->gif->getUrl()) . "', '";
 		$insert .= $this->db->real_escape_string($this->audio->getUrl()) . "', '";
-		$insert .= ip2long ($this->db->real_escape_string($_SERVER['REMOTE_ADDR'])) . "')";
+		$insert .= ip2long ($this->db->real_escape_string($_SERVER['REMOTE_ADDR'])) . "', '";
+		$insert .= $this->db->real_escape_string($this->preview) . "')";
 		if(! $this->db) {
 			die('Lost connection to database !');
 		}
