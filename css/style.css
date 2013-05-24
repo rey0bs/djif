@@ -379,3 +379,30 @@ a#hide_audio {
 	-ms-transform: rotate(90deg) translate(0,10px);
 	-webkit-transform: rotate(90deg) translate(0,10px);
 }
+
+.mask.mask-3 {
+    -moz-box-sizing: border-box;
+    bottom: 0;
+    color: #FFFFFF;
+    font-size: 11px;
+    height: 25px;
+    opacity: 1;
+    padding-right: 10px;
+    text-align: right;
+    top: auto;
+}
+.mask-3 a {
+    color: #FFFFFF;
+}
+.mask-3 .iconic {
+    font-size: 14px;
+}
+
+span.edit_djif {
+    font-family: 'PusabRegular';
+    font-size: 16px;
+    font-weight: bold;
+}
+.mask-3 a:hover span.edit_djif {
+	color: #FF9900;
+}
