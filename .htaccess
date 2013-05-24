@@ -1,6 +1,7 @@
 RewriteEngine on
 RewriteRule ^index\.php.* - [L]
-RewriteRule ^index_ajax\.php.* - [L]
+RewriteRule ^index_(ajax|image)\.php.* - [L]
+RewriteRule ^(.+)\.jpg$ index_image.php?hash=$1 [L]
 RewriteRule ^(css|images|typo|js)/.* - [L]
 RewriteRule ^(ajax|embed)/(.+)$ index_ajax.php?action=$2 [L]
 RewriteRule ^(.*)$ index.php?action=$1 [L]
