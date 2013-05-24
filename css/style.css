@@ -394,8 +394,13 @@ a#hide_audio {
 .mask-3 a {
     color: #FFFFFF;
 }
+.mask-3 a:hover {
+    text-decoration: underline;
+}
+
 .mask-3 .iconic {
     font-size: 14px;
+    margin-right: 4px;
 }
 
 span.edit_djif {
@@ -403,6 +408,7 @@ span.edit_djif {
     font-size: 16px;
     font-weight: bold;
 }
-.mask-3 a:hover span.edit_djif {
+
+.djif:hover span.edit_djif, .mask-3 a:hover span.edit_djif {
 	color: #FF9900;
 }
