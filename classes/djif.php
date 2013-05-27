@@ -65,10 +65,11 @@ class Djif {
 		if ( count($this->gif->size) ) {
 			$width = $this->gif->size[0];
 		}
+		$parameters = array( '[[width]]' => ($width?$width:'500'), '[[hash]]' => $this->hash );
 		return array(
 			'[[hash]]' => $this->hash,
-			'[[gif]]' => $this->gif->render('display'),
-			'[[audio]]' => $this->audio->render('display', array( '[[width]]' => ($width?$width:'500'), '[[hash]]' => $this->hash ) ),
+			'[[gif]]' => $this->gif->render('display', $parameters),
+			'[[audio]]' => $this->audio->render('display', $parameters),
 			'[[size]]' => ($width?' style="width: '.$width.';"':'')
 		);
 	}

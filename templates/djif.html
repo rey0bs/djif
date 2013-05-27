@@ -1,4 +1,4 @@
-<div class="djif"[[size]] onclick="_[[hash]]_switch()" id="_[[hash]]_djif">
+<div class="djif"[[size]] onclick="_[[hash]]_switch()" onmouseover="reveal_[[hash]]_gif()" id="_[[hash]]_djif">
 	<div class="mask mask-1"></div>
     <div class="mask mask-2"></div>
     <div class="mask mask-3">
@@ -9,12 +9,13 @@
 	</div>
 	<div class="screen" id="_[[hash]]_screen">
 		<img class="stopped" src="/[[hash]].jpg"/>
-		[[gif]]
+		<img class="gif" style="display : none"/>
 	</div>
 	<script>
-	document.getElementById('_[[hash]]_djif').setAttribute('data-actif', 'false');
+		document.getElementById('_[[hash]]_djif').setAttribute('data-actif', 'false');
 	
 		[[audio]]
+		[[gif]]
 
 		function _[[hash]]_switch() {
 			
