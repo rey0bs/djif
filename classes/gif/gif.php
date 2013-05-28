@@ -5,9 +5,13 @@ require_once( 'classes/media.php' );
 class Gif extends Media {
 	var $size;
 
-	function __construct($url) {
+	function __construct($url, $size) {
 		parent::__construct($url);
-		$this->size = getimagesize($url);
+		if ($size) {
+			$this->size = $size;
+		} else {
+			$this->size = getimagesize($url);
+		}
 		if($this->size > 0) {
 			$this->valid = true;
 		}

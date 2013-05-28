@@ -10,7 +10,7 @@
 	if ($db->connect_errno) {
 		die ("Could not connect db " . DB_NAME . "\n" . $link->connect_error);
 	}
-	$result = $db->query("SELECT hash,gif,audio,preview FROM urls ORDER BY date DESC LIMIT 3;");
+	$result = $db->query("SELECT hash, gif, audio, width, height FROM urls ORDER BY date DESC LIMIT 2;");
 	while ($row = $result->fetch_assoc()) {
 		$djif = new Djif($row);
 		echo $djif->render();

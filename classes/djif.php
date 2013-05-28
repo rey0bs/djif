@@ -10,6 +10,7 @@ class Djif {
 	var $valid = false;
 
 	function __construct($param1, $param2=NULL ) {
+		$size = null;
 		if (! $param2 ) {
 		// One argument : either a simple hash to retrieve the djif in DB or a full assoc freshly extracted from said DB
 			if (is_array($param1)) {
@@ -19,11 +20,12 @@ class Djif {
 			} else {
 			// from hash
 				$this->db =  new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME, DB_PORT);
+			echo 'has to connect DB';
 				if ($this->db->connect_errno) {
 					die ("Could not connect db " . DB_NAME . "\n" . $link->connect_error);
 				}
 				$hash = $this->db->real_escape_string(substr($param1,0,5));
-				$result = $this->db->query("SELECT gif, audio, preview FROM urls WHERE hash = '$hash'");
+				$result = $this->db->query("SELECT gif, audio, width, height FROM urls WHERE hash = '$hash'");
 				$row = $result->fetch_assoc();
 				if( empty($row) ) {
 					return null;
@@ -34,14 +36,15 @@ class Djif {
 			}
 			$gif = new Media( $row["gif"] );
 			$audio = new Media( $row["audio"] );
-			$this->preview = $row["preview"];
+			$size = array($row["width"], $row["height"]);
 		} else {
 		// from two urls
 			$this->db =  new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME, DB_PORT);
+			echo 'has to connect DB';
 			if ($this->db->connect_errno) {
 				die ("Could not connect db " . DB_NAME . "\n" . $link->connect_error);
 			}
-			$gif = new Media( $param1 );
+			$gif = new Media( $param1, $size );
 			$audio = new Media( $param2 );
 			$charset = array_merge(range(0,9), range('a','z'), range('A', 'Z'));
 			$hash = '';
@@ -55,7 +58,7 @@ class Djif {
 		if ($this->gif && $this->audio) {
 			$this->valid = $this->gif->isValid() && $this->audio->isValid();
 			if ($this->valid) { // if we're gonna spend some time computing a preview, at least we don't do it before we're sure the djif is valid
-				if(! $this->preview) {
+				if(! $this->preview && $param2) {
 					$img = imagecreatefromgif($this->gif->getUrl());
 					ob_start();
 					imagejpeg($img);
