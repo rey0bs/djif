@@ -10,26 +10,37 @@ class Djif {
 	var $valid = false;
 
 	function __construct($param1, $param2=NULL ) {
-		$this->db =  new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME, DB_PORT);
-		if ($this->db->connect_errno) {
-			die ("Could not connect db " . DB_NAME . "\n" . $link->connect_error);
-		}
 		if (! $param2 ) {
-		// from hash
-			$hash = $this->db->real_escape_string(substr($param1,0,5));
-			$result = $this->db->query("SELECT gif, audio, preview FROM urls WHERE hash = '$hash'");
-			$row = $result->fetch_assoc();
-			if( empty($row) ) {
-				return null;
+		// One argument : either a simple hash to retrieve the djif in DB or a full assoc freshly extracted from said DB
+			if (is_array($param1)) {
+			// from assoc array
+				$row = $param1;
+				$this->hash = $row["hash"];
 			} else {
-				$this->db->query("UPDATE urls SET visits = visits + 1 WHERE hash = '$hash'");
-				$gif = new Media( $row["gif"] );
-				$audio = new Media( $row["audio"] );
-				$this->preview = $row["preview"];
-				$this->hash = $hash;
+			// from hash
+				$this->db =  new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME, DB_PORT);
+				if ($this->db->connect_errno) {
+					die ("Could not connect db " . DB_NAME . "\n" . $link->connect_error);
+				}
+				$hash = $this->db->real_escape_string(substr($param1,0,5));
+				$result = $this->db->query("SELECT gif, audio, preview FROM urls WHERE hash = '$hash'");
+				$row = $result->fetch_assoc();
+				if( empty($row) ) {
+					return null;
+				} else {
+					$this->db->query("UPDATE urls SET visits = visits + 1 WHERE hash = '$hash'");
+					$this->hash = $hash;
+				}
 			}
+			$gif = new Media( $row["gif"] );
+			$audio = new Media( $row["audio"] );
+			$this->preview = $row["preview"];
 		} else {
 		// from two urls
+			$this->db =  new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME, DB_PORT);
+			if ($this->db->connect_errno) {
+				die ("Could not connect db " . DB_NAME . "\n" . $link->connect_error);
+			}
 			$gif = new Media( $param1 );
 			$audio = new Media( $param2 );
 			$charset = array_merge(range(0,9), range('a','z'), range('A', 'Z'));
