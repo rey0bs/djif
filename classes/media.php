@@ -50,7 +50,7 @@ class Media {
 		return $output;
 	}
 	
-	public function getMedia( $type ) {
+	public function getMedia( $type, $size=NULL ) {
 		// load classes
 		foreach (glob("classes/$type/*.php") as $path) {
 
@@ -62,7 +62,7 @@ class Media {
 			$class = ucfirst($t[count($t)-2]);
 
 			if ($class::isMine($this->url)) {
-				return new $class($this->url);
+				return new $class($this->url, $size);
 			}
 		}
 		return $this;
