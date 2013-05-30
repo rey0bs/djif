@@ -20,27 +20,34 @@ class Djif {
 			} else {
 			// from hash
 				$this->db =  new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME, DB_PORT);
-			echo 'has to connect DB';
 				if ($this->db->connect_errno) {
 					die ("Could not connect db " . DB_NAME . "\n" . $link->connect_error);
 				}
 				$hash = $this->db->real_escape_string(substr($param1,0,5));
-				$result = $this->db->query("SELECT gif, audio, width, height FROM urls WHERE hash = '$hash'");
+				$select = "
+					SELECT
+					gif.url AS gif,
+					gif.type AS gifType,
+					audio.url AS audio,
+					audio.type AS audioType,
+					gif.width, gif.height
+					FROM djifs, media AS gif, media AS audio
+					WHERE hash = '$hash' AND djifs.gif = gif.id AND djifs.audio = audio.id";
+				$result = $this->db->query($select);
 				$row = $result->fetch_assoc();
 				if( empty($row) ) {
 					return null;
 				} else {
-					$this->db->query("UPDATE urls SET visits = visits + 1 WHERE hash = '$hash'");
+					$this->db->query("UPDATE djifs SET visits = visits + 1 WHERE hash = '$hash'");
 					$this->hash = $hash;
 				}
 			}
-			$gif = new Media( $row["gif"] );
-			$audio = new Media( $row["audio"] );
+			$gif = new Media( $row["gif"], $row["gifType"] );
+			$audio = new Media( $row["audio", $row["audioType"]);
 			$size = array($row["width"], $row["height"]);
 		} else {
 		// from two urls
 			$this->db =  new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME, DB_PORT);
-			echo 'has to connect DB';
 			if ($this->db->connect_errno) {
 				die ("Could not connect db " . DB_NAME . "\n" . $link->connect_error);
 			}
@@ -109,6 +116,8 @@ class Djif {
 	}
 
 	public function store() {
+		$this->gif->store($this->db);
+		$this->audio->store($this->db);
 		$insert = "INSERT INTO urls(hash, gif, audio, ip, width, height, preview) VALUES ('$this->hash', '";
 		$insert .= $this->db->real_escape_string($this->gif->getUrl()) . "', '";
 		$insert .= $this->db->real_escape_string($this->audio->getUrl()) . "', '";

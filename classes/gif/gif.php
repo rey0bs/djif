@@ -5,7 +5,7 @@ require_once( 'classes/media.php' );
 class Gif extends Media {
 	var $size;
 
-	function __construct($url, $size) {
+	function __construct($url, $size=null) {
 		parent::__construct($url);
 		if ($size) {
 			$this->size = $size;

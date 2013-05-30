@@ -8,7 +8,7 @@
 	if ($db->connect_errno) {
 		die ("Could not connect db " . DB_NAME . "\n" . $link->connect_error);
 	}
-	$result = $db->query("SELECT preview FROM urls WHERE hash = '$hash';");
+	$result = $db->query("SELECT preview FROM djifs WHERE hash = '$hash';");
 	$row = $result->fetch_assoc();
 	if( empty($row) ) {
 		header("HTTP/1.0 404 Not Found");
