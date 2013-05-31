@@ -1,4 +1,4 @@
-function load_[[hash]]_audio() {
+function load_[[hash]]_audio(directload) {
 	var _[[hash]]_speaker = document.createElement('audio');
 	_[[hash]]_speaker.id = "_[[hash]]_speaker";
 	_[[hash]]_speaker.controls = true;

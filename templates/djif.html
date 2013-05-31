@@ -1,4 +1,4 @@
-<div class="djif"[[size]] onclick="_[[hash]]_switch()" onmouseover="load_[[hash]]_djif()" id="_[[hash]]_djif">
+<div class="djif"[[size]] onclick="_[[hash]]_switch()" onmouseover="load_[[hash]]_djif(true)" id="_[[hash]]_djif">
 	<div class="mask mask-1"></div>
     <div class="mask mask-2"></div>
     <div class="mask mask-3">
@@ -17,8 +17,8 @@
 		[[audio]]
 		[[gif]]
 
-		function load_[[hash]]_djif() {
-			load_[[hash]]_audio();
+		function load_[[hash]]_djif(manualload) {
+			load_[[hash]]_audio(manualload);
 			load_[[hash]]_gif();
 			document.getElementById('_[[hash]]_djif').onmouseover=null;
 		}
@@ -39,6 +39,12 @@
 					break;
 			}
 		}
+
+		$(document).ready(function() {
+			if ([[directload]]) {
+				load_[[hash]]_djif(false);
+			}
+		});
 
 	</script>
 </div>

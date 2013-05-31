@@ -7,6 +7,7 @@ class Djif {
 	var $preview;
 	var $hash;
 	var $db;
+	var $directload = 'true';
 	var $valid = false;
 
 	function __construct($param1, $param2=NULL ) {
@@ -17,6 +18,7 @@ class Djif {
 			// from assoc array
 				$row = $param1;
 				$this->hash = $row["hash"];
+				$this->directload = 'false'; // loading from an array means we're displaying several djifs so we don't want them to load immediately
 			} else {
 			// from hash
 				$this->db =  new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME, DB_PORT);
@@ -86,9 +88,14 @@ class Djif {
 		if ( count($this->gif->size) ) {
 			$width = $this->gif->size[0];
 		}
-		$parameters = array( '[[width]]' => ($width?$width:'300'), '[[hash]]' => $this->hash );
+		$parameters = array(
+		 	'[[width]]' => ($width?$width:'300'),
+		 	'[[hash]]' => $this->hash,
+			'[[directload]]' => $this->directload
+		);
 		return array(
 			'[[hash]]' => $this->hash,
+			'[[directload]]' => $this->directload,
 			'[[gif]]' => $this->gif->render('display', $parameters),
 			'[[audio]]' => $this->audio->render('display', $parameters),
 			'[[size]]' => ($width?' style="width: '.$width.';"':'')
