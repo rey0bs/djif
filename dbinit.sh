@@ -107,7 +107,9 @@ GRANT INSERT, SELECT, UPDATE ON \`${DB_NAME}\`.* TO \`${DB_USER}\`@\`${DJIF_HOST
 LOCK TABLES \`types\` WRITE, \`media\` WRITE, \`djifs\` WRITE;
 
 INSERT INTO \`types\` VALUES
-$(sed -n "s|[ \t\r]*\"\(.*\)\"[ \t\r]*=>[ \t\r]*\([0-9]\+\)\(,\?\).*|(\2, '\1')\3|p" "${CONFIGDIR}/types.php");
+	(0, 'gif'),
+	(1, 'audiofile'),
+	(2, 'youtube');
 INSERT INTO \`media\` VALUES
 	(1, 0, 'http://localhost/images/first.gif', 281, 162),
 	(2, 2, 'https://www.youtube.com/watch?v=WaIJKM0sjdo&t=12s', NULL, NULL);
