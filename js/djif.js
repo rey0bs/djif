@@ -122,3 +122,21 @@ $(function(){
 $('#remix').mouseleave(function() {
 	$('#tooltip').fadeOut(200);
 });
+
+
+/*
+$('.jMosaic-item').each(function(i,elt){
+$(elt).click(function(){
+    $('.jMosaic-item.resized').each(function(i2,elt2){
+        $(elt2).removeClass('resized')
+            .animate({
+                'width': $(elt2).attr('data-orig-width'),
+                'height': $(elt2).attr('data-orig-height')
+            });
+    });
+    $(elt).attr('data-orig-width', $(elt).css('width'));
+    $(elt).attr('data-orig-height', $(elt).css('height'));
+    $(elt).addClass('resized').animate({'width': '+=100', 'height': '+=50'});
+});
+});
+*/

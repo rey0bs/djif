@@ -21,7 +21,7 @@ class Youtube extends Media {
 		return array(
 			'[[ythash]]' => $this->getHash(),
 			'[[start]]' => $this->getStart(),
-			'[[width]]' => 500
+			'[[width]]' => 300
 		);
 	}
 	

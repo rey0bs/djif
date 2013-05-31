@@ -26,7 +26,7 @@ class Audiofile extends Media {
 		return array(
 			'[[url]]' => $this->url,
 			'[[format]]' => $this->getFormat(),
-			'[[width]]' => 500
+			'[[width]]' => 300
 		);
 	}
 }

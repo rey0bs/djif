@@ -20,7 +20,7 @@
 		gif.width, gif.height
 		FROM djifs, media AS gif, media AS audio
 		WHERE djifs.gif = gif.id AND djifs.audio = audio.id
-		ORDER BY date DESC LIMIT 2";
+		ORDER BY date DESC LIMIT 4";
 	$result = $db->query($select);
 	while ($row = $result->fetch_assoc()) {
 		$djif = new Djif($row);

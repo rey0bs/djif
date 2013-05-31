@@ -86,7 +86,7 @@ class Djif {
 		if ( count($this->gif->size) ) {
 			$width = $this->gif->size[0];
 		}
-		$parameters = array( '[[width]]' => ($width?$width:'500'), '[[hash]]' => $this->hash );
+		$parameters = array( '[[width]]' => ($width?$width:'300'), '[[hash]]' => $this->hash );
 		return array(
 			'[[hash]]' => $this->hash,
 			'[[gif]]' => $this->gif->render('display', $parameters),
@@ -116,13 +116,12 @@ class Djif {
 	}
 
 	public function store() {
-		$this->gif->store($this->db);
-		$this->audio->store($this->db);
-		$insert = "INSERT INTO urls(hash, gif, audio, ip, width, height, preview) VALUES ('$this->hash', '";
-		$insert .= $this->db->real_escape_string($this->gif->getUrl()) . "', '";
-		$insert .= $this->db->real_escape_string($this->audio->getUrl()) . "', '";
+		$gif_id = $this->gif->store($this->db);
+		$audio_id = $this->audio->store($this->db);
+		$insert = "INSERT INTO djifs(hash, gif, audio, ip, preview) VALUES ('$this->hash', '";
+		$insert .= $gif_id . "', '";
+		$insert .= $audio_id . "', '";
 		$insert .= ip2long ($this->db->real_escape_string($_SERVER['REMOTE_ADDR'])) . "', '";
-		$insert .= $this->gif->size[0] . "', '" . $this->size[1] . "', '";
 		$insert .= $this->db->real_escape_string($this->preview) . "')";
 		if(! $this->db) {
 			die('Lost connection to database !');

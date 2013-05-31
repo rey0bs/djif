@@ -1,12 +1,11 @@
 <?php
-include 'config/types.php';
-
 class Media {
 	
 	var $id;
 	var $url;
 	var $type;
 	var $valid = false;
+	var $size;
 
 	function __construct($url, $type=null) {
 		$this->url = $url;
@@ -16,6 +15,7 @@ class Media {
 			$this->type = strtolower (get_class($this));
 		}
 		$this->id = crc32($url);
+		$this->size = array(300,300);
 	}
 	
 	public static function isMine( $url ) {
@@ -56,11 +56,17 @@ class Media {
 	}
 
 	public function store($db) {
+		$type_query = "SELECT id FROM types WHERE name='$this->type'";
+		$type_result = $db->query($type_query);
+		$type_row = $type_result->fetch_assoc();
+		
 		$insert = "INSERT INTO media(id, type, url, width, height) VALUES ('$this->id', ";
-		$insert .= $types[$this->type] . ", '";
+		$insert .= $type_row['id'] . ", '";
 		$insert .= $db->real_escape_string($this->getUrl()) . "', '";
 		$insert .= $this->size[0] . "', '" . $this->size[1] . "')";
 		$result = $db->query($insert);
+		
+		return $this->id;
 	}
 
 	public function render( $mode, $placeholders=array() ) {
