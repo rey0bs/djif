@@ -43,7 +43,7 @@ class Djif {
 				}
 			}
 			$gif = new Media( $row["gif"], $row["gifType"] );
-			$audio = new Media( $row["audio", $row["audioType"]);
+			$audio = new Media( $row["audio"], $row["audioType"]);
 			$size = array($row["width"], $row["height"]);
 		} else {
 		// from two urls
