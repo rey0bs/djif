@@ -3,7 +3,7 @@
 	<script>
 		var _[[hash]]_player;
 
-		function onYouTubeIframeAPIReady() {
+		function load_[[hash]]_audio() {
 			_[[hash]]_player = new YT.Player('_[[hash]]_speaker', {
 				width: '[[width]]',
 				height: '349',

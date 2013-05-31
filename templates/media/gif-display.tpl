@@ -1,4 +1,4 @@
-function reveal_[[hash]]_gif() {
+function load_[[hash]]_gif() {
 	var gif = document.querySelector('#_[[hash]]_screen .gif');
 	gif.src = "[[url]]";
 	gif.width = "[[width]]";
