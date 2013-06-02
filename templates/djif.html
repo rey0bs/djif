@@ -31,6 +31,10 @@
 					_[[hash]]_speaker_stop();
 					break;
 				case 'false':
+					var djifs = document.querySelectorAll('.djif[data-actif="true"]');
+					for (var i = 0; i < djifs.length; i++) {
+						djifs[i].click();
+					}
 					_[[hash]]_speaker_play();
 					enableDjif('[[hash]]');
 					break;
