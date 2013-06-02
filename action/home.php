@@ -22,11 +22,12 @@
 		WHERE djifs.gif = gif.id AND djifs.audio = audio.id
 		ORDER BY date DESC LIMIT 4";
 	$result = $db->query($select);
+	echo '<div class="latest" id="mozaique">';
 	while ($row = $result->fetch_assoc()) {
 		$djif = new Djif($row);
 		echo $djif->render();
 	}
-	
+	echo '</div>';
 
 ?>
 

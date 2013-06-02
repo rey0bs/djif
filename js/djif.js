@@ -56,6 +56,7 @@ $(function(){
 				$('#screen').hide(0);
 				$('#speaker').hide(0);
 				$('.preview').remove();
+				$('#mozaique').remove();
 				$('form#new_djif').fadeOut(200, function() {
 				$('form#new_djif').remove();
 				$('#tinyurl').fadeIn(200);
