@@ -344,12 +344,17 @@ a#hide_audio {
     -ms-transform-origin: 0% 100% 0;
     -webkit-transform-origin: 0% 100% 0;
 }
-.mask-2 {
-	background: rgba(0,0,0,1) url('../images/clap2.png') repeat-x left 1px;
+.mask-2, .mask-3 {
     top: 36px;
     transform-origin: 0% 0% 0;
     -ms-transform-origin: 0% 0% 0;
     -webkit-transform-origin: 0% 0% 0;
+}
+.mask-2 {
+	background: rgba(0,0,0,1) url('../images/clap2.png') repeat-x left 1px;
+}
+.mask-3 {
+    opacity: 1;
 }
 
 .mask-2:after {
@@ -374,41 +379,32 @@ a#hide_audio {
 	-webkit-transform: rotate(-90deg) translate(0,-10px);
 }
 
-.mask-2.animated { 
+.mask-2.animated, .mask-3.animated { 
 	transform: rotate(90deg) translateY(10px);
 	-ms-transform: rotate(90deg) translate(0,10px);
 	-webkit-transform: rotate(90deg) translate(0,10px);
 }
 
-.mask.mask-3 {
-    -moz-box-sizing: border-box;
-    bottom: 0;
-    color: #FFFFFF;
-    font-size: 11px;
-    height: 25px;
-    opacity: 1;
-    padding-right: 10px;
-    text-align: right;
-    top: auto;
-}
+
 .mask-3 a {
+	position: absolute;
+	bottom: 40px;
+	right: 8px;
+	font-size: 11px;
     color: #FFFFFF;
 }
 .mask-3 a:hover {
     text-decoration: underline;
 }
-
 .mask-3 .iconic {
     font-size: 14px;
     margin-right: 4px;
 }
-
-span.edit_djif {
+.mask-3 span.edit_djif {
     font-family: 'PusabRegular';
     font-size: 16px;
     font-weight: bold;
 }
-
 .djif:hover span.edit_djif, .mask-3 a:hover span.edit_djif {
 	color: #FF9900;
 }
