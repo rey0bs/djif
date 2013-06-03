@@ -10,74 +10,102 @@ class Djif {
 	var $directload = 'true';
 	var $valid = false;
 
+	public function createHash() {
+		$charset = array_merge(range(0,9), range('a','z'), range('A', 'Z'));
+		$hash = '';
+		for ($i=0; $i < 5; $i++) {
+			$hash .= $charset[array_rand($charset)];
+		}
+		return $hash;
+	}
+
+	public function initDB() {
+		$this->db =  new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME, DB_PORT);
+		if ($this->db->connect_errno) {
+			die ("Could not connect db " . DB_NAME . "\n" . $link->connect_error);
+		}
+	}
+
+	private function createPreview() {
+		$img = imagecreatefromgif($this->gif->getUrl());
+		ob_start();
+		imagejpeg($img);
+		$this->preview = ob_get_contents();
+		ob_end_clean();
+	}
+
+	private function validate() {
+		if ($this->gif && $this->audio) {
+			$this->valid = $this->gif->isValid() && $this->audio->isValid();
+		}
+	}
+
+	private function fromHash() {
+		initDB();
+		$hash = $this->db->real_escape_string(substr($param1,0,5));
+		$select = "
+			SELECT
+			gif.url AS gif,
+			gif.type AS gifType,
+			audio.url AS audio,
+			audio.type AS audioType,
+			gif.width, gif.height
+			FROM djifs, media AS gif, media AS audio
+			WHERE hash = '$hash' AND djifs.gif = gif.id AND djifs.audio = audio.id";
+		$result = $this->db->query($select);
+		$row = $result->fetch_assoc();
+		if( empty($row) ) {
+			return null;
+		} else {
+			$this->db->query("UPDATE djifs SET visits = visits + 1 WHERE hash = '$hash'");
+			$this->hash = $hash;
+		}
+		$gif = new Media( $row["gif"], $row["gifType"] );
+		$audio = new Media( $row["audio"], $row["audioType"]);
+		$size = array($row["width"], $row["height"]);
+		$this->gif = $gif->getMedia('gif', $size);
+		$this->audio = $audio->getMedia('audio');
+		validate();
+	}
+
+	private function fromAssoc($row) {
+		$this->hash = $row["hash"];
+		$this->directload = 'false'; // loading from an array means we're displaying several djifs so we don't want them to load immediately
+		$gif = new Media( $row["gif"], $row["gifType"] );
+		$audio = new Media( $row["audio"], $row["audioType"]);
+		$size = array($row["width"], $row["height"]);
+		$this->gif = $gif->getMedia('gif', $size);
+		$this->audio = $audio->getMedia('audio');
+		validate();
+	}
+
+	private function fromUrls($gif_url, $audio_url) {
+		initDB();
+		$gif = new Media( $gif_url );
+		$audio = new Media( $audio_url );
+		$this->hash = createHash();
+		$this->gif = $gif->getMedia('gif', $size);
+		$this->audio = $audio->getMedia('audio');
+		validate();
+		if ($this->valid) { // if we're gonna spend some time computing a preview, at least we don't do it before we're sure the djif is valid
+			$this->preview = createPreview();
+		}
+	}
+
 	function __construct($param1, $param2=NULL ) {
 		$size = null;
 		if (! $param2 ) {
 		// One argument : either a simple hash to retrieve the djif in DB or a full assoc freshly extracted from said DB
+			var $row;
 			if (is_array($param1)) {
-			// from assoc array
-				$row = $param1;
-				$this->hash = $row["hash"];
-				$this->directload = 'false'; // loading from an array means we're displaying several djifs so we don't want them to load immediately
+				$row = fromAssoc($param1);
 			} else {
-			// from hash
-				$this->db =  new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME, DB_PORT);
-				if ($this->db->connect_errno) {
-					die ("Could not connect db " . DB_NAME . "\n" . $link->connect_error);
-				}
-				$hash = $this->db->real_escape_string(substr($param1,0,5));
-				$select = "
-					SELECT
-					gif.url AS gif,
-					gif.type AS gifType,
-					audio.url AS audio,
-					audio.type AS audioType,
-					gif.width, gif.height
-					FROM djifs, media AS gif, media AS audio
-					WHERE hash = '$hash' AND djifs.gif = gif.id AND djifs.audio = audio.id";
-				$result = $this->db->query($select);
-				$row = $result->fetch_assoc();
-				if( empty($row) ) {
-					return null;
-				} else {
-					$this->db->query("UPDATE djifs SET visits = visits + 1 WHERE hash = '$hash'");
-					$this->hash = $hash;
-				}
+				$row = fromHash();
 			}
-			$gif = new Media( $row["gif"], $row["gifType"] );
-			$audio = new Media( $row["audio"], $row["audioType"]);
-			$size = array($row["width"], $row["height"]);
 		} else {
-		// from two urls
-			$this->db =  new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME, DB_PORT);
-			if ($this->db->connect_errno) {
-				die ("Could not connect db " . DB_NAME . "\n" . $link->connect_error);
-			}
-			$gif = new Media( $param1 );
-			$audio = new Media( $param2 );
-			$charset = array_merge(range(0,9), range('a','z'), range('A', 'Z'));
-			$hash = '';
-			for ($i=0; $i < 5; $i++) {
-				$hash .= $charset[array_rand($charset)];
-			}
-			$this->hash = $hash;
-		}
-		$this->gif = $gif->getMedia('gif', $size);
-		$this->audio = $audio->getMedia('audio');
-		if ($this->gif && $this->audio) {
-			$this->valid = $this->gif->isValid() && $this->audio->isValid();
-			if ($this->valid) { // if we're gonna spend some time computing a preview, at least we don't do it before we're sure the djif is valid
-				if(! $this->preview && $param2) {
-					$img = imagecreatefromgif($this->gif->getUrl());
-					ob_start();
-					imagejpeg($img);
-					$this->preview = ob_get_contents();
-					ob_end_clean();
-				}
-			}
+			fromUrls($param1, $param2);
 		}
 	}
-
 
 	public function isValid() {
 		return $this->valid;
