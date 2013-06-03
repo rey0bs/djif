@@ -1,4 +1,7 @@
 
+/************************************
+ * PREVIEW
+ ************************************/
 var triggered = 0;
 function initTrigger() {
 	triggered = 0;
@@ -21,6 +24,85 @@ function setPreview(input, html) {
 	}
 }
 
+function preview(input) {
+	if (input.val()) {
+		if (!getTrigger()) {
+			setTrigger();
+			if (input.parent().hasClass('sound_group')) {
+				var loader = '<img src="/images/loader_blue.gif" />';
+				var component = 'audio';
+			} else {
+				var loader = '<img src="/images/loader_orange.gif" />';
+				var component = 'gif';
+			}
+			setPreview( input, loader);
+			$.ajax({
+				type: "POST",
+				url: "/ajax/media",
+				data: { url: input.val(),
+						component: component,
+						width: 50,
+						height: 50,
+						ajax : true	}
+			}).done(function( output ) {
+				setPreview( input, output);
+			});
+		}
+		initTrigger();
+	} else {
+		input.removeAttr('style');
+		input.parent().find('.preview').remove();
+	}
+}
+
+
+/************************************
+ * YOUTUBE
+ ************************************/
+function insert_youtube (hash, yt_hash, width=300, autoplay=0) {
+	console.log("Load audio");
+	/*players[hash] = new YT.Player('_'+hash+'_speaker', {
+		width: width,
+		height: '349',
+		playerVars: {
+						wmode: "opaque"
+				},
+		events: {
+			'onReady': function () {
+				players[hash].cueVideoById(yt_hash);
+			},
+			'onStateChange': function (event) {
+				switch (event.data) {
+					case 0:
+					case 2:
+					case 5:
+						disableDjif(hash);
+					break;
+					case 1:
+						enableDjif(hash);
+					break;
+				}
+			}
+		}
+	});*/
+}
+
+function youtube_play(hash) {
+	if( $('#_'+hash+'_djif').attr('data-hasplayed') == 'true') {
+		players[hash].playVideo();
+	} else {
+		$('#_'+hash+'_djif').attr('data-hasplayed', 'true');
+	}
+	players[hash].seekTo(0);
+}
+function youtube_stop(hash) {
+	players[hash].stopVideo();
+}
+
+
+/************************************
+ * DJIF SWITCH
+ ************************************/
 function disableDjif(hash) {
 	$('#_'+hash+'_djif .mask').removeClass('animated');
 	document.querySelector('#_'+hash+'_screen .gif').style.display = 'none';
@@ -35,8 +117,32 @@ function enableDjif(hash) {
 	$('#_'+hash+'_djif').attr('data-actif', 'true');
 }
 
+function djif_switch(hash) {
+	switch(document.getElementById('_'+hash+'_djif').getAttribute('data-actif')) {
+		case 'true':
+			disableDjif(hash);
+			audio_stop[hash]();
+			break;
+		case 'false':
+			var djifs = document.querySelectorAll('.djif[data-actif="true"]');
+			for (var i = 0; i < djifs.length; i++) {
+				djifs[i].click();
+			}
+			audio_play[hash]();
+			enableDjif(hash);
+			break;
+		case 'ignore':
+			document.getElementById('_'+hash+'_djif').setAttribute('data-actif', 'true');
+			break;
+	}
+}
+
+
 $(function(){
 	
+	/************************************
+	 * "NEW" FORM
+	 ************************************/
 	$('form#new_djif').submit(function() {
 		var gif = $('#gifSource').val();
 		var sound = $('#soundSource').val();
@@ -87,36 +193,27 @@ $(function(){
 	    });
 	});
 	
-	function preview(input) {
-		if (input.val()) {
-			if (!getTrigger()) {
-				setTrigger();
-				if (input.parent().hasClass('sound_group')) {
-					var loader = '<img src="/images/loader_blue.gif" />';
-					var component = 'audio';
-				} else {
-					var loader = '<img src="/images/loader_orange.gif" />';
-					var component = 'gif';
-				}
-				setPreview( input, loader);
-				$.ajax({
-					type: "POST",
-					url: "/ajax/media",
-					data: { url: input.val(),
-							component: component,
-							width: 50,
-							height: 50,
-							ajax : true	}
-				}).done(function( output ) {
-					setPreview( input, output);
-				});
-			}
-			initTrigger();
-		} else {
-			input.removeAttr('style');
-			input.parent().find('.preview').remove();
-		}
-	}
+	/************************************
+	 * DJIFS LOAD
+	 ************************************/
+	$('.djif').each(function(i, elt){
+		var hash= $(elt).attr('data-hash');
+		
+		$(elt).prepend('<div class="mask mask-1"></div>'+
+						'<div class="mask mask-2"></div>'+
+						'<div class="mask mask-3">'+
+							'<a href="/edit/'+hash+'">'+
+								'<span class="iconic wrench"></span>Edit this <span class="edit_djif">Djif</span>'+
+							'</a>'+
+						'</div>');
+
+		console.log('Load djif');
+		audio_load[hash]();
+		gif_load[hash]();
+		$(elt).click(function(event){
+			djif_switch(hash);
+		});
+	});
 	
 });
 
