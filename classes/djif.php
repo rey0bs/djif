@@ -89,6 +89,7 @@ class Djif {
 		
 		if ( count($this->gif->size) ) {
 			$width = $this->gif->size[0];
+			$height = $this->gif->size[1]+36;
 		}
 		$parameters = array(
 		 	'[[width]]' => ($width?$width:'300'),
@@ -100,7 +101,9 @@ class Djif {
 			'[[directload]]' => $this->directload,
 			'[[gif]]' => $this->gif->render('display', $parameters),
 			'[[audio]]' => $this->audio->render('display', $parameters),
-			'[[size]]' => ($width?' style="width: '.$width.';"':'')
+			'[[size]]' => ($width?' style="width: '.$width.';"':''),
+			'[[width]]' => ($width?' width="'.$width.'"':''),
+			'[[height]]' => ($height?' height="'.$height.'"':''),
 		);
 	}
 	
