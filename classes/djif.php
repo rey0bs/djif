@@ -10,28 +10,12 @@ class Djif {
 	var $directload = 'true';
 	var $valid = false;
 
-	private static function createHash() {
-		$charset = array_merge(range(0,9), range('a','z'), range('A', 'Z'));
-		$hash = '';
-		for ($i=0; $i < 5; $i++) {
-			$hash .= $charset[array_rand($charset)];
-		}
-		return $hash;
-	}
-
 	private function buildPreview() {
 		$img = imagecreatefromgif($this->gif->getUrl());
 		ob_start();
 		imagejpeg($img);
 		$this->preview = ob_get_contents();
 		ob_end_clean();
-	}
-
-	private function initDB() {
-		$this->db =  new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME, DB_PORT);
-		if ($this->db->connect_errno) {
-			die ("Could not connect db " . DB_NAME . "\n" . $link->connect_error);
-		}
 	}
 
 	private function validate() {
@@ -60,7 +44,7 @@ class Djif {
 
 	public function fromHash($requiredHash) {
 		$instance = new self();
-		$instance->initDB();
+		$instance->db = accessDB();
 		$hash = $instance->db->real_escape_string(substr($requiredHash,0,5));
 		$select = "
 			SELECT
@@ -84,7 +68,7 @@ class Djif {
 
 	public function fromUrls($gif_url, $audio_url) {
 		$instance = new self();
-		$instance->initDB();
+		$instance->db = accessDB();
 		$gif = new Media( $gif_url );
 		$audio = new Media( $audio_url );
 		$instance->hash = createHash();
@@ -92,7 +76,7 @@ class Djif {
 		$instance->audio = $audio->getMedia('audio');
 		$instance->validate();
 		if ($instance->valid) { // if we're gonna spend some time computing a preview, at least we don't do it before we're sure the djif is valid
-			$instance->preview = createPreview();
+			$instance->preview = buildPreview();
 		}
 		return $instance;
 	}
@@ -131,13 +115,7 @@ class Djif {
 	}
 
 	public function render() {
-		
-		$placeholders = $this->getPlaceholders();
-		$output = $this->getTemplate();
-		foreach ($placeholders as $key => $value) {
-			$output = str_replace($key , $value , $output );
-		}
-		return $output;
+		return render($this->getTemplate(), $this->getPlaceholders());
 	}
 
 	public function store() {

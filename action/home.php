@@ -3,13 +3,10 @@
 	require_once('classes/media.php');
 	require_once('classes/djif.php');
 
-	include('templates/form.html');
+	$form = file_get_contents('templates/form.html');
+	echo render($form, array('[[gifUrl]]' => '', '[[audioUrl]]' => ''));
 
-	$db =  new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME, DB_PORT);
-
-	if ($db->connect_errno) {
-		die ("Could not connect db " . DB_NAME . "\n" . $link->connect_error);
-	}
+	$db = accessDB();
 	$select = "
 		SELECT
 		hash,

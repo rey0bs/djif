@@ -71,11 +71,11 @@ class Media {
 
 	public function render( $mode, $placeholders=array() ) {
 		$placeholders = array_merge( (array)$this->getPlaceholders(), (array)$placeholders );
-		$output = $this->getTemplate($mode);
-		foreach ($placeholders as $key => $value) {
-			$output = str_replace($key , htmlspecialchars($value) , $output );
+		$securePH = array();
+		foreach($placeholders as $key => $value) {
+			$securePH["$key"] = htmlspecialchars($value);
 		}
-		return $output;
+		return render($this->getTemplate($mode), $securePH);
 	}
 	
 	public function getMedia( $type, $size=NULL ) {
