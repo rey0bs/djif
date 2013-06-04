@@ -22,7 +22,9 @@
 	echo '<div class="latest" id="mozaique">';
 	while ($row = $result->fetch_assoc()) {
 		$djif = Djif::fromAssoc($row);
+		for($i=0;$i<16;$i++){
 		echo $djif->render();
+		}
 	}
 	echo '</div>';
 
