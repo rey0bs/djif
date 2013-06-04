@@ -10,7 +10,7 @@ class Djif {
 	var $directload = 'true';
 	var $valid = false;
 
-	public function createHash() {
+	private static function createHash() {
 		$charset = array_merge(range(0,9), range('a','z'), range('A', 'Z'));
 		$hash = '';
 		for ($i=0; $i < 5; $i++) {
@@ -19,19 +19,19 @@ class Djif {
 		return $hash;
 	}
 
-	public function initDB() {
-		$this->db =  new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME, DB_PORT);
-		if ($this->db->connect_errno) {
-			die ("Could not connect db " . DB_NAME . "\n" . $link->connect_error);
-		}
-	}
-
-	private function createPreview() {
+	private function buildPreview() {
 		$img = imagecreatefromgif($this->gif->getUrl());
 		ob_start();
 		imagejpeg($img);
 		$this->preview = ob_get_contents();
 		ob_end_clean();
+	}
+
+	private function initDB() {
+		$this->db =  new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME, DB_PORT);
+		if ($this->db->connect_errno) {
+			die ("Could not connect db " . DB_NAME . "\n" . $link->connect_error);
+		}
 	}
 
 	private function validate() {
@@ -40,9 +40,28 @@ class Djif {
 		}
 	}
 
-	private function fromHash() {
-		initDB();
-		$hash = $this->db->real_escape_string(substr($param1,0,5));
+	public function fromAssoc($row, $instance=null) {
+		if (! $instance) {
+			$instance = new self();
+		}
+		if($row["hash"]) {
+			$instance->hash = $row["hash"];
+		} else {
+			$instance->directload = 'false'; // If we don't know the hash, we're building a djif from the entire row, so there are many djifs on the page and we need to delay loading
+		}
+		$gif = new Media( $row["gif"], $row["gifType"] );
+		$audio = new Media( $row["audio"], $row["audioType"]);
+		$size = array($row["width"], $row["height"]);
+		$instance->gif = $gif->getMedia('gif', $size);
+		$instance->audio = $audio->getMedia('audio');
+		$instance->validate();
+		return $instance;
+	}
+
+	public function fromHash($requiredHash) {
+		$instance = new self();
+		$instance->initDB();
+		$hash = $instance->db->real_escape_string(substr($requiredHash,0,5));
 		$select = "
 			SELECT
 			gif.url AS gif,
@@ -52,59 +71,30 @@ class Djif {
 			gif.width, gif.height
 			FROM djifs, media AS gif, media AS audio
 			WHERE hash = '$hash' AND djifs.gif = gif.id AND djifs.audio = audio.id";
-		$result = $this->db->query($select);
+		$result = $instance->db->query($select);
 		$row = $result->fetch_assoc();
 		if( empty($row) ) {
 			return null;
 		} else {
-			$this->db->query("UPDATE djifs SET visits = visits + 1 WHERE hash = '$hash'");
-			$this->hash = $hash;
+			$instance->db->query("UPDATE djifs SET visits = visits + 1 WHERE hash = '$hash'");
+			$instance->hash = $hash;
+			return self::fromAssoc($row, $instance);
 		}
-		$gif = new Media( $row["gif"], $row["gifType"] );
-		$audio = new Media( $row["audio"], $row["audioType"]);
-		$size = array($row["width"], $row["height"]);
-		$this->gif = $gif->getMedia('gif', $size);
-		$this->audio = $audio->getMedia('audio');
-		validate();
 	}
 
-	private function fromAssoc($row) {
-		$this->hash = $row["hash"];
-		$this->directload = 'false'; // loading from an array means we're displaying several djifs so we don't want them to load immediately
-		$gif = new Media( $row["gif"], $row["gifType"] );
-		$audio = new Media( $row["audio"], $row["audioType"]);
-		$size = array($row["width"], $row["height"]);
-		$this->gif = $gif->getMedia('gif', $size);
-		$this->audio = $audio->getMedia('audio');
-		validate();
-	}
-
-	private function fromUrls($gif_url, $audio_url) {
-		initDB();
+	public function fromUrls($gif_url, $audio_url) {
+		$instance = new self();
+		$instance->initDB();
 		$gif = new Media( $gif_url );
 		$audio = new Media( $audio_url );
-		$this->hash = createHash();
-		$this->gif = $gif->getMedia('gif', $size);
-		$this->audio = $audio->getMedia('audio');
-		validate();
-		if ($this->valid) { // if we're gonna spend some time computing a preview, at least we don't do it before we're sure the djif is valid
-			$this->preview = createPreview();
+		$instance->hash = createHash();
+		$instance->gif = $gif->getMedia('gif', $size);
+		$instance->audio = $audio->getMedia('audio');
+		$instance->validate();
+		if ($instance->valid) { // if we're gonna spend some time computing a preview, at least we don't do it before we're sure the djif is valid
+			$instance->preview = createPreview();
 		}
-	}
-
-	function __construct($param1, $param2=NULL ) {
-		$size = null;
-		if (! $param2 ) {
-		// One argument : either a simple hash to retrieve the djif in DB or a full assoc freshly extracted from said DB
-			var $row;
-			if (is_array($param1)) {
-				$row = fromAssoc($param1);
-			} else {
-				$row = fromHash();
-			}
-		} else {
-			fromUrls($param1, $param2);
-		}
+		return $instance;
 	}
 
 	public function isValid() {

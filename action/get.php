@@ -2,7 +2,7 @@
 	require_once('config/config.php');
 	require_once('classes/media.php');
 	require_once('classes/djif.php');
-	$djif = new Djif( $action );
+	$djif = Djif::fromHash( $action );
 	if ($djif->isValid()) {
 		echo $djif->render();
 	} else {

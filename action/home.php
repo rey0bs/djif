@@ -24,7 +24,7 @@
 	$result = $db->query($select);
 	echo '<div class="latest" id="mozaique">';
 	while ($row = $result->fetch_assoc()) {
-		$djif = new Djif($row);
+		$djif = Djif::fromAssoc($row);
 		echo $djif->render();
 	}
 	echo '</div>';
