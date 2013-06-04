@@ -60,31 +60,32 @@ function preview(input) {
  * YOUTUBE
  ************************************/
 function insert_youtube (hash, yt_hash, width=300, autoplay=0) {
-	console.log("Load audio");
-	/*players[hash] = new YT.Player('_'+hash+'_speaker', {
-		width: width,
-		height: '349',
-		playerVars: {
-						wmode: "opaque"
+	
+		players[hash] = new YT.Player('_'+hash+'_speaker', {
+			width: width,
+			height: '349',
+			playerVars: {
+							wmode: "opaque"
+					},
+			events: {
+				'onReady': function () {
+					players[hash].cueVideoById(yt_hash);
 				},
-		events: {
-			'onReady': function () {
-				players[hash].cueVideoById(yt_hash);
-			},
-			'onStateChange': function (event) {
-				switch (event.data) {
-					case 0:
-					case 2:
-					case 5:
-						disableDjif(hash);
-					break;
-					case 1:
-						enableDjif(hash);
-					break;
+				'onStateChange': function (event) {
+					switch (event.data) {
+						case 0:
+						case 2:
+						case 5:
+							disableDjif(hash);
+						break;
+						case 1:
+							enableDjif(hash);
+						break;
+					}
 				}
 			}
-		}
-	});*/
+		});
+	
 }
 
 function youtube_play(hash) {
@@ -196,6 +197,7 @@ $(function(){
 	/************************************
 	 * DJIFS LOAD
 	 ************************************/
+	
 	$('.djif').each(function(i, elt){
 		var hash= $(elt).attr('data-hash');
 		
@@ -208,18 +210,24 @@ $(function(){
 						'</div>');
 
 		console.log('Load djif');
-		audio_load[hash]();
 		gif_load[hash]();
 		$(elt).click(function(event){
 			djif_switch(hash);
 		});
 	});
 	
+	
 });
 
 $('#remix').mouseleave(function() {
 	$('#tooltip').fadeOut(200);
 });
+
+function onYouTubeIframeAPIReady() {
+	for (var i in audio_load) {
+		audio_load[i]();
+	}
+}
 
 
 /*
