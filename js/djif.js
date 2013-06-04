@@ -230,8 +230,9 @@ $(function(){
 								'<span class="iconic wrench"></span>Edit this <span class="edit_djif">Djif</span>'+
 							'</a>'+
 						'</div>');
-		gif_load[hash]();
+		
 		$(elt).click(function(event){
+			gif_load[hash]();
 			djif_switch(hash);
 		});
 	});
