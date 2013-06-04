@@ -72,11 +72,11 @@ class Djif {
 		$gif = new Media( $gif_url );
 		$audio = new Media( $audio_url );
 		$instance->hash = createHash();
-		$instance->gif = $gif->getMedia('gif', $size);
+		$instance->gif = $gif->getMedia('gif');
 		$instance->audio = $audio->getMedia('audio');
 		$instance->validate();
 		if ($instance->valid) { // if we're gonna spend some time computing a preview, at least we don't do it before we're sure the djif is valid
-			$instance->preview = buildPreview();
+			$instance->buildPreview();
 		}
 		return $instance;
 	}
