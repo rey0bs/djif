@@ -138,7 +138,7 @@ function djif_switch(hash) {
 	}
 }
 
-
+//var onYouTubeIframeAPIReady;
 $(function(){
 	
 	/************************************
@@ -208,13 +208,13 @@ $(function(){
 								'<span class="iconic wrench"></span>Edit this <span class="edit_djif">Djif</span>'+
 							'</a>'+
 						'</div>');
-
-		console.log('Load djif');
 		gif_load[hash]();
 		$(elt).click(function(event){
 			djif_switch(hash);
 		});
 	});
+	
+	
 	
 	
 });
@@ -223,11 +223,11 @@ $('#remix').mouseleave(function() {
 	$('#tooltip').fadeOut(200);
 });
 
-function onYouTubeIframeAPIReady() {
+$(window).bind("load", function() {
 	for (var i in audio_load) {
 		audio_load[i]();
 	}
-}
+});
 
 
 /*
