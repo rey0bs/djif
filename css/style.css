@@ -386,7 +386,13 @@ a#hide_audio {
 }
 
 
-.mask-3 a {
+.mask-3 .social-link {
+	position: absolute;
+	bottom: 40px;
+	margin-left:8px;
+}
+
+.mask-3 > a {
 	position: absolute;
 	bottom: 40px;
 	right: 8px;
