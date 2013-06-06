@@ -58,7 +58,7 @@ class Djif {
 		$result = $instance->db->query($select);
 		$row = $result->fetch_assoc();
 		if( empty($row) ) {
-			return null;
+			return $instance;
 		} else {
 			$instance->db->query("UPDATE djifs SET visits = visits + 1 WHERE hash = '$hash'");
 			$instance->hash = $hash;
