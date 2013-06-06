@@ -11,7 +11,7 @@
 			media as gif,
 			media as audio
 		WHERE
-		hash = 'first'
+		hash = '$hash'
 		AND djifs.gif = gif.id
 	 	AND djifs.audio = audio.id;";
 	$result = $db->query($select);
