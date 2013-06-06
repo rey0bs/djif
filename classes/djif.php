@@ -104,6 +104,10 @@ class Djif {
 			'[[size]]' => ($width?' style="width: '.$width.';"':''),
 			'[[width]]' => ($width?' width="'.$width.'"':''),
 			'[[height]]' => ($height?' height="'.$height.'"':''),
+			'[[url]]' => rawurlencode('http://djif.net/'.$this->hash),
+			'[[sharetitle]]' => rawurlencode('Hey ! Check this out '),
+			'[[sharetext]]' => rawurlencode('This djif mixes an animated gif and an audio from youtube or audio file.'),
+			'[[shareimg]]' => rawurlencode('http://djif.net/'.$this->hash.'.jpg'),
 		);
 	}
 	

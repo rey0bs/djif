@@ -2,6 +2,8 @@
 /************************************
  * PREVIEW
  ************************************/
+var onlink = false;
+
 var triggered = 0;
 function initTrigger() {
 	triggered = 0;
@@ -219,19 +221,18 @@ $(function(){
 	/************************************
 	 * DJIFS LOAD
 	 ************************************/
-	
+	$('.mask a').hover(function(){onlink=true;}, function(){onlink=false;});
 	$('.djif').each(function(i, elt){
 		var hash= $(elt).attr('data-hash');
 
 		$(elt).click(function(event){
-			gif_load[hash]();
-			djif_switch(hash);
+			if (!onlink) {
+				gif_load[hash]();
+				djif_switch(hash);
+			}
 		});
 	});
-	
-	
-	
-	
+
 });
 
 $('#remix').mouseleave(function() {
