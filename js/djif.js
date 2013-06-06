@@ -220,30 +220,9 @@ $(function(){
 	 * DJIFS LOAD
 	 ************************************/
 	
-	var shareMsg = "Hey%20!%20Check%20this%20out%20";
 	$('.djif').each(function(i, elt){
 		var hash= $(elt).attr('data-hash');
-		var url = 'http://djif.net/'+hash;
-		
-		$(elt).prepend('<div class="mask mask-1"></div>'+
-						'<div class="mask mask-2"></div>'+
-						'<div class="mask mask-3">'+
-							'<div class="social-link">'+
-								'<a href="http://twitter.com/share?text='+shareMsg+url+'">'+
-									'<img src="/images/twitter.png" />'+
-								'</a>'+
-								'<a href="https://plus.google.com/share?url='+url+'">'+
-									'<img src="/images/googleplus.png" />'+
-								'</a>'+
-								'<a href="http://www.facebook.com/sharer.php?u='+url+'">'+
-									'<img src="/images/facebook.png" />'+
-								'</a>'+
-							'</div>'+
-							'<a href="/edit/'+hash+'">'+
-								'<span class="iconic wrench"></span>Edit this <span class="edit_djif">Djif</span>'+
-							'</a>'+
-						'</div>');
-		
+
 		$(elt).click(function(event){
 			gif_load[hash]();
 			djif_switch(hash);
