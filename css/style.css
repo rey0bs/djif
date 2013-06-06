@@ -354,6 +354,9 @@ a#hide_audio {
 	background: rgba(0,0,0,1) url('../images/clap2.png') repeat-x left 1px;
 }
 .mask-3 {
+    opacity: 0.6;
+}
+.djif:hover .mask-3 {
     opacity: 1;
 }
 
