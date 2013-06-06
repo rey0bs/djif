@@ -388,22 +388,23 @@ a#hide_audio {
 	-webkit-transform: rotate(90deg) translate(0,10px);
 }
 
-
+.mask-3 a:hover {
+    text-decoration: underline;
+}
 .mask-3 .social-link {
 	position: absolute;
 	bottom: 40px;
 	margin-left:8px;
 }
-
+.mask-3 .social-link a:hover {
+	text-decoration: none;
+}
 .mask-3 > a {
 	position: absolute;
 	bottom: 40px;
 	right: 8px;
 	font-size: 11px;
-    color: #FFFFFF;
-}
-.mask-3 a:hover {
-    text-decoration: underline;
+    color: #FFFFFF;   
 }
 .mask-3 .iconic {
     font-size: 14px;
@@ -413,6 +414,8 @@ a#hide_audio {
     font-family: 'PusabRegular';
     font-size: 16px;
     font-weight: bold;
+    transition: all 0.3s ease-in-out 0s;
+    -webkit-transition: all 0.3s ease-in-out 0s;
 }
 .djif:hover span.edit_djif, .mask-3 a:hover span.edit_djif {
 	color: #FF9900;
