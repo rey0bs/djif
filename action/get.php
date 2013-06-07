@@ -32,7 +32,7 @@
 	</style>
 <?php
 		} else {
-			include('templates/buttons/make.tpl');
+			include('templates/buttons/make.html');
 		}
 	} else {
 		fail($djif->db);

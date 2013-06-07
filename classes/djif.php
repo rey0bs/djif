@@ -42,10 +42,12 @@ class Djif {
 		return $instance;
 	}
 
-	public function fromHash($requiredHash) {
-		$instance = new self();
-		$instance->db = accessDB();
-		$hash = $instance->db->real_escape_string(substr($requiredHash,0,5));
+	public function fromHash($hash, $instance=null) {
+		if (! $instance) {
+			$instance = new self();
+			$instance->db = accessDB();
+			$hash = $instance->db->real_escape_string(substr($hash,0,5));
+		}
 		$select = "
 			SELECT
 			gif.url AS gif,
@@ -63,6 +65,16 @@ class Djif {
 			$instance->db->query("UPDATE djifs SET visits = visits + 1 WHERE hash = '$hash'");
 			$instance->hash = $hash;
 			return self::fromAssoc($row, $instance);
+		}
+	}
+
+	public function random() {
+		$instance = new self();
+		$instance->db = accessDB();
+		$query = "SELECT hash FROM djifs ORDER BY RAND() LIMIT 1";
+		$result = $instance->db->query($query);
+		if($row = $result->fetch_assoc()) {
+			return self::fromHash($row["hash"]);
 		}
 	}
 
