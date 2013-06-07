@@ -28,7 +28,7 @@ class Djif {
 		if (! $instance) {
 			$instance = new self();
 		}
-		if($row["hash"]) {
+		if(array_key_exists('hash', $row)) {
 			$instance->hash = $row["hash"];
 		} else {
 			$instance->directload = 'false'; // If we don't know the hash, we're building a djif from the entire row, so there are many djifs on the page and we need to delay loading

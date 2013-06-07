@@ -5,10 +5,7 @@
 	$djif = Djif::fromHash( $action );
 	if ($djif->isValid()) {
 		echo $djif->render();
-	} else {
-		$error = true;
-	}
-	if ($ajax) {
+		if ($ajax) {
 ?>
 	<style type="text/css">
 	.djif {
@@ -34,8 +31,11 @@
 	}
 	</style>
 <?php
+		} else {
+			include('templates/buttons/make.tpl');
+		}
 	} else {
-		include('templates/intro.html');
+		fail($djif->db);
 	}
 ?>
 

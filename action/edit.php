@@ -20,6 +20,6 @@
 		$placeHolder = array('[[gifUrl]]' => $row["gifUrl"], '[[audioUrl]]' => $row["audioUrl"]);
 		echo render($form, $placeHolder);
 	} else {
-		$error = true;
+		fail($db);
 	}
 ?>

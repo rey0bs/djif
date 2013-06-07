@@ -10,7 +10,7 @@
 		echo $djif->store();
 		echo $djif->render();
 	} else {
-		$error = true;
+		fail();
 	}
 
 ?>

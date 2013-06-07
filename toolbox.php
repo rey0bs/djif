@@ -25,4 +25,18 @@
 		return $output;
 	}
 	
+	function fail($db=null) {
+		if(isset($ajax)) {
+			throw new Exception('Ta yeule');
+		} else {
+			$i = rand (0, count(glob('templates/errors/msg*.html')) - 1);
+			include("templates/errors/msg$i.html");
+			$query = "SELECT hash FROM djifs ORDER BY RAND() LIMIT 1";
+			$result = $db->query($query);
+			if($row = $result->fetch_assoc()) {
+				echo render(file_get_contents('templates/buttons/another.tpl'), array('[[hash]]' => $row["hash"]));
+			}
+		}
+	}
+
 ?>
