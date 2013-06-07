@@ -17,7 +17,7 @@
 		return $db;
 	}
 
-	function render($contents, $placeHolders) {
+	function replacePlaceHolders($contents, $placeHolders) {
 		$output = $contents;
 		foreach ($placeHolders as $key => $value) {
 			$output = str_replace($key , $value , $output );

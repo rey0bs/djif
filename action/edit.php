@@ -18,7 +18,7 @@
 	if ($row = $result->fetch_assoc()) {
 		$form = file_get_contents('templates/form.html');
 		$placeHolder = array('[[gifUrl]]' => $row["gifUrl"], '[[audioUrl]]' => $row["audioUrl"]);
-		echo render($form, $placeHolder);
+		echo replacePlaceHolders($form, $placeHolder);
 	} else {
 		fail($db);
 	}

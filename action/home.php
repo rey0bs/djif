@@ -4,7 +4,7 @@
 	require_once('classes/djif.php');
 
 	$form = file_get_contents('templates/form.html');
-	echo render($form, array('[[gifUrl]]' => '', '[[audioUrl]]' => ''));
+	echo replacePlaceHolders($form, array('[[gifUrl]]' => '', '[[audioUrl]]' => ''));
 
 	$db = accessDB();
 	$select = "

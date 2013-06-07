@@ -134,7 +134,7 @@ class Djif {
 	}
 
 	public function render() {
-		return render($this->getTemplate(), $this->getPlaceholders());
+		return replacePlaceHolders($this->getTemplate(), $this->getPlaceholders());
 	}
 
 	public function store() {

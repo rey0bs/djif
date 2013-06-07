@@ -75,7 +75,7 @@ class Media {
 		foreach($placeholders as $key => $value) {
 			$securePH["$key"] = htmlspecialchars($value);
 		}
-		return render($this->getTemplate($mode), $securePH);
+		return replacePlaceHolders($this->getTemplate($mode), $securePH);
 	}
 	
 	public function getMedia( $type, $size=NULL ) {
