@@ -13,7 +13,7 @@
 			<a href="http://www.facebook.com/sharer.php?s=100&p[url]=[[url]]&p[title]=[[sharetitle]]&p[images][0]=[[shareimg]]&p[summary]=[[sharetext]]">
 				<img src="/images/facebook.png" />
 			</a>
-			<script type="text/javascript" src="/js/diaspora-share-button/widget.js"></script>
+			<!-- script type="text/javascript" src="/js/diaspora-share-button/widget.js"></script -->
 		</div>
 		<a href="/edit/[[hash]]">
 			<span class="iconic wrench"></span>Edit this <span class="edit_djif">Djif</span>
@@ -30,5 +30,25 @@
 	
 	[[audio]]
 	[[gif]]
+	
+	<script>
+	
+	$(function(){
+		/************************************
+		 * DJIFS LOAD
+		 ************************************/
+		$('#_[[hash]]_djif .mask a').hover(function(){onlink=true;}, function(){onlink=false;});
+		$('#_[[hash]]_djif').click(function(event){
+			if (!onlink) {
+				gif_load['[[hash]]']();
+				djif_switch('[[hash]]');
+			}
+		});
+		var ajax = [[ajax]];
+		if(ajax) {
+			audio_load['[[hash]]']();
+		}
+	});
 
+	</script>
 </div>

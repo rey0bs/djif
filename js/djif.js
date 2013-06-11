@@ -140,6 +140,21 @@ function djif_switch(hash) {
 	}
 }
 
+function again(i) {
+	$.ajax({
+		type: "POST",
+		url: "/ajax/wtf",
+		data: { 
+			n : i,
+			ajax : true
+		}
+	}).done(function( output ) {
+		$('#action').empty();
+		$('#action').append( output );
+	});
+	return false;
+}
+
 //var onYouTubeIframeAPIReady;
 $(function(){
 	
@@ -196,12 +211,12 @@ $(function(){
 	    });
 	});
 	
-	$('#mozaique').jMosaic({
+	/*$('#mozaique').jMosaic({
         items_type: ".djif", // Type of elements in the selector (Default: img);
 		 min_row_height: 100, // Minimal row height (Default: 150);
 		 margin: 3, // Space between elements (Default: 0);
 		 is_first_big: false // First row - largest (Default: false);
-	});
+	});*/
 	
 	/*$('#mozaique .djif').each(function(i,elt){
 		$(elt).click(function(){
@@ -217,21 +232,6 @@ $(function(){
 		    $(elt).addClass('resized').animate({'width': '+=100', 'height': '+=50'});
 		});
 	});*/
-	
-	/************************************
-	 * DJIFS LOAD
-	 ************************************/
-	$('.mask a').hover(function(){onlink=true;}, function(){onlink=false;});
-	$('.djif').each(function(i, elt){
-		var hash= $(elt).attr('data-hash');
-
-		$(elt).click(function(event){
-			if (!onlink) {
-				gif_load[hash]();
-				djif_switch(hash);
-			}
-		});
-	});
 
 });
 
@@ -244,18 +244,3 @@ $(window).bind("load", function() {
 		audio_load[i]();
 	}
 });
-
-
-
-
-function again(i) {
-	$.ajax({
-		type: "POST",
-		url: "/ajax/wtf",
-		data: { n : i }
-	}).done(function( output ) {
-		$('#action').empty();
-		$('#action').append( output );
-	});
-	return false;
-}

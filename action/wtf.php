@@ -4,7 +4,7 @@
 	require_once('classes/djif.php');
 
 	$djif = Djif::random();
-	echo $djif->render();
+	echo $djif->render(array('[[ajax]]' => ($ajax?1:0)));
 	include('templates/buttons/make.html');
 	$n = 0;
 	$text = 'Another !';
