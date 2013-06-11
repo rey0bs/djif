@@ -248,4 +248,14 @@ $(window).bind("load", function() {
 
 
 
-
+function again(i) {
+	$.ajax({
+		type: "POST",
+		url: "/ajax/wtf",
+		data: { n : i }
+	}).done(function( output ) {
+		$('#action').empty();
+		$('#action').append( output );
+	});
+	return false;
+}
