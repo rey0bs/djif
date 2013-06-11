@@ -8,4 +8,6 @@
 - Animate Rendering (to show something's actually happening)
 - Stop other djifs when one is played (done)
 
-
+(future feature [v7.4]
+- A.I. to generate 'another' buttons' text
+)
