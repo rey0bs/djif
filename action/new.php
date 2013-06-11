@@ -7,7 +7,7 @@
 	$djif = Djif::fromUrls( $gif_url, $audio_url );
 	if($djif->isValid()) {
 		echo $djif->store();
-		echo $djif->render();
+		echo $djif->render(array('[[ajax]]' => ($ajax?1:0)));
 	} else {
 		fail();
 	}

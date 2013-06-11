@@ -4,7 +4,7 @@
 	require_once('classes/djif.php');
 	$djif = Djif::fromHash( $action );
 	if ($djif->isValid()) {
-		echo $djif->render();
+		echo $djif->render(array('[[ajax]]' => ($ajax?1:0)));
 		if ($ajax) {
 ?>
 	<style type="text/css">
