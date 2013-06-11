@@ -120,6 +120,7 @@ class Djif {
 			'[[sharetitle]]' => rawurlencode('Hey ! Check this out '),
 			'[[sharetext]]' => rawurlencode('This djif mixes an animated gif and an audio from youtube or audio file.'),
 			'[[shareimg]]' => rawurlencode('http://djif.net/'.$this->hash.'.jpg'),
+			'[[ajax]]' => 0,
 		);
 	}
 	

@@ -4,7 +4,6 @@
 	require_once('classes/djif.php');
 	$gif_url = htmlentities($_POST['gif_url']);
 	$audio_url = htmlentities($_POST['audio_url']);
-	
 	$djif = Djif::fromUrls( $gif_url, $audio_url );
 	if($djif->isValid()) {
 		echo $djif->store();

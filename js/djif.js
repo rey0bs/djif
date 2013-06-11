@@ -141,6 +141,7 @@ function djif_switch(hash) {
 }
 
 function again(i) {
+	$('#action').html('<img src="/images/loader_film.gif" />');
 	$.ajax({
 		type: "POST",
 		url: "/ajax/wtf",
@@ -149,8 +150,7 @@ function again(i) {
 			ajax : true
 		}
 	}).done(function( output ) {
-		$('#action').empty();
-		$('#action').append( output );
+		$('#action').html( output );
 	});
 	return false;
 }
@@ -168,14 +168,17 @@ $(function(){
 			$('#tooltip').fadeIn(100);
 			return false;
 		} else {
+			var gif_url = $('#gifSource').val();
+			var audio_url = $('#soundSource').val();
+			$('#action').html('<img src="/images/loader_film.gif" />');
 			$.ajax({
 				type: "POST",
 				url: "/ajax/new",
-				data: { gif_url: $('#gifSource').val(),
-						audio_url: $('#soundSource').val(),
+				data: { gif_url: gif_url,
+						audio_url: audio_url,
 						ajax : true	}
 			}).done(function( output ) {
-				$('#action').append( output );
+				/*$('#action').append( output );
 				$('#tinyurl').hide(0);
 				$('#screen').hide(0);
 				$('#speaker').hide(0);
@@ -187,7 +190,8 @@ $(function(){
 				$('#screen').fadeIn(200);
 				$('#speaker').fadeIn(200);
 				$("#tinyurl input").select();
-				});
+				});*/
+				$('#action').html( output );
 			});
 			return false;
 		}
