@@ -233,14 +233,16 @@ $(function(){
 		});
 	});*/
 
+
+	$('#remix').mouseleave(function() {
+		$('#tooltip').fadeOut(200);
+	});
+
+	$(window).bind("load", function() {
+		for (var i in audio_load) {
+			audio_load[i]();
+		}
+	});
+
 });
 
-$('#remix').mouseleave(function() {
-	$('#tooltip').fadeOut(200);
-});
-
-$(window).bind("load", function() {
-	for (var i in audio_load) {
-		audio_load[i]();
-	}
-});
