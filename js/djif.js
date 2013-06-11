@@ -72,6 +72,7 @@ function insert_youtube (hash, yt_hash, width=300, autoplay=0) {
 			events: {
 				'onReady': function () {
 					players[hash].cueVideoById(yt_hash);
+					$('#_'+hash+'_djif').addClass('loaded');
 				},
 				'onStateChange': function (event) {
 					switch (event.data) {
@@ -141,7 +142,7 @@ function djif_switch(hash) {
 }
 
 function again(i) {
-	$('#action').html('<img src="/images/loader_film.gif" />');
+	//$('#action').html('<img src="/images/loader_film.gif" />');
 	$.ajax({
 		type: "POST",
 		url: "/ajax/wtf",

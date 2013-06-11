@@ -10,6 +10,7 @@
 		_[[hash]]_speaker.onplay = function() { enableDjif('[[hash]]'); }
 	
 		document.querySelector('#_[[hash]]_djif .speaker').replaceChild(_[[hash]]_speaker, document.getElementById('_[[hash]]_speaker'));
+		$('#_[[hash]]_djif').addClass("loaded");
 	}
 	
 	audio_play['[[hash]]'] = function() {

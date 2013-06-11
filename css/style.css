@@ -364,7 +364,7 @@ a#hide_audio {
     opacity: 1;
 }
 
-.mask-3:after {
+.djif.loaded .mask-3:after {
     bottom: 50%;
     color: #FFFFFF;
     content: "G";
