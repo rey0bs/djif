@@ -6,6 +6,7 @@
 	$form = file_get_contents('templates/form.html');
 	echo replacePlaceHolders($form, array('[[gifUrl]]' => '', '[[audioUrl]]' => ''));
 
+	/*
 	$db = accessDB();
 	$select = "
 		SELECT
@@ -25,6 +26,6 @@
 		echo $djif->render();
 	}
 	echo '</div>';
-
+	 */
 ?>
 
