@@ -24,5 +24,8 @@
 		<div id="page">
 			<h1 id="logo"><a href="/">DJif</a></h1>
 			<?php include($lead); ?>
+			<a class="button rond" href="/wtf"><span class="iconic heart_stroke"></span></a>
+			<a class="button rond" href="/wtf">?</a>
+			<a class="button rond" href="/wtf"><span class="iconic clock"></span></a>
 			<div id="action">
 
