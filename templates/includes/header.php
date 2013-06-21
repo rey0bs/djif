@@ -26,6 +26,6 @@
 			<?php include($lead); ?>
 			<a class="button rond" href="/wtf"><span class="iconic heart_stroke"></span></a>
 			<a class="button rond" href="/wtf">?</a>
-			<a class="button rond" href="/wtf"><span class="iconic clock"></span></a>
+			<a class="button rond" href="/latest"><span class="iconic clock"></span></a>
 			<div id="action">
 
