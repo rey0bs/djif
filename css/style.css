@@ -411,10 +411,24 @@ a#hide_audio {
 	position: absolute;
 	bottom: 40px;
 	margin-left:8px;
+	
 }
 .mask-3 .social-link a:hover {
 	text-decoration: none;
 }
+
+/*.mask-3 .social-link a {
+	width: 16px;
+	height: 16px;
+	display: inline-block;
+}
+.mask-3 .social-link .diaspora {
+	
+	border-radius: 50%;
+	font-weight: bold;
+	color: #FFF;
+	background-color: #400;
+}*/
 .mask-3 > a {
 	position: absolute;
 	bottom: 40px;
