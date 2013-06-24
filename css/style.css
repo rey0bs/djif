@@ -148,10 +148,17 @@ a.button, .submit_button input {
     font-size: 21px;
     font-style: italic;
 }
-a.button:hover, .submit_button input:hover {
+a.button:hover, .submit_button input:hover, a.button.active:hover {
 	background:  -moz-linear-gradient(top,#FFCC00, #f90);
 	background:  -webkit-linear-gradient(top,#FFCC00, #f90);
 }
+
+a.button.active {
+	background:  -moz-linear-gradient(top,#F5DE12, #f90);
+	background:  -webkit-linear-gradient(top,#F5DE12, #f90);
+    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.8);
+}
+
 .button.rond {
 	border-color: rgba(0, 0, 0, 0.2);
 	border-radius: 50%;

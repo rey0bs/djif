@@ -23,11 +23,11 @@
 	</script>
 		<div id="page">
 			<h1 id="logo"><a href="/">DJif</a></h1>
-			<?php include($lead); ?>
+			<?php include($lead);?>
 			<div id="menu">
-				<a class="button rond" href="/wtf"><span class="iconic heart_stroke"></span></a>
-				<a class="button rond" href="/wtf">?</a>
-				<a class="button rond" href="/latest"><span class="iconic clock"></span></a>
+				<a class="button rond<?php echo ($action == 'home')?' active':''; ?>" href="/" title="Home"><span class="iconic home"></span></a>
+				<a class="button rond<?php echo ($action == 'wtf')?' active':''; ?>" href="/wtf" title="Gimme a %$@£ djif !">?</a>
+				<a class="button rond<?php echo ($action == 'latest')?' active':''; ?>" href="/latest" title="The latest djif"><span class="iconic clock"></span></a>
 			</div>
 			<div id="action">
 

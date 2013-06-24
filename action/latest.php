@@ -20,5 +20,6 @@
 		$djif = Djif::fromAssoc($row);
 		echo $djif->render();
 	}
+	include('templates/buttons/make.html');
 ?>
 
