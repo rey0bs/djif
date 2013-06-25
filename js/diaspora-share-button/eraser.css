@@ -1,0 +1,509 @@
+/*! eraser.css 2012-01-20T12:53 UTC - http://github.com/necolas/eraser.css */
+
+/*
+ * TODO?:
+ * :after, :before, :first-letter, :first-line
+ * any other critical proprietary properties (within reason)
+ */
+
+.x-widget,
+
+/* Type */
+.x-widget h1,
+.x-widget h2,
+.x-widget h3,
+.x-widget h4,
+.x-widget h5,
+.x-widget h6,
+.x-widget a,
+.x-widget abbr,
+.x-widget address,
+.x-widget b,
+.x-widget blockquote,
+.x-widget cite,
+.x-widget code,
+.x-widget del,
+.x-widget dfn,
+.x-widget div,
+.x-widget em,
+.x-widget hr,
+.x-widget i,
+.x-widget ins,
+.x-widget kbd,
+.x-widget p,
+.x-widget pre,
+.x-widget q,
+.x-widget s,
+.x-widget samp,
+.x-widget small,
+.x-widget span,
+.x-widget strong,
+.x-widget sub,
+.x-widget sup,
+.x-widget u,
+.x-widget var,
+
+/* Lists */
+.x-widget ul,
+.x-widget ol,
+.x-widget li,
+.x-widget dl,
+.x-widget dt,
+.x-widget dd,
+
+/* Tables */
+.x-widget table,
+.x-widget thead,
+.x-widget tbody,
+.x-widget tfoot,
+.x-widget caption,
+.x-widget tr,
+.x-widget th,
+.x-widget td,
+
+/* Forms */
+.x-widget form,
+.x-widget legend,
+.x-widget fieldset,
+.x-widget select,
+.x-widget option,
+.x-widget input,
+.x-widget textarea,
+.x-widget button,
+.x-widget label,
+
+/* Embeds */
+.x-widget embed,
+.x-widget iframe,
+.x-widget img,
+.x-widget object,
+
+/* HTML5 */
+.x-widget article,
+.x-widget audio,
+.x-widget aside,
+.x-widget bdi,
+.x-widget bdo,
+.x-widget canvas,
+.x-widget details,
+.x-widget figure,
+.x-widget figcaption,
+.x-widget footer,
+.x-widget header,
+.x-widget hgroup,
+.x-widget mark,
+.x-widget menu,
+.x-widget nav,
+.x-widget section,
+.x-widget summary,
+.x-widget time,
+.x-widget video {
+    background: transparent !important;
+    -webkit-background-size: auto auto !important;
+    -moz-background-size: auto auto !important;
+    background-size: auto auto !important;
+    border: 0 !important;
+    -webkit-border-image: none !important;
+    -moz-border-image: none !important;
+    -o-border-image: none !important;
+    -webkit-border-radius: 0 !important;
+    -moz-border-radius: 0 !important;
+    border-radius: 0 !important;
+    -moz-border-top-colors: none !important;
+    -moz-border-right-colors: none !important;
+    -moz-border-bottom-colors: none !important;
+    -moz-border-left-colors: none !important;
+    bottom: auto !important;
+    -webkit-box-shadow: none !important;
+    -moz-box-shadow: none !important;
+    box-shadow: none !important;
+    -webkit-box-sizing: content-box !important;
+    -moz-box-sizing: content-box !important;
+    box-sizing: content-box !important;
+    clear: none !important;
+    clip: auto !important;
+    color: black !important;
+    counter-increment: none !important;
+    counter-reset: none !important;
+    cursor: auto !important;
+    direction: ltr !important;
+    display: inline !important;
+    -ms-filter: !important;
+    filter: !important;
+    float: none !important;
+    font: normal normal normal 16px/1 sans-serif !important;
+    height: auto !important;
+    left: auto !important;
+    letter-spacing: normal !important;
+    list-style: none !important;
+    list-style-image: none !important; /* IE8: for lists in 'nav' */
+    margin: 0 !important;
+    max-height: none !important;
+    max-width: none !important;
+    min-height: 0 !important;
+    min-width: 0 !important;
+    -webkit-opacity: 1 !important;
+    -moz-opacity: 1 !important;
+    opacity: 1 !important;
+    outline: 0 !important;
+    outline-offset: 0 !important;
+    -moz-outline-radius: 0 !important;
+    overflow: visible !important;
+    padding: 0 !important;
+    page: auto!important;
+    position: static !important;
+    right: auto !important;
+    text-align: left !important;
+    text-decoration: none !important;
+    text-indent: 0 !important;
+    -ms-text-overflow: clip !important;
+    -o-text-overflow: clip !important;
+    text-overflow: clip !important;
+    text-shadow: none !important;
+    -webkit-text-size-adjust: 100% !important;
+    -ms-text-size-adjust: 100% !important;
+    text-transform: none !important;
+    -webkit-transform: none !important;
+    -webkit-transform-origin: 50% 50% !important;
+    -moz-transform: none !important;
+    -moz-transform-origin: 50% 50% !important;
+    -ms-transform: none !important;
+    -ms-transform-origin: 50% 50% !important;
+    -o-transform: none !important;
+    -o-transform-origin: 50% 50% !important;
+    transform: none !important;
+    transform-origin: none !important;
+    -webkit-transition: all 0s !important;
+    -moz-transition: all 0s !important;
+    -ms-transition: all 0s !important;
+    -o-transition: all 0s !important;
+    top: auto !important;
+    unicode-bidi: normal !important;
+    -webkit-user-select: text !important;
+    -moz-user-select: text !important;
+    -ms-user-select: text !important;
+    vertical-align: baseline !important;
+    visibility: visible !important;
+    white-space: normal !important;
+    width: auto !important;
+    word-break: normal !important;
+    word-spacing: normal !important;
+    word-wrap: normal !important;
+    z-index: auto !important;
+}
+
+
+/* =============================================================================
+   Inline-block elements
+   ========================================================================== */
+
+.x-widget audio,
+.x-widget canvas,
+.x-widget video {
+    display: inline-block !important;
+    *display: inline !important;
+    *zoom: 1 !important;
+}
+
+.x-widget audio:not([controls]) {
+    display: none !important;
+}
+
+
+/* =============================================================================
+   Block elements
+   ========================================================================== */
+
+.x-widget,
+.x-widget h1,
+.x-widget h2,
+.x-widget h3,
+.x-widget h4,
+.x-widget h5,
+.x-widget h6,
+.x-widget address,
+.x-widget blockquote,
+.x-widget caption,
+.x-widget div,
+.x-widget hr,
+.x-widget p,
+.x-widget pre,
+.x-widget dl,
+.x-widget dt,
+.x-widget dd,
+.x-widget ul,
+.x-widget ol,
+.x-widget form,
+.x-widget fieldset,
+.x-widget textarea,
+
+/* HTML5 */
+.x-widget article,
+.x-widget aside,
+.x-widget details,
+.x-widget figure,
+.x-widget figcaption,
+.x-widget footer,
+.x-widget header,
+.x-widget hgroup,
+.x-widget menu,
+.x-widget nav,
+.x-widget section,
+.x-widget summary {
+    display: inline-block !important; 
+}
+
+
+/* =============================================================================
+   Table elements
+   ========================================================================== */
+
+.x-widget table {
+    border-collapse: collapse !important;
+    border-spacing: 0 !important;
+    display: table !important;
+    table-layout: auto !important;
+}
+
+.x-widget thead {
+    display: table-header-group !important;
+}
+
+.x-widget tbody {
+    display: table-row-group !important;
+}
+
+.x-widget tfoot {
+    display: table-footer-group !important;
+}
+
+.x-widget tr {
+    display: table-row !important;
+}
+
+.x-widget th,
+.x-widget td {
+    display: table-cell !important;
+}
+
+
+/* =============================================================================
+   Misc
+   ========================================================================== */
+
+.x-widget li {	
+    display: list-item !important;
+}
+
+.x-widget blockquote:before,
+.x-widget blockquote:after,
+.x-widget q:before,
+.x-widget q:after,
+.x-widget [hidden],
+.x-widget input[type="hidden"] {
+    display: none !important;
+}
+
+.x-widget a {
+    cursor: pointer !important;
+}
+
+.x-widget button,
+.x-widget input[type="button"], 
+.x-widget input[type="submit"] {
+    cursor: pointer !important;
+}
+
+.x-widget a:hover {
+    text-decoration: underline !important;
+}
+
+.x-widget button,
+.x-widget input[type="submit"] {
+    text-align: center !important;
+}
+
+.x-widget abbr[title] {
+    border-bottom: 1px dotted !important;
+}
+
+.x-widget del {
+    text-decoration: line-through !important;
+}
+
+.x-widget em {
+    font-style: italic !important;
+}
+
+.x-widget ins {
+    background-color: #ff9 !important;
+    color: black !important;
+}
+
+.x-widget strong {
+    font-weight: bold !important;
+}
+
+.x-widget blockquote,
+.x-widget q  {
+    quotes: none !important;
+}
+
+.x-widget input,
+.x-widget select,
+.x-widget textarea {
+    border: 1px solid #ccc !important;
+}
+
+.x-widget [dir="rtl"] {
+    direction: rtl !important;
+}
+
+/*
+ * Diaspora Share Button
+ */
+.x-widget a:hover {
+    text-decoration: none !important;
+}
+.x-widget .target {
+    display:           block !important;
+	text-indent:       -3000px !important;
+    width:             50px !important;
+    height:            60px !important;
+    line-height:       60px !important;
+    text-decoration:   none !important;
+	background-repeat: no-repeat !important;
+	background-image: url(data:image/png;base64,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) !important;
+}
+.x-widget .parent_container {
+    position:        fixed !important;
+    z-index:         998 !important;
+    width:           100% !important;
+    height:          100% !important;
+    top:             0 !important;
+    left:            0 !important;
+    background:      rgb(0, 0, 0) !important;
+    opacity:         0.6 !important;
+
+    _position:       absolute !important;
+    _height:         2000px !important;
+    -ms-filter:      "progid:DXImageTransform.Microsoft.Alpha(Opacity=60)" !important;
+    filter:          alpha(opacity=60) !important;
+}
+.x-widget .container {
+    position:              fixed !important;
+    z-index:               999 !important;
+    width:                 700px !important;
+    margin:                0 auto 0 -350px !important;
+    color:                 #000000 !important;
+    left:                  50% !important;
+    top:                   10px !important;
+     _position:            absolute !important;
+}
+.x-widget .container .box {
+    padding:               20px !important;
+    background-color:      #FFFFFF !important;
+    -moz-border-radius:    20px !important;
+    -webkit-border-radius: 20px !important;
+    -khtml-border-radius:  20px !important;
+    border-radius:         20px !important;
+    margin-bottom:         20px !important;
+}
+.x-widget .container .about {
+    padding-top:            45px !important;
+}
+.x-widget .container .about a {
+    font-size:              12px !important;
+	text-decoration: underline !important;
+}
+.x-widget .container .box .about a:hover {
+	font-style:      italic !important;
+}
+.x-widget .form {
+    overflow:              hidden !important;
+}
+.x-widget .title {
+	width:         660px !important;
+	margin-top:    10px !important;
+	margin-bottom: 20px !important;
+	font-weight:   bold !important;
+	text-align:    center !important;
+}
+.x-widget .label {
+	float:         left !important;
+	width:         450px !important;
+	padding-right: 20px !important;
+    text-align:    right !important;
+    line-height:   30px !important;
+}
+.x-widget .label span {
+	color:            #FFF !important;
+	background-color: #a8a1a8 !important;
+}
+.x-widget .podname {
+    text-align:     left !important;
+}
+.x-widget .close {
+    position:          absolute !important;
+    display:           block !important;
+    width:             17px !important;
+    height:            18px !important;
+	margin-top:        5px !important;
+	margin-right:      12px !important;
+    top:               0 !important;
+    right:             0 !important;
+    line-height:       18px !important;
+	text-indent:       -3000px !important;
+    text-decoration:   none !important;
+	background-repeat: no-repeat !important;
+	background-image:  url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABEAAAASCAYAAAC9+TVUAAAAAXNSR0IArs4c6QAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB9kIGQw7GMJAOpkAAATlSURBVDgRAdoEJfsB/////wAAAAAAAAAA/f39AAMDAwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAC////AAAAAAD8/PwAnJycANbW1gAAAAAA////AP///wD///8A////AP///wD///8AAAAAAM3NzQCenp4A+/v7AAAAAAAEAAAAAPj4+ACgoKAAtbW1AMzMzAB5eXkAIiIiAP///wAAAAAAAAAAAAEBAQAAAAAAzs7OAJOTkwDt7e0A+fn5AGBgYAAB/////7S0tACYmJgADg4OAPr6+gASEhIAdnZ2ACQkJAD///8AAAAAAAEBAQDNzc0AlJSUAPT09AAFBQUA8/PzAF1dXQACAAAAADc3NwAvLy8A9vb2AAYGBgDr6+sAjIyMAODg4AABAQEAAQEBAM3NzQCTk5MA8/PzAAUFBQD19fUAOjo6AEdHRwAB/v7+/wEBAQDr6+sAkZGRANXV1QAJCQkA+/v7ABgYGAB0dHQA7e3tAJOTkwD09PQABQUFAPT09AA6OjoAcHBwAAgICAAB/v7+/wAAAAABAQEA7e3tAI+PjwDU1NQACgoKAPz8/AAYGBgA8/PzAPT09AAEBAQA+Pj4ADg4OABubm4ACQkJAP///wAB/v7+/wAAAAAAAAAAAQEBAOzs7ACRkZEA1tbWAAcHBwD9/f0AAQEBAAICAgD5+fkAPDw8AGlpaQAICAgA////AAAAAAAB/v7+/wAAAAAAAAAAAAAAAAEBAQDx8fEAhoaGAN/f3wAEBAQA////APz8/ABOTk4AWFhYAAUFBQD///8AAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAD///8A+fn5AAAAAAAAAAAAAQEBAAAAAADy8vIABAQEAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAQEBAOHh4QCTk5MA5eXlAAUFBQD8/PwAAQEBAAUFBQC+vr4ADQ0NAFxcXAACAgIA////AAAAAAAEAAAAAAAAAAABAQEA39/fAI6OjgDl5eUACAgIAPr6+gAWFhYA/f39APDw8AAGBgYAsbGxAAEBAQBbW1sAAgICAP///wACAAAAAAEBAQDf398AiIiIAOXl5QAICAgA9/f3ACUlJQB6enoAZGRkAAAAAAD+/v4ABgYGAK+vrwCkpKQA/v7+AAEBAQACAQEBAN7e3gCIiIgA7OzsAAkJCQD39/cAKysrAHJycgAcHBwANTU1AGNjYwAAAAAA/v7+AAcHBwCwsLAApaWlAP39/QADXV1dgIeHhwDs7OwACAgIAPf39wAoKCgAcnJyABUVFQD///8AAQEBACMjIwALCwsAzMzMAAMDAwADAwMAz8/PABEREQACFRUVADExMQACAgIA9vb2ACoqKgBycnIAFBQUAP///wAAAAAA////AP///wBKSkoAZGRkAPz8/AD5+fkAJSUlACkpKQAA//////v7+/+SkpL/eXl5/+zs7P///////v7+//7+/v/+/v7//v7+//7+/v///////////7Gxsf9ubm7/5eXl//////8B/v7+/wEBAQD7+/sA/Pz8AAkJCQD///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP///wDq6uoAGBgYAP///wDgL7Z59KJYtwAAAABJRU5ErkJggg==) !important;
+}
+.x-widget .button {
+	float:                 left !important;
+	color:                 #fff !important;
+	font-size:             14px !important;
+	padding-top:           5px !important;
+	padding-right:         10px !important;
+	padding-bottom:        5px !important;
+	padding-left:          10px !important;
+	text-decoration:       none !important;
+	-webkit-border-radius: 28px !important;
+	-moz-border-radius:    28px !important;
+	border-radius:         28px !important; 
+	-webkit-box-shadow:    0px 1px 3px #666666 !important;
+    -khtml-border-radius:  20px !important;
+	-moz-box-shadow:       0px 1px 3px #666666 !important;
+	text-shadow:           1px 1px 3px #8f8f8f !important;
+	border:                solid #a8a1a8 2px !important;
+	background:            #4d4c4d !important;
+}
+.x-widget .button:hover {
+	background:       -webkit-gradient(linear, 0 0, 0 100%, from(#ff1f1f), to(#872222)) !important;
+	background:       -moz-linear-gradient(top, #ff1f1f, #872222) !important;
+	filter:           progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr='#ff1f1f', endColorstr='#872222') !important; /* IE6 & IE7 */
+	-ms-filter:       "progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr='#ff1f1f', endColorstr='#872222')" !important; /* IE8 */
+	background-color: #ff1f1f !important;
+	border:           solid #666666 2px !important;
+
+}
+.x-widget .show {
+    display:          block !important;
+}
+.x-widget .bad-browser {
+	position:         absolute !important;
+	z-index:          998 !important;
+	background-color: #FFF !important;
+    width:            700px !important;
+    margin:           0 auto 0 -350px !important;
+    left:             50% !important;
+    top:              100px !important;
+}
+.x-widget .bad-browser p {
+	color:  #FF3D3D !important;
+	margin: 5px !important;
+}
+.x-widget .bad-browser p a:hover {
+	text-decoration: underline !important;
+}
+
+
