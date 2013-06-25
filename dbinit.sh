@@ -14,6 +14,7 @@ DB_PORT="3306"
 DB_NAME=""
 DB_USER=""
 DB_PASS=""
+
 echo "Choose a name for the mysql database storing the data (default 'djif')"
 read DB_NAME
 if [ -z "${DB_NAME}" ]
@@ -64,6 +65,7 @@ define('DB_PORT','${DB_PORT}');
 define('DB_NAME','${DB_NAME}');
 define('DB_USER','${DB_USER}');
 define('DB_PASS','${DB_PASS}');
+define('CONTACT', '');
 ?>
 EOF
 

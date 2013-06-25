@@ -62,7 +62,7 @@ label {
 	text-align: left;
 }
 
-input {
+input, textarea {
 	background: #FFFFFF;
 	border: none;
 	border-radius: 5px;
@@ -71,7 +71,7 @@ input {
     font-style: italic;
 	transition: border 0.2s linear 0s, box-shadow 0.2s linear 0s;
 }
-input:focus {
+input:focus, textarea:focus {
 	border-color: #fff;
 	box-shadow: 0 1px 1px #fff inset, 0 0 8px #fff;
 	outline: 0 none;
@@ -117,13 +117,13 @@ p.lead strong {
     padding-left: 10px;
 }
 
-p.error:before {
+p.error:before, p.quote:before {
 	content:'';
 	background: url('../images/quote.png') no-repeat;
 	padding: 25px 35px 25px 25px;
 }
 
-p.error {
+p.error, p.quote {
 	font-style: italic;
 	font-family : sans-serif;
 	font-size: 19px;
@@ -174,11 +174,16 @@ a.button.active {
 #menu {
 	margin-bottom: 20px;
 }
+
+.text-right {
+	text-align: right;
+	display: block;
+}
 /***************************
 * FORMULAIRES
 ***************************/
 
-form#new_djif {
+form#new_djif, form#contact {
 	position: relative;
 	width: 320px;
 }
@@ -202,8 +207,16 @@ form#new_djif {
 	background:  -webkit-linear-gradient(top,#3299BB, #107799);
 }
 
-.input_group input {
+form#new_djif .input_group input {
 	width: 245px;
+}
+form#contact .input_group {
+	padding: 20px;
+	margin-bottom: 10px;
+}
+form#contact .input_group input, form#contact .input_group textarea {
+	width: 100%;
+	margin-bottom: 10px;
 }
 
 .input_group .preview {
