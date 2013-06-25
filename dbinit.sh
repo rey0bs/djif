@@ -14,6 +14,7 @@ DB_PORT="3306"
 DB_NAME=""
 DB_USER=""
 DB_PASS=""
+CONTACT=""
 
 echo "Choose a name for the mysql database storing the data (default 'djif')"
 read DB_NAME
@@ -24,6 +25,10 @@ then
 fi
 echo "Choose a name for the mysql user owning them"
 read DB_USER
+if [ -z "${DB_USER}" ]
+then
+	fail "Variable DB_USER is not defined."
+fi
 stty -echo
 echo "Choose a password to authenticate this user (and remember it well)"
 read DB_PASS
@@ -33,6 +38,16 @@ stty echo
 if [ "${DB_PASS}" != "${DB_PASS_BIS}" ]
 then
 	fail "Failed to confirm password, aborting"
+fi
+if [ -z "${DB_PASS}" ]
+then
+	fail "Variable DB_PASS is not defined."
+fi
+echo "The users might try to contact you, which email address do you want them to use ?"
+read CONTACT
+if [ -z "${CONTACT}" ]
+then
+	fail "No email address was provided"
 fi
 
 CONFIGDIR="config"
@@ -49,14 +64,6 @@ if [ -z "${DB_PORT}" ]
 then
 	fail "Variable DB_PORT is not defined."
 fi
-if [ -z "${DB_USER}" ]
-then
-	fail "Variable DB_USER is not defined."
-fi
-if [ -z "${DB_PASS}" ]
-then
-	fail "Variable DB_PASS is not defined."
-fi
 
 cat > "${CONFIGDIR}/config.php" <<EOF
 <?php
@@ -65,7 +72,7 @@ define('DB_PORT','${DB_PORT}');
 define('DB_NAME','${DB_NAME}');
 define('DB_USER','${DB_USER}');
 define('DB_PASS','${DB_PASS}');
-define('CONTACT', '');
+define('CONTACT', '${CONTACT}');
 ?>
 EOF
 

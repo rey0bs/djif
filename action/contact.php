@@ -41,7 +41,7 @@ if ($_POST['name'] && $_POST['email'] && $_POST['message']) {
 	<form action="/" method="post">
 		<input type="hidden" name="from" value="contact" />
 		<div class="submit_button">
-			<input type="submit" value="I'm the best." />
+			<input type="submit" value="I'm the best" />
 		</div>
 	</form>
 <?php 
