@@ -15,7 +15,7 @@
 		gif.width, gif.height
 		FROM djifs, media AS gif, media AS audio
 		WHERE djifs.gif = gif.id AND djifs.audio = audio.id
-		ORDER BY date DESC";
+		ORDER BY visits DESC";
 	$seq = new Sequence();
 	$select .= $seq->getLimitStatement();
 	$result = $db->query($select);
@@ -24,7 +24,8 @@
 		echo $djif->render();
 	}
 	include('templates/buttons/make.html');
-	$seq->render('latest');
+	$seq->render('top');
 
 ?>
+
 

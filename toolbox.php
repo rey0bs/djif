@@ -34,5 +34,4 @@
 			include("templates/buttons/another.html");
 		}
 	}
-
 ?>

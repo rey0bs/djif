@@ -141,11 +141,11 @@ function djif_switch(hash) {
 	}
 }
 
-function again(i) {
+function again(target, i) {
 	//$('#action').html('<img src="/images/loader_film.gif" />');
 	$.ajax({
 		type: "POST",
-		url: "/ajax/wtf",
+		url: "/ajax/" + target,
 		data: { 
 			n : i,
 			ajax : true

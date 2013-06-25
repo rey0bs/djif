@@ -1,3 +1,3 @@
-<a class="button" onclick="again([[n]])">
+<a class="button" onclick="again('[[target]]', [[n]])">
 	[[text]]
 </a>
