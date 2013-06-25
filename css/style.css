@@ -207,9 +207,9 @@ form#new_djif, form#contact {
 	background:  -webkit-linear-gradient(top,#3299BB, #107799);
 }
 
-form#new_djif .input_group input {
+/*form#new_djif .input_group input {
 	width: 245px;
-}
+}*/
 form#contact .input_group {
 	padding: 20px;
 	margin-bottom: 10px;
@@ -465,7 +465,7 @@ a#hide_audio {
 
 .footer {
 	font-size: 11px;
-	margin-top:100px;
+	margin-top:10px;
 	text-align:right;
 }
 
