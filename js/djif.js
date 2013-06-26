@@ -61,7 +61,7 @@ function preview(input) {
 /************************************
  * YOUTUBE
  ************************************/
-function insert_youtube (hash, yt_hash, width=300, autoplay=0) {
+function insert_youtube (hash, yt_hash, width, autoplay) {
 	
 		players[hash] = new YT.Player('_'+hash+'_speaker', {
 			width: width,
