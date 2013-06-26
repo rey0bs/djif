@@ -6,7 +6,6 @@ class Djif {
 	var $audio;
 	var $preview;
 	var $hash;
-	var $db;
 	var $directload = 'true';
 	var $valid = false;
 
@@ -24,15 +23,9 @@ class Djif {
 		}
 	}
 
-	public function fromAssoc($row, $instance=null) {
-		if (! $instance) {
-			$instance = new self();
-		}
-		if(array_key_exists('hash', $row)) {
-			$instance->hash = $row["hash"];
-		} else {
-			$instance->directload = 'false'; // If we don't know the hash, we're building a djif from the entire row, so there are many djifs on the page and we need to delay loading
-		}
+	public function fromAssoc($row) {
+		$instance = new self();
+		$instance->hash = $row["hash"];
 		$gif = new Media( $row["gif"], $row["gifType"] );
 		$audio = new Media( $row["audio"], $row["audioType"]);
 		$size = array($row["width"], $row["height"]);
@@ -42,45 +35,8 @@ class Djif {
 		return $instance;
 	}
 
-	public function fromHash($hash, $instance=null) {
-		if (! $instance) {
-			$instance = new self();
-			$instance->db = accessDB();
-			$hash = $instance->db->real_escape_string(substr($hash,0,5));
-		}
-		$select = "
-			SELECT
-			gif.url AS gif,
-			gif.type AS gifType,
-			audio.url AS audio,
-			audio.type AS audioType,
-			gif.width, gif.height
-			FROM djifs, media AS gif, media AS audio
-			WHERE hash = '$hash' AND djifs.gif = gif.id AND djifs.audio = audio.id";
-		$result = $instance->db->query($select);
-		$row = $result->fetch_assoc();
-		if( empty($row) ) {
-			return $instance;
-		} else {
-			$instance->db->query("UPDATE djifs SET visits = visits + 1 WHERE hash = '$hash'");
-			$instance->hash = $hash;
-			return self::fromAssoc($row, $instance);
-		}
-	}
-
-	public function random() {
-		$instance = new self();
-		$instance->db = accessDB();
-		$query = "SELECT hash FROM djifs ORDER BY RAND() LIMIT 1";
-		$result = $instance->db->query($query);
-		if($row = $result->fetch_assoc()) {
-			return self::fromHash($row["hash"]);
-		}
-	}
-
 	public function fromUrls($gif_url, $audio_url) {
 		$instance = new self();
-		$instance->db = accessDB();
 		$gif = new Media( $gif_url );
 		$audio = new Media( $audio_url );
 		$instance->hash = createHash();
@@ -139,18 +95,10 @@ class Djif {
 		return replacePlaceHolders($this->getTemplate(), $placeholders);
 	}
 
-	public function store() {
-		$gif_id = $this->gif->store($this->db);
-		$audio_id = $this->audio->store($this->db);
-		$insert = "INSERT INTO djifs(hash, gif, audio, ip, preview) VALUES ('$this->hash', '";
-		$insert .= $gif_id . "', '";
-		$insert .= $audio_id . "', '";
-		$insert .= ip2long ($this->db->real_escape_string($_SERVER['REMOTE_ADDR'])) . "', '";
-		$insert .= $this->db->real_escape_string($this->preview) . "')";
-		if(! $this->db) {
-			die('Lost connection to database !');
-		}
-		$result = $this->db->query($insert);
+	public function store($dao) {
+		$gif_id = $this->gif->store($dao);
+		$audio_id = $this->audio->store($dao);
+		$dao->storeDjif($this->hash, $gif_id, $audio_id, $this->preview);
 		$url = 'http://' . $_SERVER['SERVER_NAME'] . '/' . $this->hash;
 		return str_replace( array('[[url]]'), array($url), file_get_contents ('templates/link.html') );
 	}

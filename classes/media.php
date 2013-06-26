@@ -55,17 +55,9 @@ class Media {
 		}
 	}
 
-	public function store($db) {
-		$type_query = "SELECT id FROM types WHERE name='$this->type'";
-		$type_result = $db->query($type_query);
-		$type_row = $type_result->fetch_assoc();
-		
-		$insert = "INSERT INTO media(id, type, url, width, height) VALUES ('$this->id', ";
-		$insert .= $type_row['id'] . ", '";
-		$insert .= $db->real_escape_string($this->getUrl()) . "', '";
-		$insert .= $this->size[0] . "', '" . $this->size[1] . "')";
-		$result = $db->query($insert);
-		
+	public function store($dao) {
+		$type = $dao->getMediaType($this->type);
+		$dao->storeMedia($this->id, $type, $this->url, $this->size[0], $this->size[1]);
 		return $this->id;
 	}
 
