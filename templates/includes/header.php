@@ -36,7 +36,7 @@
 			<?php include($lead);?>
 			<div id="menu">
 				<a class="button rond<?php echo ($action == 'top')?' active':''; ?>" href="/top" title="Most popular djifs"><span class="iconic heart_stroke"></span></a>
-				<a class="button rond<?php echo ($action == 'wtf')?' active':''; ?>" href="/wtf" title="Any djif">?</a>
+				<a class="button rond<?php echo ($action == 'wtf')?' active':''; ?>" href="/wtf" title="Any djif"><span class="iconic reload"></span></a>
 				<a class="button rond<?php echo ($action == 'latest')?' active':''; ?>" href="/latest" title="Most recent djifs"><span class="iconic clock"></span></a>
 			</div>
 			<div id="action">
