@@ -12,6 +12,8 @@
 		<script src="/js/jquery.easing.min.js"></script>
 		<script src="/js/jquery.jMosaic.min.js"></script>
 		<script src="https://www.youtube.com/player_api" type="text/javascript"></script>
+		<link rel="Shortcut icon" href="/images/favicon.ico" type="image/x-icon" />
+		<link rel="icon" href="/images/favicon.ico" type="image/x-icon">
 	</head>
 	<body>
 	<script>
