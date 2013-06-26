@@ -3,13 +3,19 @@
 class Sequence {
 
 	var $n;
+	var $limit;
 	var $text;
 
-	function __construct() {
+	function __construct($dao, $infinite=null) {
 		if(isset($_POST['n']) && is_numeric($_POST['n'])) {
 			$this->n = $_POST['n'];
 		} else {
 			$this->n = 0;
+		}
+		if($infinite) {
+			$this->limit = -1;
+		} else {
+			$this->limit = $dao->countDjif()-1;
 		}
 		switch ($this->n) {
 			case 0:
@@ -67,6 +73,9 @@ class Sequence {
 				$this->text = 'Ok I\'ll stop last year';
 				break;
 		}
+		if($this->n == $this->limit-1) {
+			$this->text = 'Shit ! Only one left';
+		}
 	}
 
 	public function getN() {
@@ -77,21 +86,15 @@ class Sequence {
 		return $this->text;
 	}
 
-	public function getLimitStatement() {
-		if($this->n == 0) {
-			return " LIMIT 1";
-		} else {
-			return " LIMIT $this->n, 1";
-		}
-	}
-
 	public function render($target) {
-		$pholders = array(
-			'[[text]]' => $this->text,
-			'[[n]]' => $this->n+1,
-			'[[target]]' => $target
-		);
-		echo replacePlaceHolders(file_get_contents('templates/buttons/yanother.tpl'), $pholders);
+		if($this->n < $this->limit || $this->limit < 0) {
+			$pholders = array(
+				'[[text]]' => $this->text,
+				'[[n]]' => $this->n+1,
+				'[[target]]' => $target
+			);
+			echo replacePlaceHolders(file_get_contents('templates/buttons/yanother.tpl'), $pholders);
+		}
 	}
 }
 

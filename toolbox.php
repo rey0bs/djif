@@ -9,14 +9,6 @@
 		return $hash;
 	}
 
-	function accessDB() {
-		$db =  new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME, DB_PORT);
-		if ($db->connect_errno) {
-			die ("Could not connect db " . DB_NAME . "\n" . $db->connect_error);
-		}
-		return $db;
-	}
-
 	function replacePlaceHolders($contents, $placeHolders) {
 		$output = $contents;
 		foreach ($placeHolders as $key => $value) {
@@ -25,7 +17,7 @@
 		return $output;
 	}
 	
-	function fail($db=null) {
+	function fail() {
 		if(isset($ajax)) {
 			throw new Exception('Ta yeule');
 		} else {
