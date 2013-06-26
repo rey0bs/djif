@@ -172,6 +172,7 @@ a.button.active {
 	height: 16px;
 	line-height: 16px;
 	font-weight: bold;
+	font-style: normal;
 }
 
 #menu {
