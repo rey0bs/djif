@@ -16,6 +16,13 @@
 		<link rel="icon" href="/images/favicon.ico" type="image/x-icon">
 	</head>
 	<body>
+	<?php if ($action != 'ie') {?>
+		<!--[if lt IE 10 ]>
+		<script type="text/javascript"> 
+			document.location = "/ie";
+		</script>
+		<![endif]-->
+	<?php } ?>
 	<script>
 	var players = [];
 	var audio_load = [];

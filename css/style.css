@@ -25,6 +25,7 @@ body {
 
 a {
 	text-decoration: none;
+	color: #FF9900;
 }
 
 a.button:hover {
@@ -41,6 +42,7 @@ h1#logo a {
 	font-size: 75px;
 	color: #FF9900;
 	text-shadow: 2px 2px 0 #FFFFFF, 4px -1px 0 #424242;
+	height: 100px;
 }
 
 form {
@@ -177,6 +179,11 @@ a.button.active {
 
 .text-right {
 	text-align: right;
+	display: block;
+}
+
+.text-left {
+	text-align: left;
 	display: block;
 }
 /***************************
