@@ -482,3 +482,6 @@ a#hide_audio {
 	text-decoration: underline;
 }
 
+.x-widget .box:before {
+	content: "";
+}
