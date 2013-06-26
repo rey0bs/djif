@@ -70,6 +70,27 @@ class Dao {
 		}
 	}
 
+	function getUrlsFromHash($hash) {
+		$hash = $this->db->real_escape_string(substr($hash,0,5));
+		$select = "
+			SELECT
+				gif.url as gifUrl,
+				audio.url as audioUrl
+			FROM
+				djifs,
+				media as gif,
+				media as audio
+			WHERE
+			hash = '$hash'
+			AND djifs.gif = gif.id
+			AND djifs.audio = audio.id";
+		$result = $this->db->query($select);
+		if ($result && $row = $result->fetch_assoc()) {
+			return array('[[gifUrl]]' => $row["gifUrl"], '[[audioUrl]]' => $row["audioUrl"]);
+		}
+		return null;
+	}
+
 	function preview($hash) {
 		$hash = $this->db->real_escape_string(substr($hash,0,5));
 		$select = "SELECT preview FROM djifs WHERE hash = '$hash'";
