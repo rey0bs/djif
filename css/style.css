@@ -165,14 +165,14 @@ a.button.active {
 
 .button.rond {
 	border-color: rgba(0, 0, 0, 0.2);
-	border-radius: 50%;
-	padding: 10px;
-	font-size: 18px;
-	width: 16px;
-	height: 16px;
-	line-height: 16px;
-	font-weight: bold;
-	font-style: normal;
+    border-radius: 50%;
+    padding: 10px;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: bold;
+    height: 15px;
+    line-height: 18px;
+    width: 15px;
 }
 
 #menu {
