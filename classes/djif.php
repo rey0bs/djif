@@ -69,7 +69,7 @@ class Djif {
 			'[[directload]]' => $this->directload,
 			'[[gif]]' => $this->gif->render('display', $parameters),
 			'[[audio]]' => $this->audio->render('display', $parameters),
-			'[[size]]' => ($width?' style="width: '.$width.';"':''),
+			'[[size]]' => 'style="' . ($width?' width: '.$width.'px;':'') . ($height?' height: '.$height.'px;':'') . '"',
 			'[[width]]' => ($width?' width="'.$width.'"':''),
 			'[[height]]' => ($height?' height="'.$height.'"':''),
 			'[[url]]' => rawurlencode('http://djif.net/'.$this->hash),
