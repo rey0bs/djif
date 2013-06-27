@@ -3,17 +3,23 @@
 	<div class="mask mask-1"></div>
 	<div class="mask mask-2"></div>
 	<div class="mask mask-3">
-		<div class="social-link">
+		<div class="links">
+			<div class="djif_link" id="_[[hash]]_link">
+				<a href="[[url]]"><span class="iconic link"></span></a>
+				<div class="djif_input">
+				<input type="text" value="[[url]]" onclick="select()" readonly="readonly" /><span class="iconic x"></span>
+				</div>
+			</div>
 			<a id="_[[hash]]_diaspora" title="Share on Diaspora*" href="javascript: return false;" class="diaspora" data-title="[[sharetitle]]" data-url="[[url]]" data-description="">
 				<img src="/images/diaspora.png" />
 			</a>
-			<a href="http://twitter.com/share?text=[[sharetitle]]&url=[[url]]" title="Share on Twitter">
+			<a href="http://twitter.com/share?text=[[sharetitle]]&url=[[encoded_url]]" title="Share on Twitter">
 				<img src="/images/twitter.png" />
 			</a>
-			<a href="https://plus.google.com/share?url=[[url]]" title="Share on Google plus">
+			<a href="https://plus.google.com/share?url=[[encoded_url]]" title="Share on Google plus">
 				<img src="/images/googleplus.png" />
 			</a>
-			<a href="http://www.facebook.com/sharer.php?s=100&p[url]=[[url]]&p[title]=[[sharetitle]]&p[images][0]=[[shareimg]]&p[summary]=[[sharetext]]" title="Share on Facebook">
+			<a href="http://www.facebook.com/sharer.php?s=100&p[url]=[[encoded_url]]&p[title]=[[sharetitle]]&p[images][0]=[[shareimg]]&p[summary]=[[sharetext]]" title="Share on Facebook">
 				<img src="/images/facebook.png" />
 			</a>
 			
@@ -41,7 +47,7 @@
 		/************************************
 		 * DJIFS LOAD
 		 ************************************/
-		$('#_[[hash]]_djif .mask a').hover(function(){onlink=true;}, function(){onlink=false;});
+		$('#_[[hash]]_djif .mask a, #_[[hash]]_djif .mask input, #_[[hash]]_djif .mask .x').hover(function(){onlink=true;}, function(){onlink=false;});
 		$('#_[[hash]]_djif').click(function(event){
 			if (!onlink) {
 				gif_load['[[hash]]']();
@@ -52,6 +58,11 @@
 		if(ajax) {
 			audio_load['[[hash]]']();
 		}
+		
+		$('#_[[hash]]_link a, #_[[hash]]_link .x').click(function(event){
+			event.preventDefault();
+			$('#_[[hash]]_link .djif_input').toggle();
+		});
 		
 		/************************************
 		 * DIASPORA SHARE

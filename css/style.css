@@ -442,14 +442,45 @@ a#hide_audio {
 .mask-3 a:hover {
     text-decoration: underline;
 }
-.mask-3 .social-link {
+.mask-3 .links {
 	position: absolute;
 	bottom: 40px;
 	margin-left:8px;
 	
 }
-.mask-3 .social-link a:hover {
+.mask-3 .links a:hover {
 	text-decoration: none;
+}
+.mask-3 .links .djif_link {
+	display: inline;
+	position: relative;
+}
+.mask-3 .links .iconic.link {
+	color: #fff;
+	font-size: 35px;
+}
+.mask-3 .links .djif_input {
+	display: none;
+	position: absolute;
+	bottom: 36px;
+    left: 0;
+    width: 165px;
+}
+.mask-3 .links input {
+    width: 160px;
+}
+
+.mask-3 .links .djif_input .x {
+    background: #000000;
+    border: 2px solid #FFFFFF;
+    border-radius: 50%;
+    color: #FFFFFF;
+    font-size: 13px;
+    height: 13px;
+    position: absolute;
+    right: -17px;
+    top: -8px;
+    width: 13px;
 }
 .mask-3 > a {
 	position: absolute;
