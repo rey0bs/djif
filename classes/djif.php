@@ -60,7 +60,7 @@ class Djif {
 		
 		if ( count($this->gif->size) ) {
 			$width = $this->gif->size[0];
-			$height = $this->gif->size[1]+36;
+			$height = $this->gif->size[1]+31;
 		}
 		$parameters = array(
 		 	'[[width]]' => ($width?$width:'300'),

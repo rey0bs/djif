@@ -323,6 +323,9 @@ form#contact .input_group input, form#contact .input_group textarea {
     position: relative;
     background: #1B1B1B;
 }
+.speaker {
+	height: 31px;
+}
 
 
 #tinyurl {
@@ -390,13 +393,13 @@ a#hide_audio {
 
 .mask-1 {
 	background: rgba(0,0,0,1) url('../images/clap.png') repeat-x left bottom;
-	height: 36px;
+	height: 31px;
 	transform-origin: 0% 100% 0;
     -ms-transform-origin: 0% 100% 0;
     -webkit-transform-origin: 0% 100% 0;
 }
 .mask-2, .mask-3 {
-    top: 36px;
+    top: 31px;
     transform-origin: 0% 0% 0;
     -ms-transform-origin: 0% 0% 0;
     -webkit-transform-origin: 0% 0% 0;
@@ -454,7 +457,7 @@ a#hide_audio {
 }
 .mask-3 .links {
 	position: absolute;
-	bottom: 40px;
+	bottom: 32px;
 	margin-left:8px;
 	
 }
@@ -491,6 +494,7 @@ a#hide_audio {
     right: -17px;
     top: -8px;
     width: 13px;
+    line-height: 15px;
 }
 .mask-3 > a {
 	position: absolute;
