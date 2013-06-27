@@ -6,6 +6,7 @@ class Djif {
 	var $audio;
 	var $preview;
 	var $hash;
+	var $url;
 	var $directload = 'true';
 	var $valid = false;
 
@@ -26,6 +27,7 @@ class Djif {
 	public function fromAssoc($row) {
 		$instance = new self();
 		$instance->hash = $row["hash"];
+		$instance->url = 'http://' . $_SERVER['SERVER_NAME'] . '/' . $instance->hash;
 		$gif = new Media( $row["gif"], $row["gifType"] );
 		$audio = new Media( $row["audio"], $row["audioType"]);
 		$size = array($row["width"], $row["height"]);
@@ -40,6 +42,7 @@ class Djif {
 		$gif = new Media( $gif_url );
 		$audio = new Media( $audio_url );
 		$instance->hash = createHash();
+		$instance->url = 'http://' . $_SERVER['SERVER_NAME'] . '/' . $instance->hash;
 		$instance->gif = $gif->getMedia('gif');
 		$instance->audio = $audio->getMedia('audio');
 		$instance->validate();
@@ -72,11 +75,11 @@ class Djif {
 			'[[size]]' => 'style="' . ($width?' width: '.$width.'px;':'') . ($height?' height: '.$height.'px;':'') . '"',
 			'[[width]]' => ($width?' width="'.$width.'"':''),
 			'[[height]]' => ($height?' height="'.$height.'"':''),
-			'[[url]]' => 'http://djif.net/'.$this->hash,
-			'[[encoded_url]]' => rawurlencode('http://djif.net/'.$this->hash),
+			'[[url]]' => $this->url,
+			'[[encoded_url]]' => rawurlencode($this->url),
 			'[[sharetitle]]' => rawurlencode('Hey ! Check this out '),
 			'[[sharetext]]' => rawurlencode('This djif mixes an animated gif and an audio from youtube or audio file.'),
-			'[[shareimg]]' => rawurlencode('http://djif.net/'.$this->hash.'.jpg'),
+			'[[shareimg]]' => rawurlencode($this->url.'.jpg'),
 			'[[ajax]]' => 0,
 		);
 	}
@@ -100,8 +103,8 @@ class Djif {
 		$gif_id = $this->gif->store($dao);
 		$audio_id = $this->audio->store($dao);
 		$dao->storeDjif($this->hash, $gif_id, $audio_id, $this->preview);
-		$url = 'http://' . $_SERVER['SERVER_NAME'] . '/' . $this->hash;
-		return str_replace( array('[[url]]'), array($url), file_get_contents ('templates/link.html') );
+		$placeholders = array('[[url]]' => $this->url);
+		return replacePlaceHolders(file_get_contents('templates/link.html'), $placeholders);
 	}
 
 }
