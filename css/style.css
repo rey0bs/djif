@@ -407,15 +407,20 @@ a#hide_audio {
 .mask-3 {
     opacity: 0.6;
 }
+
 .djif:hover .mask-3 {
     opacity: 1;
 }
+.djif.loaded .mask-3 {
+	background: none;
+}
 
-.djif.loaded .mask-3:after {
+.djif .mask-3:after {
+	content: "-";
+	font-size: 0;
+    background: url('../images/loader_djif.gif') no-repeat center center;
     bottom: 50%;
     color: #FFFFFF;
-    content: "G";
-    font-size: 40px;
     height: 50px;
     margin: auto;
     margin-right: -50px;
@@ -425,6 +430,11 @@ a#hide_audio {
     width: 100px;
     z-index: 1050;
     font-family: 'IconicStroke';
+}
+.djif.loaded .mask-3:after {
+    background: none;
+    content: "G";
+    font-size: 40px;
 }
 
 .mask-1.animated {
