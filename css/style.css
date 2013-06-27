@@ -212,13 +212,14 @@ form#new_djif, form#contact {
 
 .input_group.sound_group {
 	margin: 27px auto 10px;
+	background: #3299BB;
 	background:  -moz-linear-gradient(top,#3299BB, #107799);
 	background:  -webkit-linear-gradient(top,#3299BB, #107799);
 }
 
-/*form#new_djif .input_group input {
-	width: 245px;
-}*/
+form#new_djif .input_group input {
+	width: 233px;
+}
 form#contact .input_group {
 	padding: 20px;
 	margin-bottom: 10px;
