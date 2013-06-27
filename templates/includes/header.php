@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html>
 	<head>
+		<title>1 gif, 1 sound. DJif.</title>
+		
 		<meta charset='utf-8'>
 		
 		<link rel="stylesheet" href="/css/jquery.jMosaic.css"/>
