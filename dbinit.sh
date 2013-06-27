@@ -89,7 +89,7 @@ CREATE TABLE \`types\` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 CREATE TABLE \`media\` (
-	\`id\` int NOT NULL,
+	\`id\` varchar(32) NOT NULL,
 	\`type\` tinyint NOT NULL,
 	\`url\` text NOT NULL,
 	\`width\` smallint,
@@ -100,8 +100,8 @@ CREATE TABLE \`media\` (
 
 CREATE TABLE \`djifs\` (
   \`hash\` char(5) CHARACTER SET ascii NOT NULL,
-  \`gif\` int NOT NULL,
-  \`audio\` int NOT NULL,
+  \`gif\` varchar(32) NOT NULL,
+  \`audio\` varchar(32) NOT NULL,
   \`ip\` int(11) DEFAULT NULL,
   \`date\` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   \`visits\` int(11) DEFAULT '0',

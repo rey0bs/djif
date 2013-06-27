@@ -14,7 +14,7 @@ class Media {
 		} else {
 			$this->type = strtolower (get_class($this));
 		}
-		$this->id = crc32($url);
+		$this->id = md5($url);
 		$this->size = array(300,300);
 	}
 	
