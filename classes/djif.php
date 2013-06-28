@@ -1,5 +1,7 @@
 <?php
 
+require_once 'twitteroauth/twitteroauth/twitteroauth.php'; // inclure la librairie (qui elle-même appelera OAuth.php)
+
 class Djif {
 	
 	var $gif;
@@ -100,6 +102,21 @@ class Djif {
 	}
 
 	public function store($dao) {
+		
+		$twConnect = new TwitterOAuth(
+				CONSUMER_KEY,
+				CONSUMER_SECRET,
+				ACCESS_TOKEN,
+				ACCESS_TOKEN_SECRET
+		);
+
+		$twConnect->host = "https://api.twitter.com/1.1/";
+		$twConnect->get('account/verify_credentials');
+		$twConnect->post('statuses/update', array(
+				'status' => 'A new djif was created ! '.$this->url
+		));
+		
+		
 		$gif_id = $this->gif->store($dao);
 		$audio_id = $this->audio->store($dao);
 		$dao->storeDjif($this->hash, $gif_id, $audio_id, $this->preview);

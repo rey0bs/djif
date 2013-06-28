@@ -73,6 +73,10 @@ define('DB_NAME','${DB_NAME}');
 define('DB_USER','${DB_USER}');
 define('DB_PASS','${DB_PASS}');
 define('CONTACT', '${CONTACT}');
+define('CONSUMER_KEY', '');
+define('CONSUMER_SECRET', '');
+define('ACCESS_TOKEN', '');
+define('ACCESS_TOKEN_SECRET', '');
 ?>
 EOF
 
