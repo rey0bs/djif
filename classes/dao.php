@@ -60,7 +60,10 @@ class Dao {
 		}
 	}
 
-	function getNPreviewsFromBy($n, $from, $criterion) {
+	function getPreviewsFromSeqBy($seq, $criterion) {
+		$range = $seq->getRange();
+		$from = $range[0];
+		$n = $range[1];
 		$select = "SELECT hash FROM djifs ORDER BY $criterion DESC LIMIT $from, $n";
 		$result = $this->db->query($select);
 		if($result) {

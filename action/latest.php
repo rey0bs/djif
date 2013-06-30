@@ -6,9 +6,9 @@
 	require_once('classes/sequence.php');
 
 	$dao = new Dao();
-	$seq = new Sequence($dao);
-	//$djif = $dao->getNthDjifBy($seq->getN(), 'date');
-	$previews = $dao->getNPreviewsFromBy(10, 0, 'date');
+	$seq = new Sequence($dao, 'latest');
+	echo '<div id="previews">';
+	$previews = $dao->getPreviewsFromSeqBy($seq, 'date');
 	while($row = $previews->fetch_assoc()) {
 		$hash = $row["hash"];
 ?>
@@ -17,9 +17,10 @@
 		</a>
 <?php
 	}
-	//echo $djif->render(array('[[ajax]]' => ($ajax?1:0)));
+	echo '</div>';
+	$seq->command('prev');
 	include('templates/buttons/make.html');
-	$seq->render('latest');
+	$seq->command('next');
 
 ?>
 

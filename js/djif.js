@@ -141,17 +141,16 @@ function djif_switch(hash) {
 	}
 }
 
-function again(target, i) {
-	//$('#action').html('<img src="/images/loader_film.gif" />');
+function jumpTo(target, i) {
 	$.ajax({
 		type: "POST",
 		url: "/ajax/" + target,
-		data: { 
+		data: {
 			n : i,
 			ajax : true
 		}
-	}).done(function( output ) {
-		$('#action').html( output );
+	}).done(function(output) {
+		$('#action').html(output);
 	});
 	return false;
 }

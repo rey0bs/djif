@@ -6,10 +6,20 @@
 	require_once('classes/sequence.php');
 
 	$dao = new Dao();
-	$seq = new Sequence($dao);
-	$djif = $dao->getNthDjifBy($seq->getN(), 'visits');
-	echo $djif->render(array('[[ajax]]' => ($ajax?1:0)));
+	$seq = new Sequence($dao, 'top');
+	echo '<div id="previews">';
+	$previews = $dao->getPreviewsFromSeqBy($seq, 'visits');
+	while($row = $previews->fetch_assoc()) {
+		$hash = $row["hash"];
+?>
+		<a href="/<?php echo $hash;?>">
+			<img class="preview" src="/<?php echo $hash;?>.jpg"/>
+		</a>
+<?php
+	}
+	echo '</div>';
+	$seq->command('prev');
 	include('templates/buttons/make.html');
-	$seq->render('top');
+	$seq->command('next');
 
 ?>

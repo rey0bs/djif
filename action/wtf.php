@@ -6,10 +6,10 @@
 	require_once('classes/sequence.php');
 
 	$dao = new Dao();
-	$seq = new Sequence($dao, true);
+	$seq = new Sequence($dao, 'wtf', true);
 	$djif = $dao->getRandomDjif();
 	echo $djif->render(array('[[ajax]]' => ($ajax?1:0)));
 	include('templates/buttons/make.html');
-	$seq->render('wtf');
+	$seq->command('random');
 
 ?>
