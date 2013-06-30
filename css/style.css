@@ -540,3 +540,7 @@ a#hide_audio {
 .x-widget .box:before {
 	content: "";
 }
+
+.preview {
+	height : 150px;
+}

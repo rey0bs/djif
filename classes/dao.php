@@ -60,6 +60,16 @@ class Dao {
 		}
 	}
 
+	function getNPreviewsFromBy($n, $from, $criterion) {
+		$select = "SELECT hash FROM djifs ORDER BY $criterion DESC LIMIT $from, $n";
+		$result = $this->db->query($select);
+		if($result) {
+			return $result;
+		} else {
+			die ("Could not retrieve $n previews from $from (by $criterion)");
+		}
+	}
+
 	function getRandomDjif() {
 		$select = "SELECT hash FROM djifs ORDER BY RAND() LIMIT 1";
 		$result = $this->db->query($select);
