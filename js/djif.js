@@ -142,6 +142,7 @@ function djif_switch(hash) {
 }
 
 function jumpTo(target, i) {
+	$('#action').html('<img src="/images/loader_film.gif" />');
 	$.ajax({
 		type: "POST",
 		url: "/ajax/" + target,
