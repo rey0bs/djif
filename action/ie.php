@@ -1,9 +1,9 @@
 <p class="quote text-left">
-	<strong>Did you know that your Internet Explorer is out of date?</strong>
+<strong><?php echo IE_WARNING;?></strong>
 </p>
 <p class="quote text-left">
-To get the best experience possible using our website we recommend that you upgrade to a newer version or another web browser. A list of the most popular web browsers can be found below.<br />
-Just click on one of the links to get to the download page :</p>
+<?php echo IE_EXPLAIN;?><br />
+<?php echo IE_CLICK_LINKS;?></p>
 <p>
 	<a class="button" href="http://www.microsoft.com/windows/Internet-explorer/default.aspx">Internet Explorer 10+</a>
 	<a class="button" href="http://www.mozilla.com/firefox/">Firefox</a>

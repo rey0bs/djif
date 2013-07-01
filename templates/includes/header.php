@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>1 gif, 1 sound. DJif.</title>
+	<title><?php echo SITE_TITLE;?></title>
 		
 		<meta charset='utf-8'>
 		
@@ -35,11 +35,11 @@
 	</script>
 		<div id="page">
 			<h1 id="logo"><a href="/">DJif</a></h1>
-			<?php include($lead);?>
+			<?php interpret('templates/lead.html', $lead);?>
 			<div id="menu">
-				<a class="button rond<?php echo ($action == 'top')?' active':''; ?>" href="/top" title="Most popular djifs"><span class="iconic heart_stroke"></span></a>
-				<a class="button rond<?php echo ($action == 'wtf')?' active':''; ?>" href="/wtf" title="Any djif"><span class="iconic reload"></span></a>
-				<a class="button rond<?php echo ($action == 'latest')?' active':''; ?>" href="/latest" title="Most recent djifs"><span class="iconic clock"></span></a>
+				<a class="button rond<?php echo ($action == 'top')?' active':''; ?>" href="/top" title="<?php echo HEADER_TITLE_TOP;?>"><span class="iconic heart_stroke"></span></a>
+				<a class="button rond<?php echo ($action == 'wtf')?' active':''; ?>" href="/wtf" title="<?php echo HEADER_TITLE_WTF;?>"><span class="iconic reload"></span></a>
+				<a class="button rond<?php echo ($action == 'latest')?' active':''; ?>" href="/latest" title="<?php echo HEADER_TITLE_LATEST;?>"><span class="iconic clock"></span></a>
 			</div>
 			<div id="action">
 

@@ -1,7 +1,7 @@
 			</div>
 			<div class="footer">
 				<a href="/contact">
-					<span class="iconic comment_stroke"></span>Contact us
+				<span class="iconic comment_stroke"></span><?php echo CONTACT_US;?>
 				</a>
 			</div>
 		</div>

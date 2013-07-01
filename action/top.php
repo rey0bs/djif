@@ -19,7 +19,7 @@
 	}
 	echo '</div>';
 	$seq->command('prev');
-	include('templates/buttons/make.html');
+	interpret('templates/buttons/make.html', MAKE_BUTTON);
 	$seq->command('next');
 
 ?>

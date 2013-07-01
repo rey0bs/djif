@@ -2,25 +2,25 @@
 if ($_POST['name'] && $_POST['email'] && $_POST['message']) {
 	require_once('config/config.php');
 	$to      = CONTACT;
-	$subject = 'Contact from djif.net';
+	$subject = CONTACT_SUBJECT;
 	
 	$message = '
 	<html>
 		<head>
-			<title>Contact from djif.net</title>
+			<title>'.CONTACT_SUBJECT.'</title>
 		</head>
 		<body>
-			<h2>Contact from djif.net</h2>
+			<h2>'.CONTACT_SUBJECT.'</h2>
 			<p>
-				<strong>Name</strong><br>
+				<strong>'.NAME.'</strong><br>
 				' . $_POST['name'] . '
 			</p>
 			<p>
-				<strong>Email</strong><br>
+				<strong>'.EMAIL.'</strong><br>
 				' . $_POST['email'] . '
 			</p>
 			<p>
-				<strong>Message</strong><br>
+				<strong>'.MESSAGE.'</strong><br>
 				' . nl2br($_POST['message']) . '
 			</p>
 				
@@ -37,11 +37,11 @@ if ($_POST['name'] && $_POST['email'] && $_POST['message']) {
 	
 	mail($to, $subject, $message, $headers);
 ?>
-	<p class="quote">Thanks for your feedback.</p>
+	<p class="quote"><?php echo CONTACT_THANKS;?></p>
 	<form action="/" method="post">
 		<input type="hidden" name="from" value="contact" />
 		<div class="submit_button">
-			<input type="submit" value="I'm the best" />
+		<input type="submit" value="<?php echo CONTACT_BOAST_BUTTON;?>" />
 		</div>
 	</form>
 <?php 
@@ -49,16 +49,16 @@ if ($_POST['name'] && $_POST['email'] && $_POST['message']) {
 ?>
 	<form action="/contact" method="post" id="contact">
 		<div class="input_group">
-			<label for="name">Your name*</label>
+			<label for="name"><?php echo CONTACT_FORM_NAME;?>*</label>
 			<input type="text" name="name" value="<?php echo $_POST['name']; ?>" required="required" placeholder="Lol Cat" />
-			<label for="email">Your email*</label>
+			<label for="email"><?php echo CONTACT_FORM_EMAIL;?>*</label>
 			<input type="email" name="email" value="<?php echo $_POST['email']; ?>" required="required" placeholder="lol.cat@wtf.com" />
-			<label for="message">Your message*</label>
-			<textarea name="message" rows="6" required="required" placeholder="Your website is an insult to my race."><?php echo $_POST['message']; ?></textarea>
-			<span class="small text-right">* Required</span>
+			<label for="message"><?php echo CONTACT_FORM_MESSAGE;?>*</label>
+			<textarea name="message" rows="6" required="required" placeholder="<?php echo CONTACT_FORM_EXEMPLE_MESSAGE;?>"><?php echo $_POST['message']; ?></textarea>
+			<span class="small text-right">* <?php echo CONTACT_FORM_REQUIRED;?></span>
 		</div>
 		<div class="submit_button">
-			<input id="remix" type="submit" value="Send !" />
+		<input id="remix" type="submit" value="<?php echo CONTACT_FORM_SEND;?>" />
 		</div>
 	</form>
 <?php } ?>

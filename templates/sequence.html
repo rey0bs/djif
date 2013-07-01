@@ -4,11 +4,13 @@
 [[command]]
 <script>
 	$('#am-container').montage({
-		liquid 	: false,
-		minw                    : 70,  
-		minh                    : 70,  
-		maxh                    : 250, 
-		alternateHeight         : false,
+		liquid am: false,
+		minw : 50,
+		alternateHeight : true,
+		alternateHeightRange : {
+			minw: 80,
+			maxh: 90
+		},
 		fillLastRow : true
 	});
 </script>

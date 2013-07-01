@@ -83,6 +83,10 @@ class Djif {
 			'[[sharetext]]' => rawurlencode('This djif mixes an animated gif and an audio from youtube or audio file.'),
 			'[[shareimg]]' => rawurlencode($this->url.'.jpg'),
 			'[[ajax]]' => 0,
+			'[[djif_simple_link]]' => DJIF_SIMPLE_LINK,
+			'[[djif_share_on]]' => DJIF_SHARE_ON,
+			'[[djif_edit_title]]' => DJIF_EDIT_TITLE,
+			'[[djif_edit]]' => DJIF_EDIT,
 		);
 	}
 	
@@ -120,8 +124,8 @@ class Djif {
 		$gif_id = $this->gif->store($dao);
 		$audio_id = $this->audio->store($dao);
 		$dao->storeDjif($this->hash, $gif_id, $audio_id, $this->preview);
-		$placeholders = array('[[url]]' => $this->url);
-		return replacePlaceHolders(file_get_contents('templates/link.html'), $placeholders);
+		$placeholders = array('[[url]]' => $this->url, '[[djif_share]]' => DJIF_SHARE);
+		interpret('templates/link.html', $placeholders);
 	}
 
 }

@@ -12,7 +12,7 @@
 		if ($ajax) {
 
 		} else {
-			include('templates/buttons/make.html');
+			interpret('templates/buttons/make.html', MAKE_BUTTON);
 		}
 	} else {
 		fail();

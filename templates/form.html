@@ -2,18 +2,18 @@
 	<img src="/images/loader_film.gif" style="display: none;" />
 	<div class="input_group gif_group">
 		<span class="iconic camera"></span>
-		<label for="gif_url">Gif<span class="small">URL of your gif</span></label>
+		<label for="gif_url">[[make_form_gif]]<span class="small">[[make_form_gif_details]]</span></label>
 		<input id="gifSource" type="text" name="gif_url" onclick="select()" value="[[gifUrl]]"/>
 		<div id="plus">+</div>
 	</div>
 
 	<div class="input_group sound_group">
 		<span class="iconic play_alt"></span>
-		<label for="audio_url">Sound<span class="small">Youtube, OGG</span></label>
+		<label for="audio_url">[[make_form_audio]]<span class="small">[[make_form_audio_details]]</span></label>
 		<input id="soundSource" type="text" name="audio_url" onclick="select()" value="[[audioUrl]]"/>
 	</div>
 	
 	<div class="submit_button">
-		<input id="remix" type="submit" value="Mix !"/><p id="tooltip">Choose a gif and a sound to mix together</p>
+		<input id="remix" type="submit" value="[[make_form_mix_button]]"/><p id="tooltip">[[make_form_tooltip]]</p>
 	</div>
 </form>

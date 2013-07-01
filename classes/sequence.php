@@ -20,62 +20,63 @@ class Sequence {
 			$this->limit = -1;
 			switch ($this->n) {
 				case 0:
-					$this->text = 'Another !';
+					$this->text = ANOTHER_TXT_0;
 					break;
 				case 1:
-					$this->text = 'Another one !';
+					$this->text = ANOTHER_TXT_1;
 					break;
 				case 2:
-					$this->text = 'Yet another !';
+					$this->text = ANOTHER_TXT_2;
 					break;
 				case 3:
-					$this->text = 'Again !';
+					$this->text = ANOTHER_TXT_3;
 					break;
 				case 4:
 				case 5:
-					$this->text = 'And again !';
+					$this->text = ANOTHER_TXT_4_5;
 					break;
 				case 6:
-					$this->text = 'Please another one';
+					$this->text = ANOTHER_TXT_6;
 					break;
 				case 7:
-					$this->text = 'Just one more !';
+					$this->text = ANOTHER_TXT_7;
 					break;
 				case 8:
-					$this->text = 'Or two ?';
+					$this->text = ANOTHER_TXT_8;
 					break;
 				case 9:
-					$this->text = 'Good things come in threes';
+					$this->text = ANOTHER_TXT_9;
 					break;
 				case 10:
-					$this->text = 'Ok last one';
+					$this->text = ANOTHER_TXT_10;
 					break;
 				case 11:
-					$this->text = 'Shouldn\'t I be working ?';
+					$this->text = ANOTHER_TXT_11;
 					break;
 				case 12:
-					$this->text = 'Last one this time';
+					$this->text = ANOTHER_TXT_12;
 					break;
 				case 13:
-					$this->text = 'But this time I mean it';
+					$this->text = ANOTHER_TXT_13;
 					break;
 				case 14:
-					$this->text = 'I promise';
+					$this->text = ANOTHER_TXT_14;
 					break;
 				case 15:
-					$this->text = 'I can quit anytime';
+					$this->text = ANOTHER_TXT_15;
 					break;
 				case 16:
-					$this->text = 'It\'s not like I\'m addicted';
+					$this->text = ANOTHER_TXT_16;
+					break;
 				case 17:
-					$this->text = 'I kan haz lil moa ?';
+					$this->text = ANOTHER_TXT_17;
 					break;
 				default:
-					$this->text = 'Ok I\'ll stop last year';
+					$this->text = ANOTHER_TXT_18;
 					break;
 			}
 			if($this->n == $this->limit-1) {
-				$this->text = 'Shit ! Only one left';
+				$this->text = ANOTHER_ONE_LEFT;
 			}
 		} else {
 			$this->limit = $this->dao->countDjif()-1;
@@ -136,10 +137,10 @@ class Sequence {
 	}
 	
 	public function getPlaceholders() {
-	
+		$makeButton = replacePlaceHolders(file_get_contents('templates/buttons/make.html'), array('[[default]]' => MAKE_BUTTON));
 		return array(
 				'[[imgs]]' => $this->imgs,
-				'[[command]]' => $this->command('prev') . file_get_contents('templates/buttons/make.html') . $this->command('next')
+				'[[command]]' => $this->command('prev') . $makeButton . $this->command('next')
 		);
 	}
 
