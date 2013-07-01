@@ -5,5 +5,9 @@ RewriteRule ^(.+)\.jpg$ index_image.php?hash=$1 [L]
 RewriteRule ^(css|images|typo|js)/.* - [L]
 RewriteRule ^(ajax|embed)/(.+)$ index_ajax.php?action=$2 [L]
 RewriteRule ^(edit)/(.+)$ index.php?action=$1&hash=$2 [L]
+
+RewriteCond %{HTTP:Accept-Language} (fr) [NC]
+RewriteRule ^(.*)$ index.php?action=$1&lang=fr [L]
+
 RewriteRule ^(.*)$ index.php?action=$1 [L]
 
