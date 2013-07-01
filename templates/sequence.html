@@ -1,16 +1,34 @@
+[[command]]
 <div class="am-container" id="am-container">
 	[[imgs]]
 </div>
 [[command]]
 <script>
-	$('#am-container').montage({
-		liquid am: false,
-		minw : 50,
-		alternateHeight : true,
-		alternateHeightRange : {
-			minw: 80,
-			maxh: 90
-		},
-		fillLastRow : true
-	});
+$(function(){
+	
+	var $container 	= $('#am-container'),
+	$imgs		= $container.find('img').hide(),
+	totalImgs	= $imgs.length,
+	cnt			= 0;
+
+	$imgs.each(function(i) {
+		var $img	= $(this);
+		$('<img/>').load(function() {
+			++cnt;
+			if( cnt === totalImgs ) {
+				$imgs.show();
+				$container.montage({
+					fillLastRow				: true,
+					alternateHeight			: true,
+					alternateHeightRange	: {
+						min	: 120,
+						max	: 140
+					}
+				});
+
+			}
+		}).attr('src',$img.attr('src'));
+	});	
+
+});
 </script>
