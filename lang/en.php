@@ -87,4 +87,3 @@ define('ANOTHER_TXT_18', 'Ok I\'ll stop last year');
 define('ANOTHER_ONE_LEFT', 'Shit ! Only one left');
 
 ?>
-
