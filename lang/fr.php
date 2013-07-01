@@ -58,7 +58,7 @@ define('ERROR_MSG_4', 'Oula, ça va pas mieux toi…');
 define('ERROR_MSG_5', 'Qui c\'est qu\'a encore oublié ses p\'tits cachetons ??');
 define('ERROR_MSG_6', 'Gné ?');
 define('ERROR_MSG_7', 'Je tiens à signaler que le hash de ce djif est complètement moisi.');
-define('ERROR_MSG_8', 'C\'est quelqu\'un qui m\'a dit… que… ce djif était mort…');
+define('ERROR_MSG_8', 'Et la môme du 8ème, ce hash, elle l\'aime ?';
 define('ERROR_TITLE', 'Le djif que vous avez demandé n\'existe pas (ou plus). C\'est pas grave, on va en regarder un autre !');
 define('ERROR_BUTTON', 'Hé !?');
 
