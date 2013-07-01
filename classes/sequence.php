@@ -6,8 +6,10 @@ class Sequence {
 	var $type;
 	var $limit;
 	var $text;
+	var $dao;
 
-	function __construct($dao, $type, $infinite=null) {
+	function __construct($type, $infinite=null) {
+		$this->dao = new Dao();
 		if(isset($_POST['n']) && is_numeric($_POST['n'])) {
 			$this->n = $_POST['n'];
 		} else {
@@ -76,7 +78,7 @@ class Sequence {
 				$this->text = 'Shit ! Only one left';
 			}
 		} else {
-			$this->limit = $dao->countDjif()-1;
+			$this->limit = $this->dao->countDjif()-1;
 		}
 	}
 
@@ -87,6 +89,16 @@ class Sequence {
 	public function getMsg() {
 		return $this->text;
 	}
+	
+	public function getImgsRender( $sort_by ) {
+		$output = "";
+		$previews = $this->dao->getPreviewsFromSeqBy($this, $sort_by);
+		while($row = $previews->fetch_assoc()) {
+			$hash = $row["hash"];
+			$output .= replacePlaceHolders(file_get_contents('templates/djif-preview.html'), array('[[hash]]' => $hash ));
+		}
+		return $output;
+	}
 
 	public function command($cmd) {
 		if($cmd == 'prev' && $this->n > 0) {
@@ -95,22 +107,47 @@ class Sequence {
 				'[[text]]' => '<',
 				'[[n]]' => max($this->n - SEQUENCE_SIZE, 0)
 			);
-			echo replacePlaceHolders(file_get_contents('templates/buttons/command.html'), $pholders);
+			return replacePlaceHolders(file_get_contents('templates/buttons/command.html'), $pholders);
 		} else if ($cmd == 'next' && $this->n + SEQUENCE_SIZE < $this->limit) {
 			$pholders = array(
 				'[[target]]' => $this->type,
 				'[[text]]' => '>',
 				'[[n]]' => $this->n + SEQUENCE_SIZE
 			);
-			echo replacePlaceHolders(file_get_contents('templates/buttons/command.html'), $pholders);
+			return replacePlaceHolders(file_get_contents('templates/buttons/command.html'), $pholders);
 		} else if ($cmd == 'random') {
 			$pholders = array(
 				'[[target]]' => 'wtf',
 				'[[text]]' => $this->text,
 				'[[n]]' => $this->n+1
 			);
-			echo replacePlaceHolders(file_get_contents('templates/buttons/command.html'), $pholders);
+			return replacePlaceHolders(file_get_contents('templates/buttons/command.html'), $pholders);
 		}
+		return '';
+	}
+	
+	public function getTemplate() {
+		$fileName = 'templates/sequence.html';
+		if( file_exists( $fileName ) ) {
+			return file_get_contents( $fileName );
+		} else {
+			return false;
+		}
+	}
+	
+	public function getPlaceholders() {
+	
+		return array(
+				'[[imgs]]' => $this->imgs,
+				'[[command]]' => $this->command('prev') . file_get_contents('templates/buttons/make.html') . $this->command('next')
+		);
+	}
+
+	public function render( $sort_by='date', $placeholders=array() ) {
+		
+		$this->imgs = $this->getImgsRender($sort_by);
+		$placeholders = array_merge( (array)$this->getPlaceholders(), (array)$placeholders );
+		return replacePlaceHolders($this->getTemplate(), $placeholders);
 	}
 
 }

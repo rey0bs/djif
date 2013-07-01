@@ -215,28 +215,6 @@ $(function(){
 	    });
 	});
 	
-	/*$('#mozaique').jMosaic({
-        items_type: ".djif", // Type of elements in the selector (Default: img);
-		 min_row_height: 100, // Minimal row height (Default: 150);
-		 margin: 3, // Space between elements (Default: 0);
-		 is_first_big: false // First row - largest (Default: false);
-	});*/
-	
-	/*$('#mozaique .djif').each(function(i,elt){
-		$(elt).click(function(){
-		    $('.jMosaic-item.resized').each(function(i2,elt2){
-		        $(elt2).removeClass('resized')
-		            .animate({
-		                'width': $(elt2).attr('data-orig-width'),
-		                'height': $(elt2).attr('data-orig-height')
-		            });
-		    });
-		    $(elt).attr('data-orig-width', $(elt).css('width'));
-		    $(elt).attr('data-orig-height', $(elt).css('height'));
-		    $(elt).addClass('resized').animate({'width': '+=100', 'height': '+=50'});
-		});
-	});*/
-
 
 	$('#remix').mouseleave(function() {
 		$('#tooltip').fadeOut(200);

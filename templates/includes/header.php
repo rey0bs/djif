@@ -5,14 +5,14 @@
 		
 		<meta charset='utf-8'>
 		
-		<link rel="stylesheet" href="/css/jquery.jMosaic.css"/>
 		<link rel="stylesheet" type="text/css" href="/typo/iconic_stroke/iconic_stroke.css">
 		<link rel="stylesheet" type="text/css" href="/css/normalize.css">
 		<link rel="stylesheet" type="text/css" href="/js/diaspora-share-button/eraser.css">
+		<link rel="stylesheet" type="text/css" href="/css/montage.css">
 		<link rel="stylesheet" type="text/css" href="/css/style.css">
 		<script src="/js/jquery-1.9.1.min.js"></script>
 		<script src="/js/jquery.easing.min.js"></script>
-		<script src="/js/jquery.jMosaic.min.js"></script>
+		<script src="/js/jquery.montage.min.js"></script>
 		<script src="https://www.youtube.com/player_api" type="text/javascript"></script>
 		<link rel="Shortcut icon" href="/images/favicon.ico" type="image/x-icon" />
 		<link rel="icon" href="/images/favicon.ico" type="image/x-icon">

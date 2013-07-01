@@ -544,3 +544,13 @@ a#hide_audio {
 .preview {
 	height : 150px;
 }
+
+.am-container {
+	width: 700px;
+	margin: 0 auto;
+}
+.am-container:after {
+	content:'';
+	display:block;
+	clear: both;
+}
