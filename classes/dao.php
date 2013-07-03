@@ -31,8 +31,8 @@ class Dao {
 			gif.type AS gifType,
 			audio.url AS audio,
 			audio.type AS audioType,
-			gif.width, gif.height
-			title,
+			gif.width, gif.height,
+			title
 			FROM djifs, media AS gif, media AS audio
 			WHERE djifs.gif = gif.id AND djifs.audio = audio.id";
 		return $select;

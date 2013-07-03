@@ -18,7 +18,8 @@ class Youtube extends Media {
 	}
 	
 	public function getTitle() {
-		$json = json_decode(file_get_contents("http://gdata.youtube.com/feeds/api/videos/$this->url?alt=json"), true);
+		$hash = $this->getHash();
+		$json = json_decode(file_get_contents("http://gdata.youtube.com/feeds/api/videos/$hash?alt=json"), true);
 		return $json["entry"]["title"]["\$t"];
 	}
 
