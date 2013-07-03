@@ -1,0 +1,11 @@
+# The host running the http application (from which the user is going to connect)
+DJIF_HOST="localhost"
+# The host running SGBD
+DB_HOST="localhost"
+# Mysql default is 3306
+DB_PORT="3306"
+DB_NAME=""
+DB_USER=""
+DB_PASS=""
+CONTACT=""
+
