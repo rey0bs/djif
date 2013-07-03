@@ -60,7 +60,7 @@ define('ERROR_MSG_6', 'Gné ?');
 define('ERROR_MSG_7', 'Je tiens à signaler que le hash de ce djif est complètement moisi.');
 define('ERROR_MSG_8', 'Et la môme du 8ème, ce hash, elle l\'aime ?');
 define('ERROR_TITLE', 'Le djif que vous avez demandé n\'existe pas (ou plus). C\'est pas grave, on va en regarder un autre !');
-define('ERROR_BUTTON', 'Hé !?');
+define('ERROR_BUTTON', 'Hein !?');
 
 /* various : action/{wtf,top,get},php, classes/sequence.php */
 define('MAKE_BUTTON', 'Fais ton djif !');
