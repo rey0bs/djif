@@ -57,6 +57,10 @@ then
 	fail "Variable DB_PORT is not defined."
 fi
 
+if [ -f "${CONFIGDIR}/config.php" ]
+then
+	mv "${CONFIGDIR}/config.php" "${CONFIGDIR}/config.bak.php"
+fi
 cat > "${CONFIGDIR}/config.php" <<EOF
 <?php
 define('DB_HOST','${DB_HOST}');
@@ -69,6 +73,7 @@ define('CONSUMER_KEY', '');
 define('CONSUMER_SECRET', '');
 define('ACCESS_TOKEN', '');
 define('ACCESS_TOKEN_SECRET', '');
+define('SEQUENCE_SIZE','9');
 ?>
 EOF
 
