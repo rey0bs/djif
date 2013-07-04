@@ -90,6 +90,7 @@ class Djif {
 			'[[djif_share_on]]' => DJIF_SHARE_ON,
 			'[[djif_edit_title]]' => DJIF_EDIT_TITLE,
 			'[[djif_edit]]' => DJIF_EDIT,
+			'[[title]]' => $this->title,
 		);
 	}
 	

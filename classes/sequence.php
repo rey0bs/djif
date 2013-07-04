@@ -96,7 +96,10 @@ class Sequence {
 		$previews = $this->dao->getPreviewsFromSeqBy($this, $sort_by);
 		while($row = $previews->fetch_assoc()) {
 			$hash = $row["hash"];
-			$output .= replacePlaceHolders(file_get_contents('templates/djif-preview.html'), array('[[hash]]' => $hash ));
+			$output .= replacePlaceHolders(
+					file_get_contents('templates/djif-preview.html'), 
+					array('[[hash]]' => $row["hash"], '[[title]]' => $row["title"] )
+			);
 		}
 		return $output;
 	}

@@ -407,6 +407,41 @@ a#hide_audio {
 .mask-2 {
 	background: rgba(0,0,0,1) url('../images/clap2.png') repeat-x left 1px;
 }
+.djif-preview {
+	box-shadow: 0 1px 5px #888888;
+}
+.djif-preview .mask-2 {
+	transition: all 0.15s ease-in-out 0s;
+    -webkit-transition: all 0.15s ease-in-out 0s;
+	background: rgba(0,0,0,1) url('../images/clap2.png') repeat-x left -10px;
+	top: auto;
+	bottom: 0;
+	padding-top: 10px;
+	color: #fff;
+	font-size: 14px;
+	overflow: visible;
+	height: 36px;
+}
+.djif-preview:hover .mask-2 {
+	height: 60px;
+	opacity: 0.8;
+}
+
+.djif-preview .mask-2:before {
+    background: #000000;
+    border-radius: 50%;
+    content: "";
+    display: block;
+    font-family: 'IconicStroke';
+    font-size: 25px;
+    height: 16px;
+    left: 50%;
+    line-height: 16px;
+    margin-left: -8px;
+    position: absolute;
+    top: -6px;
+    width: 16px;
+}
 .mask-3 {
     opacity: 0.6;
 }
