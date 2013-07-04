@@ -8,8 +8,8 @@ class Sequence {
 	var $text;
 	var $dao;
 
-	function __construct($type, $infinite=null) {
-		$this->dao = new Dao();
+	function __construct($dao, $type, $infinite=null) {
+		$this->dao = $dao;
 		if(isset($_POST['n']) && is_numeric($_POST['n'])) {
 			$this->n = $_POST['n'];
 		} else {
@@ -121,7 +121,7 @@ class Sequence {
 			return replacePlaceHolders(file_get_contents('templates/buttons/command.html'), $pholders);
 		} else if ($cmd == 'random') {
 			$pholders = array(
-				'[[target]]' => 'wtf',
+				'[[target]]' => $this->type,
 				'[[text]]' => $this->text,
 				'[[n]]' => $this->n+1
 			);
