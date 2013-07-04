@@ -84,7 +84,7 @@ class Sequence {
 	}
 
 	public function getRange() {
-		return array($this->n, min(SEQUENCE_SIZE, $this->limit - $this->n));
+		return array($this->n, SEQUENCE_SIZE);
 	}
 
 	public function getMsg() {
