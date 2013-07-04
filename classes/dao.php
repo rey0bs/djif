@@ -31,7 +31,8 @@ class Dao {
 			gif.type AS gifType,
 			audio.url AS audio,
 			audio.type AS audioType,
-			gif.width, gif.height
+			gif.width, gif.height,
+			title
 			FROM djifs, media AS gif, media AS audio
 			WHERE djifs.gif = gif.id AND djifs.audio = audio.id";
 		return $select;
@@ -64,7 +65,7 @@ class Dao {
 		$range = $seq->getRange();
 		$from = $range[0];
 		$n = $range[1];
-		$select = "SELECT hash FROM djifs ORDER BY $criterion DESC LIMIT $from, $n";
+		$select = "SELECT hash, title FROM djifs ORDER BY $criterion DESC LIMIT $from, $n";
 		$result = $this->db->query($select);
 		if($result) {
 			return $result;
@@ -114,13 +115,13 @@ class Dao {
 		return null;
 	}
 
-	function storeDjif($hash, $gif_id, $audio_id, $preview) {
+	function storeDjif($hash, $gif_id, $audio_id, $preview, $title) {
 		$ip = ip2long ($this->db->real_escape_string($_SERVER['REMOTE_ADDR']));
 		$preview = $this->db->real_escape_string($preview);
 		$insert = "
 			INSERT INTO
-				djifs(hash, gif, audio, ip, preview)
-			VALUES ('$hash', '$gif_id', '$audio_id', '$ip', '$preview')";
+				djifs(hash, gif, audio, ip, preview, title)
+			VALUES ('$hash', '$gif_id', '$audio_id', '$ip', '$preview', '$title')";
 		$this->db->query($insert);
 	}
 

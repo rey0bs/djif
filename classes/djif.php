@@ -7,6 +7,7 @@ class Djif {
 	var $gif;
 	var $audio;
 	var $preview;
+	var $title;
 	var $hash;
 	var $url;
 	var $directload = 'true';
@@ -35,6 +36,7 @@ class Djif {
 		$size = array($row["width"], $row["height"]);
 		$instance->gif = $gif->getMedia('gif', $size);
 		$instance->audio = $audio->getMedia('audio');
+		$instance->title = $row["title"];
 		$instance->validate();
 		return $instance;
 	}
@@ -47,6 +49,7 @@ class Djif {
 		$instance->url = 'http://' . $_SERVER['SERVER_NAME'] . '/' . $instance->hash;
 		$instance->gif = $gif->getMedia('gif');
 		$instance->audio = $audio->getMedia('audio');
+		$instance->title = $instance->audio->getTitle();
 		$instance->validate();
 		if ($instance->valid) { // if we're gonna spend some time computing a preview, at least we don't do it before we're sure the djif is valid
 			$instance->buildPreview();
@@ -123,7 +126,7 @@ class Djif {
 		
 		$gif_id = $this->gif->store($dao);
 		$audio_id = $this->audio->store($dao);
-		$dao->storeDjif($this->hash, $gif_id, $audio_id, $this->preview);
+		$dao->storeDjif($this->hash, $gif_id, $audio_id, $this->preview, $this->title);
 		$placeholders = array('[[url]]' => $this->url, '[[djif_share]]' => DJIF_SHARE);
 		interpret('templates/link.html', $placeholders);
 	}

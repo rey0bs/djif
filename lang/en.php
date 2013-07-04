@@ -10,7 +10,7 @@ define('CONTACT_BOAST_BUTTON', 'I\'m the best');
 define('CONTACT_FORM_NAME', 'Your name');
 define('CONTACT_FORM_EMAIL', 'Your email');
 define('CONTACT_FORM_MESSAGE', 'Your message');
-define('CONTACT_FORM_EXEMPLE_MESSAGE', 'Your website is an insult to the whole human species.');
+define('CONTACT_FORM_EXEMPLE_MESSAGE', 'Your website is an insult to the whole cat species.');
 define('CONTACT_FORM_REQUIRED', 'Required');
 define('CONTACT_FORM_SEND', 'Send !');
 /* templates/includes/footer.php */

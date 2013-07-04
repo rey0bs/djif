@@ -17,6 +17,12 @@ class Youtube extends Media {
 		return preg_replace( '#.*(v=|youtu.be/)([^&\?]+)&?.*#', '$2', $this->url );
 	}
 	
+	public function getTitle() {
+		$hash = $this->getHash();
+		$json = json_decode(file_get_contents("http://gdata.youtube.com/feeds/api/videos/$hash?alt=json"), true);
+		return $json["entry"]["title"]["\$t"];
+	}
+
 	public function getPlaceholders() {
 		return array(
 			'[[ythash]]' => $this->getHash(),

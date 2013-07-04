@@ -1,0 +1,20 @@
+function fail() {
+	echo "${@}"
+	exit 1
+}
+
+function goBackToDjifRoot() {
+	TARGET="index.php"
+	HERE="$(pwd)"
+	[[ -n "${1}" ]] && TARGET="${1}"
+	while [ ! -f "${HERE}/${TARGET}" ] && [ -n "${HERE}" ]
+	do
+		HERE="${HERE%/*}"
+	done
+	if [ -z "${HERE}" ] && [ ! -f "${HERE}/${TARGET}" ]
+	then
+		fail "fatal: Not a djif install (or any parent up to root)"
+	fi
+	echo "${HERE}/"
+}
+

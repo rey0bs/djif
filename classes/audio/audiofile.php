@@ -9,6 +9,10 @@ class Audiofile extends Media {
 		$this->valid = true;
 	}
 
+	public function getTitle() {
+		return preg_replace("#^https?://.*/(.*)\.(mp3|ogg|wav)(\?[^=]+=[^%]*(&[^=]+=[^%]*)*)?$#", "$1", $this->url);
+	}
+
 	public static function isMine($url) {
 		return preg_match("#^https?://.*\.(mp3|ogg|wav)(\?[^=]+=[^%]*(&[^=]+=[^%]*)*)?$#", $url);
 	}
@@ -29,5 +33,6 @@ class Audiofile extends Media {
 			'[[width]]' => 300
 		);
 	}
+
 }
 ?>
