@@ -65,7 +65,14 @@ class Dao {
 		$range = $seq->getRange();
 		$from = $range[0];
 		$n = $range[1];
-		$select = "SELECT hash, title FROM djifs ORDER BY $criterion DESC LIMIT $from, $n";
+		$select = "
+			SELECT
+			hash,
+			title,
+			type
+		FROM djifs, media, types
+		WHERE djifs.audio = media.id AND media.type = types.id
+		ORDER BY $criterion DESC LIMIT $from, $n";
 		$result = $this->db->query($select);
 		if($result) {
 			return $result;
