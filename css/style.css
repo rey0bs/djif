@@ -421,26 +421,19 @@ a#hide_audio {
 	font-size: 14px;
 	overflow: visible;
 	height: 36px;
+	text-align: left;
 }
 .djif-preview:hover .mask-2 {
 	height: 60px;
 	opacity: 0.8;
 }
 
-.djif-preview .mask-2:before {
-    background: #000000;
-    border-radius: 50%;
-    content: "";
-    display: block;
-    font-family: 'IconicStroke';
-    font-size: 25px;
-    height: 16px;
-    left: 50%;
-    line-height: 16px;
-    margin-left: -8px;
-    position: absolute;
-    top: -6px;
-    width: 16px;
+.djif-preview .mask-2 .iconic {
+	float: left;
+    font-size: 32px;
+    font-weight: bold;
+    height: 100%;
+    padding: 0 5px;
 }
 .mask-3 {
     opacity: 0.6;
