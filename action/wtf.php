@@ -10,6 +10,6 @@
 	$djif = $dao->getRandomDjif();
 	echo $djif->render(array('[[ajax]]' => ($ajax?1:0)));
 	interpret('templates/buttons/make.html', MAKE_BUTTON);
-	$seq->command('random');
+	echo $seq->command('random');
 
 ?>

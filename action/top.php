@@ -7,19 +7,6 @@
 
 	$dao = new Dao();
 	$seq = new Sequence($dao, 'top');
-	echo '<div id="previews">';
-	$previews = $dao->getPreviewsFromSeqBy($seq, 'visits');
-	while($row = $previews->fetch_assoc()) {
-		$hash = $row["hash"];
-?>
-		<a href="/<?php echo $hash;?>">
-			<img class="preview" src="/<?php echo $hash;?>.jpg"/>
-		</a>
-<?php
-	}
-	echo '</div>';
-	$seq->command('prev');
-	interpret('templates/buttons/make.html', MAKE_BUTTON);
-	$seq->command('next');
+	echo $seq->render('visits');
 
 ?>

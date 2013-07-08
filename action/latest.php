@@ -5,7 +5,8 @@
 	require_once('classes/djif.php');
 	require_once('classes/sequence.php');
 
-	$seq = new Sequence('latest');
+	$dao = new Dao();
+	$seq = new Sequence($dao, 'latest');
 	echo $seq->render('date');
 
 ?>

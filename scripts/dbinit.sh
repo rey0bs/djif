@@ -6,7 +6,7 @@ SCRIPT_DIR="${0%/*}"
 . "${SCRIPT_DIR}/connexion"
 . "${SCRIPT_DIR}/functions"
 
-goBackToDjifRoot
+cd "$(goBackToDjifRoot)"
 
 echo "Choose a name for the mysql database storing the data (default 'djif')"
 read DB_NAME
