@@ -7,12 +7,12 @@
 $(function(){
 	
 	var $container 	= $('#am-container'),
-	$imgs		= $container.find('img').hide(),
+	$imgs		= $container.find('.djif-preview').hide(),
 	totalImgs	= $imgs.length,
 	cnt			= 0;
 
 	$imgs.each(function(i) {
-		var $img	= $(this);
+		var $img	= $(this).find('img');
 		$('<img/>').load(function() {
 			++cnt;
 			if( cnt === totalImgs ) {
