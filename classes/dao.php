@@ -108,7 +108,7 @@ class Dao {
 				media as audio
 			WHERE
 			hash = '$hash'
-			AND djifs.gif = gif.id
+			AND djifs.gif = img.id
 			AND djifs.audio = audio.id";
 		$result = $this->db->query($select);
 		if ($result && $row = $result->fetch_assoc()) {
