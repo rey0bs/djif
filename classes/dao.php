@@ -74,7 +74,7 @@ class Dao {
 			SELECT
 			hash,
 			title,
-			type
+			types.name as type
 		FROM djifs, media, types
 		WHERE djifs.audio = media.id AND media.type = types.id
 		ORDER BY $criterion DESC LIMIT $from, $n";
