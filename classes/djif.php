@@ -39,13 +39,13 @@ class Djif {
 		return $instance;
 	}
 
-	public function fromUrls($gif_url, $audio_url) {
+	public function fromUrls($db, $gif_url, $audio_url) {
 		$instance = new self();
 		$instance->hash = createHash();
 		$instance->url = 'http://' . $_SERVER['SERVER_NAME'] . '/' . $instance->hash;
 		$instance->gif = Media::get($gif_url);
 		$instance->audio = Media::get($audio_url);
-		$instance->title = $instance->audio->getTitle();
+		$instance->title = $db->real_escape_string($instance->audio->getTitle());
 		$instance->validate();
 		if ($instance->valid) { // if we're gonna spend some time computing a preview, at least we don't do it before we're sure the djif is valid
 			$instance->buildPreview();

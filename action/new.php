@@ -7,7 +7,7 @@
 	$gif_url = htmlentities($_POST['gif_url']);
 	$audio_url = htmlentities($_POST['audio_url']);
 	$dao = new Dao();
-	$djif = Djif::fromUrls( $gif_url, $audio_url );
+	$djif = Djif::fromUrls( $dao, $gif_url, $audio_url );
 	if($djif->isValid()) {
 		$djif->store($dao); // print the share button with a link
 		echo $djif->render(array('[[ajax]]' => ($ajax?1:0)));
