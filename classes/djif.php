@@ -30,25 +30,21 @@ class Djif {
 	public function fromAssoc($row) {
 		$instance = new self();
 		$instance->hash = $row["hash"];
-		$instance->url = 'http://' . $_SERVER['SERVER_NAME'] . '/' . $instance->hash;
-		$gif = new Media( $row["gif"], $row["gifType"] );
-		$audio = new Media( $row["audio"], $row["audioType"]);
-		$size = array($row["width"], $row["height"]);
-		$instance->gif = $gif->getMedia('gif', $size);
-		$instance->audio = $audio->getMedia('audio');
 		$instance->title = $row["title"];
+		$size = array($row["width"], $row["height"]);
+		$instance->url = 'http://' . $_SERVER['SERVER_NAME'] . '/' . $instance->hash;
+		$instance->gif = Media::get($row["img"], $row["imgType"], $size);
+		$instance->audio = Media::get($row["audio"], $row["audioType"]);
 		$instance->validate();
 		return $instance;
 	}
 
 	public function fromUrls($gif_url, $audio_url) {
 		$instance = new self();
-		$gif = new Media( $gif_url );
-		$audio = new Media( $audio_url );
 		$instance->hash = createHash();
 		$instance->url = 'http://' . $_SERVER['SERVER_NAME'] . '/' . $instance->hash;
-		$instance->gif = $gif->getMedia('gif');
-		$instance->audio = $audio->getMedia('audio');
+		$instance->gif = Media::get($gif_url);
+		$instance->audio = Media::get($audio_url);
 		$instance->title = $instance->audio->getTitle();
 		$instance->validate();
 		if ($instance->valid) { // if we're gonna spend some time computing a preview, at least we don't do it before we're sure the djif is valid

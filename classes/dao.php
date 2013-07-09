@@ -26,15 +26,20 @@ class Dao {
 	function fullDjifLine() {
 		$select = "
 			SELECT
-			hash,
-			gif.url AS gif,
-			gif.type AS gifType,
-			audio.url AS audio,
-			audio.type AS audioType,
-			gif.width, gif.height,
-			title
-			FROM djifs, media AS gif, media AS audio
-			WHERE djifs.gif = gif.id AND djifs.audio = audio.id";
+				hash,
+				title,
+				img.width, img.height,
+				img.url AS img,
+				imgType.name AS imgType,
+				audio.url AS audio,
+				audioType.name AS audioType
+			FROM
+				djifs,
+				media AS img, types AS imgType,
+				media AS audio, types AS audioType
+			WHERE
+				djifs.gif = img.id AND djifs.audio = audio.id
+				AND img.type = imgType.id AND audio.type = audioType.id";
 		return $select;
 	}
 
@@ -95,11 +100,11 @@ class Dao {
 		$hash = $this->db->real_escape_string(substr($hash,0,5));
 		$select = "
 			SELECT
-				gif.url as gifUrl,
+				img.url as imgUrl,
 				audio.url as audioUrl
 			FROM
 				djifs,
-				media as gif,
+				media as img,
 				media as audio
 			WHERE
 			hash = '$hash'
@@ -107,7 +112,7 @@ class Dao {
 			AND djifs.audio = audio.id";
 		$result = $this->db->query($select);
 		if ($result && $row = $result->fetch_assoc()) {
-			return array('[[gifUrl]]' => $row["gifUrl"], '[[audioUrl]]' => $row["audioUrl"]);
+			return array('[[gifUrl]]' => $row["imgUrl"], '[[audioUrl]]' => $row["audioUrl"]);
 		}
 		return null;
 	}

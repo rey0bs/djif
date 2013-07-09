@@ -7,23 +7,46 @@ class Media {
 	var $valid = false;
 	var $size;
 
-	function __construct($url, $type=null) {
+	function __construct($url=null, $size=null) {
 		$this->url = $url;
-		if($type) {
-			$this->type = $type;
-		} else {
-			$this->type = strtolower (get_class($this));
-		}
 		$this->id = md5($url);
-		$this->size = array(300,300);
+		$this->type = lcfirst(get_class($this));
+		if($size) {
+			$this->size = $size;
+		} else {
+			$this->size = array(300,300);
+		}
 	}
 	
-	public static function isMine( $url ) {
-		return false;
+	public static function get($url, $type=null, $size=null) {
+		if(! $type) {
+			if(preg_match("#^https?://.*\.(mp3|ogg|wav|gif)(\?[^=]+=[^%]*(&[^=]+=[^%]*)*)?$#", $url)) {
+		    $type = preg_replace("#^https?://.*/(.*)\.(mp3|ogg|wav|gif)(\?[^=]+=[^%]*(&[^=]+=[^%]*)*)?$#", "$2", $url);
+			} else if (preg_match("#^https?://([^/]*\.)?youtu\.?be(\.|/)#i", $url)) {
+				$type = 'youtube';
+			} else {
+				return new Media();
+			}
+		}
+		$path = "classes/media/$type.php";
+		if(file_exists($path)) {
+			require_once $path;
+			$filename = explode("/", $path);
+			$filename = $filename[count($filename)-1];
+
+			$t = explode(".", $filename);
+			$class = ucfirst($t[count($t)-2]);
+
+			return new $class($url, $size);
+		} else {
+			die("Missing class file $path");
+		}
+
 	}
+
 	public function getHash() {
 	}
-	
+
 	public function getUrl() {
 		return $this->url;
 	}
@@ -70,22 +93,5 @@ class Media {
 		return replacePlaceHolders($this->getTemplate($mode), $securePH);
 	}
 	
-	public function getMedia( $type, $size=NULL ) {
-		// load classes
-		foreach (glob("classes/$type/*.php") as $path) {
-
-			require_once $path;
-			$filename = explode("/", $path);
-			$filename = $filename[count($filename)-1];
-
-			$t = explode(".", $filename);
-			$class = ucfirst($t[count($t)-2]);
-
-			if ($class::isMine($this->url)) {
-				return new $class($this->url, $size);
-			}
-		}
-		return $this;
-	}
 }
 ?>

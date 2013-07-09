@@ -3,8 +3,7 @@
 	$url = $_POST['url'];
 	$type = $_POST['component'];
 
-	$media = new Media( $url );
-	$media = $media->getMedia($type);
+	$media = Media::get ( $url );
 	
 	if($media->isValid()) {
 		echo $media->render('preview', array('[[width]]' => '', '[[height]]' => ''));
