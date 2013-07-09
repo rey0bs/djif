@@ -5,25 +5,6 @@ SCRIPT_DIR="${0%/*}"
 . "${SCRIPT_DIR}/connexion"
 . "${SCRIPT_DIR}/functions"
 
-while [[ -z "${DB_HOST}" ]]
-do
-	echo "Please enter the hostname of the machine running the database"
-	read DB_HOST
-done
-while [[ -z "${DB_PORT}" ]]
-do
-	echo "Please enter the port of the database service you're trying to connect"
-	read DB_PORT
-done
-while [[ -z "${DB_NAME}" ]]
-do
-	echo "Please enter the name of the database you're trying to connect"
-	read DB_NAME
-done
-
-echo "Mysql root password is required to alter the structure of the database storing Djifs"
-read -s DB_PASS
-DB_QUERY="mysql -u root -h ${DB_HOST} -P ${DB_PORT} -p${DB_PASS} ${DB_NAME}"
 ${DB_QUERY} <<EOF
 ALTER TABLE djifs ADD title VARCHAR(200);
 EOF
