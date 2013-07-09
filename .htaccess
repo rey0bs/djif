@@ -3,6 +3,10 @@ RewriteRule ^index\.php.* - [L]
 RewriteRule ^index_(ajax|image)\.php.* - [L]
 RewriteRule ^(.+)\.jpg$ index_image.php?hash=$1 [L]
 RewriteRule ^(css|images|typo|js)/.* - [L]
+
+RewriteCond %{HTTP:Accept-Language} (fr) [NC]
+RewriteRule ^(ajax|embed)/(.+)$ index_ajax.php?action=$2&lang=fr [L]
+
 RewriteRule ^(ajax|embed)/(.+)$ index_ajax.php?action=$2 [L]
 RewriteRule ^(edit)/(.+)$ index.php?action=$1&hash=$2 [L]
 

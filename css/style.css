@@ -420,21 +420,46 @@ a#hide_audio {
 	color: #fff;
 	font-size: 14px;
 	overflow: visible;
-	height: 36px;
+	height: 53px;
 	text-align: left;
 }
 .djif-preview:hover .mask-2 {
-	height: 53px;
+	height: 70px;
 	opacity: 0.8;
 }
 
-.djif-preview .mask-2 .iconic {
+.djif-preview .mask-2 .audio-intro {
 	float: left;
-    font-size: 32px;
-    font-weight: bold;
     height: 100%;
     padding: 0 5px;
+    width: 55px;
+    text-align: center;
 }
+
+.djif-preview .mask-2 .iconic {
+    font-size: 32px;
+    font-weight: bold;
+    display: block;
+    left: 2px;
+    position: relative;
+}
+
+.media-type {
+	background: #3299BB;
+	color: #fff;
+	font-size: 10px;
+	border-radius: 2px;
+	padding: 2px 4px;
+	position: relative;
+	top:-3px;
+}
+.media-type.type_youtube {
+	background: #CC0000;
+}
+.media-type.type_mp3 {
+	background: #229900;
+}
+
 .mask-3 {
     opacity: 0.6;
 }
