@@ -594,10 +594,6 @@ a#hide_audio {
 	content: "";
 }
 
-.preview {
-	height : 150px;
-}
-
 .am-container {
 	width: 700px;
 	margin: 0 auto;
