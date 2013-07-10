@@ -32,7 +32,7 @@ define('HEADER_TITLE_LATEST', 'Les plus récents');
 
 /* index_route.php */
 define('LEAD_EXPLAIN', 'Un <strong>gif</strong>, un <strong>son</strong> !');
-define('LEAD_REGULAR', 'Remix the <strong>%$@£&!</strong> out of your <strong>gifs</strong> !');
+define('LEAD_REGULAR', 'Ca va <strong>remixer</strong> dans les chaumieres !');
 
 /* classes/djif.php */
 define('DJIF_SIMPLE_LINK', 'Lien vers ce djif');
