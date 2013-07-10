@@ -11,6 +11,10 @@ class Dao {
 		}
 	}
 
+	function sanitize($text) {
+		return $this->db->real_escape_string($text);
+	}
+
 	/** Operations concerning Djifs **/
 	function countDjif() {
 		$select = "SELECT count(*) as n FROM djifs";

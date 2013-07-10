@@ -45,7 +45,7 @@ class Djif {
 		$instance->url = 'http://' . $_SERVER['SERVER_NAME'] . '/' . $instance->hash;
 		$instance->gif = Media::get($gif_url);
 		$instance->audio = Media::get($audio_url);
-		$instance->title = $db->real_escape_string($instance->audio->getTitle());
+		$instance->title = $db->sanitize($instance->audio->getTitle());
 		$instance->validate();
 		if ($instance->valid) { // if we're gonna spend some time computing a preview, at least we don't do it before we're sure the djif is valid
 			$instance->buildPreview();
