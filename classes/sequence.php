@@ -99,7 +99,7 @@ class Sequence {
 					file_get_contents('templates/djif-preview.html'), 
 					array(
 						'[[hash]]' => $row["hash"],
-						'[[title]]' => $row["title"],
+						'[[title]]' => preg_replace('/_/', ' ', $row["title"]),
 						'[[type]]' => $row["type"],
 					)
 			);
