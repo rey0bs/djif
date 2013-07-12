@@ -10,12 +10,15 @@ $(function(){
 	$imgs		= $container.find('.djif-preview').hide(),
 	totalImgs	= $imgs.length,
 	cnt			= 0;
-
+	
+	$container.append('<img id="galerie_loader" src="/images/loader_film.gif" />');
+	
 	$imgs.each(function(i) {
 		var $img	= $(this).find('img');
 		$('<img/>').load(function() {
 			++cnt;
 			if( cnt === totalImgs ) {
+				$('#galerie_loader').remove();
 				$imgs.show();
 				$container.montage({
 					fillLastRow				: true,
