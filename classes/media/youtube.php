@@ -14,7 +14,7 @@ class Youtube extends Media {
 	}
 
 	public function getHash( ) {
-		return preg_replace( '#.*(v=|youtu.be/)([^&\?]+)&?.*#', '$2', $this->url );
+		return preg_replace( '#.*(v=|youtu.be/)([^&\?\#]+)&?.*#', '$2', $this->url );
 	}
 	
 	public function getTitle() {
