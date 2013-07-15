@@ -1,7 +1,9 @@
 <!DOCTYPE html>
 <html>
 	<head>
-	<title><?php echo SITE_TITLE;?></title>
+		<title><?php echo SITE_TITLE;?></title>
+		<meta name="keywords" content="<?php echo SITE_KEYWORDS;?>">
+		<meta name="description" content="<?php echo SITE_DESCRIPTION;?>">
 		
 		<meta charset='utf-8'>
 		

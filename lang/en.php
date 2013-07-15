@@ -26,6 +26,8 @@ define('IE_CLICK_LINKS', 'Just click on one of the links to get to the download 
 
 /* templates/includes/header.php */
 define('SITE_TITLE', '1 gif, 1 sound. DJif.');
+define('SITE_KEYWORDS', 'DJif, gif, sound, youtube, video, lolcats, share');
+define('SITE_DESCRIPTION', 'Add a sound to a gif and share the result !');
 define('HEADER_TITLE_TOP', 'Most popular djifs');
 define('HEADER_TITLE_WTF', 'Any djif');
 define('HEADER_TITLE_LATEST', 'Most recent djifs');

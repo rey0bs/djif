@@ -26,6 +26,8 @@ define('IE_CLICK_LINKS', 'Cliquez sur un des liens pour vous rendre sur la page 
 
 /* templates/includes/header.php */
 define('SITE_TITLE', '1 gif, 1 son. DJif.');
+define('SITE_KEYWORDS', 'DJif, gif, son, youtube, vidéo, lolchats, partager');
+define('SITE_DESCRIPTION', 'Mettez un son sur un gif et partagez le résultat !');
 define('HEADER_TITLE_TOP', 'Les plus populaires');
 define('HEADER_TITLE_WTF', 'Un djif au pif');
 define('HEADER_TITLE_LATEST', 'Les plus récents');
