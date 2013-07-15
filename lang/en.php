@@ -1,5 +1,7 @@
 <?php
 
+define('LOCALE', 'en');
+
 /* action/contact.php */
 define('CONTACT_SUBJECT', 'Contact from djif.net');
 define('NAME', 'Name');
@@ -25,8 +27,8 @@ define('IE_EXPLAIN', 'To get the best experience possible using our website we r
 define('IE_CLICK_LINKS', 'Just click on one of the links to get to the download page :');
 
 /* templates/includes/header.php */
-define('SITE_TITLE', '1 gif, 1 sound. DJif.');
-define('SITE_KEYWORDS', 'DJif, gif, sound, youtube, video, lolcats, share');
+define('SITE_TITLE', 'DJif.net : one gif, one sound !');
+define('SITE_KEYWORDS', 'DJif, gif, sound, youtube, video, lolcat, lolcats, share, fun, ogg, mashup, mix, cat, animated, humor, gallery');
 define('SITE_DESCRIPTION', 'Add a sound to a gif and share the result !');
 define('HEADER_TITLE_TOP', 'Most popular djifs');
 define('HEADER_TITLE_WTF', 'Any djif');

@@ -1,5 +1,7 @@
 <?php
 
+define('LOCALE', 'fr');
+
 /* action/contact.php */
 define('CONTACT_SUBJECT', 'Message de djif.net');
 define('NAME', 'Nom');
@@ -25,8 +27,8 @@ define('IE_EXPLAIN', 'Pour une meilleure visite de notre site, nous vous conseil
 define('IE_CLICK_LINKS', 'Cliquez sur un des liens pour vous rendre sur la page de téléchargement.');
 
 /* templates/includes/header.php */
-define('SITE_TITLE', '1 gif, 1 son. DJif.');
-define('SITE_KEYWORDS', 'DJif, gif, son, youtube, vidéo, lolchats, partager');
+define('SITE_TITLE', 'DJif.net : un gif, un son !');
+define('SITE_KEYWORDS', 'DJif, gif, son, youtube, vidéo, lolcat, lolcats, fun, partager, ogg, mashup, mix, chat, animé, marrant, humour, galerie');
 define('SITE_DESCRIPTION', 'Mettez un son sur un gif et partagez le résultat !');
 define('HEADER_TITLE_TOP', 'Les plus populaires');
 define('HEADER_TITLE_WTF', 'Un djif au pif');
@@ -34,7 +36,7 @@ define('HEADER_TITLE_LATEST', 'Les plus récents');
 
 /* index_route.php */
 define('LEAD_EXPLAIN', 'Un <strong>gif</strong>, un <strong>son</strong> !');
-define('LEAD_REGULAR', 'Ca va <strong>remixer</strong> dans les chaumieres !');
+define('LEAD_REGULAR', 'Ca va <strong>remixer</strong> dans les <strong>chaumieres</strong> !');
 
 /* classes/djif.php */
 define('DJIF_SIMPLE_LINK', 'Lien vers ce djif');
