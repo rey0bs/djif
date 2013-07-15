@@ -299,6 +299,12 @@ form#contact .input_group input, form#contact .input_group textarea {
 	width : 100%;
 }
 
+img.gif {
+    left: 0;
+    position: absolute;
+    top: 31px;
+}
+
 .speaker > *, .input_group.sound_group .preview > * {
     bottom: 0;
     position: absolute;

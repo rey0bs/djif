@@ -110,13 +110,11 @@ function youtube_stop(hash) {
 function disableDjif(hash) {
 	$('#_'+hash+'_djif .mask').removeClass('animated');
 	document.querySelector('#_'+hash+'_screen .gif').style.display = 'none';
-	document.querySelector('#_'+hash+'_screen .stopped').style.display = '';
 	$('#_'+hash+'_djif').attr('data-actif', 'false');
 }
 
 function enableDjif(hash) {
 	$('#_'+hash+'_djif .mask').addClass('animated');
-	document.querySelector('#_'+hash+'_screen .stopped').style.display = 'none';
 	document.querySelector('#_'+hash+'_screen .gif').style.display = '';
 	$('#_'+hash+'_djif').attr('data-actif', 'true');
 }
