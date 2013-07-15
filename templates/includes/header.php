@@ -3,8 +3,6 @@
 	<head>
 		<title><?php echo SITE_TITLE;?></title>
 		
-		<title>TITRE</title>
-
 		<meta name="title" content="<?php echo SITE_TITLE;?>">
 		<meta name="keywords" content="<?php echo SITE_KEYWORDS;?>">
 		<meta name="description" content="<?php echo SITE_DESCRIPTION;?>">

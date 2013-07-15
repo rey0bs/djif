@@ -28,7 +28,7 @@ define('IE_CLICK_LINKS', 'Cliquez sur un des liens pour vous rendre sur la page 
 
 /* templates/includes/header.php */
 define('SITE_TITLE', 'DJif.net : un gif, un son !');
-define('SITE_KEYWORDS', 'DJif, gif, son, youtube, vidéo, lolcat, lolcats, fun, partager, ogg, mashup, mix, chat, animé, marrant, humour, galerie');
+define('SITE_KEYWORDS', 'DJif, gif, gifs, son, youtube, vidéo, lolcat, lolcats, fun, partager, ogg, mashup, mix, chat, animé, marrant, humour, galerie');
 define('SITE_DESCRIPTION', 'Mettez un son sur un gif et partagez le résultat !');
 define('HEADER_TITLE_TOP', 'Les plus populaires');
 define('HEADER_TITLE_WTF', 'Un djif au pif');
