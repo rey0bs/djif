@@ -14,6 +14,7 @@ Proxima Estación >> v1.5
 - link directly under a DJif (to remove the need to close it to get said link)
 - add a 'Help' menu next to 'Contact us'
 - add a 'Our policy' menu next to 'Help'
+- add user-friendly ajax browsing with dynamic anchors and url rewriting
 
 (future feature [v7.4]
 - A.I. to generate 'another' buttons' text
