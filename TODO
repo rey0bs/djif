@@ -1,12 +1,19 @@
 - Create this TODO (done)
 - Preview gif and video when pasting the link (done)
 - Slightly delay gif displaying when sound is a video (gave up)
-- Social links
+- Social links (done)
 - Edit djif feature (done)
 - Browse latest / most popular djifs (done)
 - Get random djif (done)
 - Animate Rendering (to show something's actually happening) (done)
 - Stop other djifs when one is played (done)
+
+Proxima Estación >> v1.5
+- 'return' button to get back to a list at the right position when you clicked a DJif in this list
+- next/previous button when watching a DJif (to allow browsing further without the need to use previous button)
+- link directly under a DJif (to remove the need to close it to get said link)
+- add a 'Help' menu next to 'Contact us'
+- add a 'Our policy' menu next to 'Help'
 
 (future feature [v7.4]
 - A.I. to generate 'another' buttons' text
