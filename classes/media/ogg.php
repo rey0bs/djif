@@ -10,7 +10,7 @@ class Ogg extends Media {
 	}
 
 	public function getTitle() {
-		$file_name = preg_replace("#^https?://.*/([^?=]*)\.ogg(\?[^=]+=[^%]*(&[^=]+=[^%]*)*)?$#", "$1", $this->url);
+		$file_name = preg_replace("#^https?://.*/([^?=]*)\.ogg(\?.*)?$#", "$1", $this->url);
 		return urldecode($file_name);
 	}
 

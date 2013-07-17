@@ -20,8 +20,8 @@ class Media {
 	
 	public static function get($url, $type=null, $size=null) {
 		if(! $type) {
-			if(preg_match("#^https?://.*\.(mp3|ogg|wav|gif)(\?[^=]+=[^%]*(&[^=]+=[^%]*)*)?$#", $url)) {
-		    $type = preg_replace("#^https?://.*/(.*)\.(mp3|ogg|wav|gif)(\?[^=]+=[^%]*(&[^=]+=[^%]*)*)?$#", "$2", $url);
+			if(preg_match("#^https?://.*\.(mp3|ogg|wav|gif)(\?.*)?$#", $url)) {
+		    $type = preg_replace("#^https?://.*/(.*)\.(mp3|ogg|wav|gif)(\?.*)?$#", "$2", $url);
 			} else if (preg_match("#^https?://([^/]*\.)?youtu\.?be(\.|/)#i", $url)) {
 				$type = 'youtube';
 			} else {
