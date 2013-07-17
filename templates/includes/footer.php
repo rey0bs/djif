@@ -1,5 +1,5 @@
 			</div>
-			<div class="footer">
+			<div class="footer small_link">
 				<a href="/contact">
 				<span class="iconic comment_stroke"></span><?php echo CONTACT_US;?>
 				</a>

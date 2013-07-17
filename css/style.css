@@ -578,7 +578,6 @@ a#hide_audio {
 }
 
 .footer {
-	font-size: 11px;
 	margin-top:10px;
 	text-align:right;
 }
@@ -588,11 +587,12 @@ a#hide_audio {
 	margin-right: 4px;
 }
 
-.footer a {
+.small_link a {
 	color: #000;
+	font-size: 11px;
 }
 
-.footer a:hover {
+.small_link a:hover {
 	text-decoration: underline;
 }
 
