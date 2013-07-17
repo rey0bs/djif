@@ -10,7 +10,8 @@ class Mp3 extends Media {
 	}
 
 	public function getTitle() {
-		return preg_replace("#^https?://.*/(.*)\.mp3(\?[^=]+=[^%]*(&[^=]+=[^%]*)*)?$#", "$1", $this->url);
+		$file_name = preg_replace("#^https?://.*/([^?=]*)\.mp3(\?[^=]+=[^%]*(&[^=]+=[^%]*)*)?$#", "$1", $this->url);
+		return urldecode($file_name);
 	}
 
 	public function getFormat() {
