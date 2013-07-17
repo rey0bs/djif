@@ -113,11 +113,15 @@ class Djif {
 				ACCESS_TOKEN,
 				ACCESS_TOKEN_SECRET
 		);
-
+		
+		$title = $this->title;
+		if (strlen($title) > 140-23) {
+			$title = substr($title, 0, 140-26).'...';
+		}
 		$twConnect->host = "https://api.twitter.com/1.1/";
 		$twConnect->get('account/verify_credentials');
 		$twConnect->post('statuses/update', array(
-				'status' => 'A new djif was created ! '.$this->url
+				'status' => $title . ' ' . $this->url
 		));
 		
 		
