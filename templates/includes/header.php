@@ -1,15 +1,12 @@
 <!DOCTYPE html>
 <html>
-	<head>
+	<head lang="<?php echo LOCALE;?>">
 		<title><?php echo SITE_TITLE;?></title>
 		
-		<meta name="title" content="<?php echo SITE_TITLE;?>">
 		<meta name="keywords" content="<?php echo SITE_KEYWORDS;?>">
 		<meta name="description" content="<?php echo SITE_DESCRIPTION;?>">
-		<meta name="language" content="<?php echo LOCALE;?>" />
 		
 		<meta charset='utf-8'>
-		<meta name="Content-Type" http-equiv="Content-Type" content="text/HTML; charset=utf-8" />
 		
 		<meta name="rating" content="general">
 		<meta name="revisit-after" content="1 day">

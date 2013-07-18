@@ -1,15 +1,15 @@
 <form action="/new" method="post" id="new_djif">
-	<img src="/images/loader_film.gif" style="display: none;" />
+	<img src="/images/loader_film.gif" style="display: none;" alt="a transition image"/>
 	<div class="input_group gif_group">
 		<span class="iconic camera"></span>
-		<label for="gif_url">[[make_form_gif]]<span class="small">[[make_form_gif_details]]</span></label>
+		<label for="gifSource">[[make_form_gif]]<span class="small">[[make_form_gif_details]]</span></label>
 		<input id="gifSource" type="text" name="gif_url" onclick="select()" value="[[gifUrl]]"/>
 		<div id="plus">+</div>
 	</div>
 
 	<div class="input_group sound_group">
 		<span class="iconic play_alt"></span>
-		<label for="audio_url">[[make_form_audio]]<span class="small">[[make_form_audio_details]]</span></label>
+		<label for="soundSource">[[make_form_audio]]<span class="small">[[make_form_audio_details]]</span></label>
 		<input id="soundSource" type="text" name="audio_url" onclick="select()" value="[[audioUrl]]"/>
 	</div>
 	

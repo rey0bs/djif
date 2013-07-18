@@ -36,7 +36,7 @@ define('HEADER_TITLE_LATEST', 'Most recent djifs');
 
 /* index_route.php */
 define('LEAD_EXPLAIN', 'One <strong>gif</strong>, one <strong>sound</strong> !');
-define('LEAD_REGULAR', 'Remix the <strong>%$@£&!</strong> out of your <strong>gifs</strong> !');
+define('LEAD_REGULAR', 'Remix the <strong>%$@£&amp;!</strong> out of your <strong>gifs</strong> !');
 
 /* classes/djif.php */
 define('DJIF_SIMPLE_LINK', 'Link to this djif');
