@@ -114,7 +114,7 @@ class Djif {
 				ACCESS_TOKEN_SECRET
 		);
 		
-		$title = $this->title;
+		$title = preg_replace('/_/', ' ', $this->title;)
 		if (strlen($title) > 140-23) {
 			$title = substr($title, 0, 140-26).'...';
 		}
