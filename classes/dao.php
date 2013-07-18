@@ -116,7 +116,7 @@ class Dao {
 			AND djifs.audio = audio.id";
 		$result = $this->db->query($select);
 		if ($result && $row = $result->fetch_assoc()) {
-			return array('[[gifUrl]]' => $row["imgUrl"], '[[audioUrl]]' => $row["audioUrl"]);
+			return array('[[gifUrl]]' => htmlentities($row["imgUrl"]), '[[audioUrl]]' => htmlentities($row["audioUrl"]));
 		}
 		return null;
 	}
