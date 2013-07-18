@@ -49,12 +49,12 @@ if ($_POST['name'] && $_POST['email'] && $_POST['message']) {
 ?>
 	<form action="/contact" method="post" id="contact">
 		<div class="input_group">
-			<label for="name"><?php echo CONTACT_FORM_NAME;?>*</label>
-			<input type="text" name="name" value="<?php echo $_POST['name']; ?>" required="required" placeholder="Lol Cat" />
-			<label for="email"><?php echo CONTACT_FORM_EMAIL;?>*</label>
-			<input type="email" name="email" value="<?php echo $_POST['email']; ?>" required="required" placeholder="lol.cat@wtf.com" />
-			<label for="message"><?php echo CONTACT_FORM_MESSAGE;?>*</label>
-			<textarea name="message" rows="6" required="required" placeholder="<?php echo CONTACT_FORM_EXEMPLE_MESSAGE;?>"><?php echo $_POST['message']; ?></textarea>
+			<label for="nameSource"><?php echo CONTACT_FORM_NAME;?>*</label>
+			<input type="text" id="nameSource" name="name" value="<?php echo $_POST['name']; ?>" required="required" placeholder="Lol Cat" />
+			<label for="emailSource"><?php echo CONTACT_FORM_EMAIL;?>*</label>
+			<input type="email" id="emailSource" name="email" value="<?php echo $_POST['email']; ?>" required="required" placeholder="lol.cat@wtf.com" />
+			<label for="messageSource"><?php echo CONTACT_FORM_MESSAGE;?>*</label>
+			<textarea id="messageSource" name="message" rows="6" required="required" placeholder="<?php echo CONTACT_FORM_EXEMPLE_MESSAGE;?>"><?php echo $_POST['message']; ?></textarea>
 			<span class="small text-right">* <?php echo CONTACT_FORM_REQUIRED;?></span>
 		</div>
 		<div class="submit_button">
