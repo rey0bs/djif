@@ -3,10 +3,10 @@
 	<head lang="<?php echo LOCALE;?>">
 		<title><?php echo SITE_TITLE;?></title>
 		
-		<meta name="keywords" content="<?php echo SITE_KEYWORDS;?>">
-		<meta name="description" content="<?php echo SITE_DESCRIPTION;?>">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 		
-		<meta charset='utf-8'>
+		<meta name="description" content="<?php echo SITE_DESCRIPTION;?>">
+		<meta name="keywords" content="<?php echo SITE_KEYWORDS;?>">
 		
 		<meta name="rating" content="general">
 		<meta name="revisit-after" content="1 day">
