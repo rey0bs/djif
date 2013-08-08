@@ -16,6 +16,7 @@ define('CONTACT_FORM_EXEMPLE_MESSAGE', 'Your website is an insult to the whole c
 define('CONTACT_FORM_REQUIRED', 'Required');
 define('CONTACT_FORM_SEND', 'Send !');
 /* templates/includes/footer.php */
+define('FOLLOW_US', 'Follow the latest DJifs');
 define('CONTACT_US', 'Contact us');
 
 /* action/home.php */
