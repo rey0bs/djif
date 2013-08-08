@@ -590,6 +590,7 @@ a#hide_audio {
 .small_link a {
 	color: #000;
 	font-size: 11px;
+	margin-left : 10px;
 }
 
 .small_link a:hover {

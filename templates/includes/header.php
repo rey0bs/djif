@@ -48,6 +48,9 @@
 				<a class="button rond<?php echo ($action == 'top')?' active':''; ?>" href="/top" title="<?php echo HEADER_TITLE_TOP;?>"><span class="iconic heart_stroke"></span></a>
 				<a class="button rond<?php echo ($action == 'wtf')?' active':''; ?>" href="/wtf" title="<?php echo HEADER_TITLE_WTF;?>"><span class="iconic reload"></span></a>
 				<a class="button rond<?php echo ($action == 'latest')?' active':''; ?>" href="/latest" title="<?php echo HEADER_TITLE_LATEST;?>"><span class="iconic clock"></span></a>
+				<div class="small_link">
+					<span class="iconic pin"></span> <a href="https://twitter.com/intent/follow?original_referer=https%3A%2F%2Ftwitter.com%2Fsettings%2Fwidgets%2F319952321515757568%2Fedit&partner=undefined&region=follow_link&screen_name=DjifNet&tw_p=followbutton&variant=2.0"><?php echo FOLLOW_US; ?></a>
+				</div>
 			</div>
 			<div id="action">
 
