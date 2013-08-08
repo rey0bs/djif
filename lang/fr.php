@@ -16,6 +16,7 @@ define('CONTACT_FORM_EXEMPLE_MESSAGE', 'Votre site ouèb est une insulte au genr
 define('CONTACT_FORM_REQUIRED', 'Requis');
 define('CONTACT_FORM_SEND', 'Envoyez !');
 /* templates/includes/footer.php */
+define('FOLLOW_US', 'Suivez les derniers DJifs');
 define('CONTACT_US', 'Nous contacter');
 
 /* action/home.php */
@@ -84,10 +85,10 @@ define('ANOTHER_TXT_11', 'Je devrais pas aller travailler ?');
 define('ANOTHER_TXT_12', 'Cette fois-ci c\'est le dernier');
 define('ANOTHER_TXT_13', 'Nan mais cette fois-ci vraiment');
 define('ANOTHER_TXT_14', 'Promis');
-define('ANOTHER_TXT_15', 'J\'arrête quand je veux');
+define('ANOTHER_TXT_15', 'J\'arrete quand je veux');
 define('ANOTHER_TXT_16', 'Je suis pas accro hein');
 define('ANOTHER_TXT_17', 'Vas-y fais pas ta pute');
-define('ANOTHER_TXT_18', 'J\'arrête l\'an prochain');
+define('ANOTHER_TXT_18', 'J\'arrete l\'an prochain');
 define('ANOTHER_ONE_LEFT', 'Merde c\'est le dernier !');
 
 ?>
