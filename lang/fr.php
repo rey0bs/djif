@@ -68,7 +68,7 @@ define('ERROR_TITLE', 'Le djif que vous avez demandé n\'existe pas (ou plus). C
 define('ERROR_BUTTON', 'Hein !?');
 
 /* various : action/{wtf,top,get},php, classes/sequence.php */
-define('MAKE_BUTTON', 'Fais ton djif !');
+define('MAKE_BUTTON', 'Fais un djif !');
 
 /* classes/sequence.php */
 define('ANOTHER_TXT_0', 'Un autre !');
